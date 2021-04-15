@@ -87,7 +87,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://github.com/PanJiaChen/vue-element-admin',
+        path: 'https://www.csdn.net/',
         meta: { title: '更多支持', icon: 'link' }
       }
     ]

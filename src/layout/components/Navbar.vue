@@ -22,7 +22,7 @@
             </el-dropdown-item>
           </router-link>
           <a target="_blank"
-             href="https://github.com/PanJiaChen/vue-admin-template/">
+             href="https://github.com/AverageJoe-819/Backstage-Management-System/">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
           <el-dropdown-item divided
