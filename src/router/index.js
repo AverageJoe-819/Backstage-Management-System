@@ -12,6 +12,7 @@ export const constantRoutes = [
     hidden: true
   },
 
+
   {
     path: '/404',
     component: () => import('@/views/404'),
@@ -26,7 +27,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '首页', icon: 'dashboard' }
+      meta: { title: 'dashboard', icon: 'dashboard', affix: true }
     }]
   },
 
@@ -40,7 +41,7 @@ export const constantRoutes = [
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: '入侵检测', icon: 'el-icon-s-help' }
+        meta: { title: 'table', icon: 'el-icon-s-help' }
       }
     ]
   },
@@ -53,7 +54,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'IP管理', icon: 'form' }
+        meta: { title: 'form', icon: 'form' }
       }
     ]
   },
@@ -64,7 +65,7 @@ export const constantRoutes = [
     redirect: '/nested',
     name: 'Nested',
     meta: {
-      title: '风险评估',
+      title: 'nested',
       icon: 'nested'
     },
     children: [
@@ -88,7 +89,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'https://www.csdn.net/',
-        meta: { title: '更多支持', icon: 'link' }
+        meta: { title: 'link', icon: 'link' }
       }
     ]
   },

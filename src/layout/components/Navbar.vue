@@ -7,6 +7,10 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <template>
+        <lang-select class="right-menu-item hover-effect" />
+
+      </template>
       <el-dropdown class="avatar-container"
                    trigger="click">
         <div class="avatar-wrapper">
@@ -18,16 +22,20 @@
                           class="user-dropdown">
           <router-link to="/">
             <el-dropdown-item>
-              首页
+              {{ $t('navbar.dashboard') }}
             </el-dropdown-item>
           </router-link>
           <a target="_blank"
              href="https://github.com/AverageJoe-819/Backstage-Management-System/">
-            <el-dropdown-item>Github</el-dropdown-item>
+            <el-dropdown-item>
+              {{ $t('navbar.github') }}
+            </el-dropdown-item>
           </a>
           <el-dropdown-item divided
                             @click.native="logout">
-            <span style="display:block;">登出</span>
+            <span style="display:block;">
+              {{ $t('navbar.logout') }}
+            </span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -39,11 +47,13 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import LangSelect from '@/components/LangSelect'
 
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    LangSelect
   },
   computed: {
     ...mapGetters([
