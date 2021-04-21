@@ -12,7 +12,6 @@ export const constantRoutes = [
     hidden: true
   },
 
-
   {
     path: '/404',
     component: () => import('@/views/404'),
@@ -73,7 +72,7 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'),
         name: 'Menu1',
-        meta: { title: '专业版' },
+        meta: { title: '专业版' }
       },
       {
         path: 'menu2',
@@ -104,7 +103,7 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
-export function resetRouter () {
+export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher
 }

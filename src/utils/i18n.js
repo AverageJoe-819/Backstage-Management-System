@@ -1,5 +1,5 @@
 // 翻译router.meta。标题，用于面包屑侧边栏tagsview
-export function generateTitle (title) {
+export function generateTitle(title) {
   const hasKey = this.$te('route.' + title)
 
   if (hasKey) {

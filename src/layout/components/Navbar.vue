@@ -1,38 +1,54 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened"
-               class="hamburger-container"
-               @toggleClick="toggleSideBar" />
+    <hamburger
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
 
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
       <template>
+        <screenfull
+          id="screenfull"
+          class="right-menu-item hover-effect"
+        />
         <lang-select class="right-menu-item hover-effect" />
 
       </template>
-      <el-dropdown class="avatar-container"
-                   trigger="click">
+      <el-dropdown
+        class="avatar-container"
+        trigger="click"
+      >
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'"
-               class="user-avatar">
+          <img
+            :src="avatar+'?imageView2/1/w/80/h/80'"
+            class="user-avatar"
+          >
           <i class="el-icon-caret-bottom" />
         </div>
-        <el-dropdown-menu slot="dropdown"
-                          class="user-dropdown">
+        <el-dropdown-menu
+          slot="dropdown"
+          class="user-dropdown"
+        >
           <router-link to="/">
             <el-dropdown-item>
               {{ $t('navbar.dashboard') }}
             </el-dropdown-item>
           </router-link>
-          <a target="_blank"
-             href="https://github.com/AverageJoe-819/Backstage-Management-System/">
+          <a
+            target="_blank"
+            href="https://github.com/AverageJoe-819/Backstage-Management-System/"
+          >
             <el-dropdown-item>
               {{ $t('navbar.github') }}
             </el-dropdown-item>
           </a>
-          <el-dropdown-item divided
-                            @click.native="logout">
+          <el-dropdown-item
+            divided
+            @click.native="logout"
+          >
             <span style="display:block;">
               {{ $t('navbar.logout') }}
             </span>
@@ -48,12 +64,14 @@ import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import LangSelect from '@/components/LangSelect'
+import Screenfull from '@/components/Screenfull'
 
 export default {
   components: {
     Breadcrumb,
     Hamburger,
-    LangSelect
+    LangSelect,
+    Screenfull
   },
   computed: {
     ...mapGetters([
@@ -62,10 +80,10 @@ export default {
     ])
   },
   methods: {
-    toggleSideBar () {
+    toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
-    async logout () {
+    async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
