@@ -31,9 +31,9 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/',
     component: Layout,
-    redirect: '/example/table',
+    redirect: '/table',
 
     children: [
       {
@@ -46,11 +46,11 @@ export const constantRoutes = [
   },
 
   {
-    path: '/form',
+    path: '/',
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: 'form',
         name: 'Form',
         component: () => import('@/views/form/index'),
         meta: { title: 'form', icon: 'form' }
@@ -58,6 +58,34 @@ export const constantRoutes = [
     ]
   },
 
+
+  { path: '*', redirect: '/404', hidden: true }
+]
+export const asyncRoutes = [
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        path: 'test',
+        name: 'Test',
+        component: () => import('@/views/test/index'),
+        meta: { title: 'test', icon: 'user', roles: ['admin'] }
+      }
+    ]
+  },
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        path: 'test2',
+        name: 'Test2',
+        component: () => import('@/views/test2/index'),
+        meta: { title: 'test2', icon: 'tree', roles: ['admin'] }
+      }
+    ]
+  },
   {
     path: '/nested',
     component: Layout,
@@ -72,18 +100,19 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'),
         name: 'Menu1',
-        meta: { title: '专业版' }
+        meta: { title: 'menu1' }
       },
       {
         path: 'menu2',
         component: () => import('@/views/nested/menu2/index'),
         name: 'Menu2',
-        meta: { title: '简明版' }
+        meta: { title: 'menu2' }
       }
     ]
-  },
+  }
+  ,
   {
-    path: 'external-link',
+    path: 'link',
     component: Layout,
     children: [
       {
@@ -91,10 +120,8 @@ export const constantRoutes = [
         meta: { title: 'link', icon: 'link' }
       }
     ]
-  },
+  }]
 
-  { path: '*', redirect: '/404', hidden: true }
-]
 
 const createRouter = () => new Router({
   scrollBehavior: () => ({ y: 0 }),
@@ -103,7 +130,7 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
-export function resetRouter() {
+export function resetRouter () {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher
 }
