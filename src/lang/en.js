@@ -1,11 +1,11 @@
 export default {
   route: {
     dashboard: 'Dashboard',
-    table: 'Intrusion Detection',
-    form: 'Users Monitoring',
-    test: 'Users Management',
-    test2: 'Jurisdiction Management',
-    nested: 'Risk Assessment',
+    detection: 'Intrusion Detection',
+    monitoring: 'Users Monitoring',
+    management1: 'Users Management',
+    management2: 'Jurisdiction Management',
+    assessment: 'Risk Assessment',
     link: 'External Link',
     menu1: 'Professional',
     menu2: 'Concise'

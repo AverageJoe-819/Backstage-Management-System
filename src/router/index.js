@@ -33,14 +33,13 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/table',
-
+    redirect: '/detection',
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'table', icon: 'el-icon-s-help' }
+        path: 'detection',
+        name: 'Detection',
+        component: () => import('@/views/detection/index'),
+        meta: { title: 'detection', icon: 'el-icon-s-help' }
       }
     ]
   },
@@ -50,14 +49,13 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'form',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'form', icon: 'form' }
+        path: 'monitoring',
+        name: 'Monitoring',
+        component: () => import('@/views/monitoring/index'),
+        meta: { title: 'monitoring', icon: 'form' }
       }
     ]
   },
-
 
   { path: '*', redirect: '/404', hidden: true }
 ]
@@ -67,10 +65,10 @@ export const asyncRoutes = [
     component: Layout,
     children: [
       {
-        path: 'test',
-        name: 'Test',
-        component: () => import('@/views/test/index'),
-        meta: { title: 'test', icon: 'user', roles: ['admin'] }
+        path: 'management1',
+        name: 'Management1',
+        component: () => import('@/views/management1/index'),
+        meta: { title: 'management1', icon: 'user', roles: ['admin'] }
       }
     ]
   },
@@ -79,20 +77,20 @@ export const asyncRoutes = [
     component: Layout,
     children: [
       {
-        path: 'test2',
-        name: 'Test2',
-        component: () => import('@/views/test2/index'),
-        meta: { title: 'test2', icon: 'tree', roles: ['admin'] }
+        path: 'management2',
+        name: 'Management2',
+        component: () => import('@/views/management2/index'),
+        meta: { title: 'management2', icon: 'tree', roles: ['admin'] }
       }
     ]
   },
   {
-    path: '/nested',
+    path: '/assessment',
     component: Layout,
-    redirect: '/nested',
-    name: 'Nested',
+    redirect: '/assessment',
+    name: 'Assessment',
     meta: {
-      title: 'nested',
+      title: 'assessment',
       icon: 'nested'
     },
     children: [
@@ -109,8 +107,7 @@ export const asyncRoutes = [
         meta: { title: 'menu2' }
       }
     ]
-  }
-  ,
+  },
   {
     path: 'link',
     component: Layout,
@@ -122,7 +119,6 @@ export const asyncRoutes = [
     ]
   }]
 
-
 const createRouter = () => new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
@@ -130,7 +126,7 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
-export function resetRouter () {
+export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher
 }
