@@ -17,6 +17,9 @@ export default {
     password: '密码',
     any: '任意'
   },
+  dashboard: {
+
+  },
   navbar: {
     dashboard: '首页',
     github: '云端',

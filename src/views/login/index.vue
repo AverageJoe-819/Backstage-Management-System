@@ -63,11 +63,6 @@
         {{ $t('login.logIn') }}
       </el-button>
 
-      <div class="tips">
-        <span style="margin-right:20px;">{{ $t('login.username') }} : admin</span>
-        <span> {{ $t('login.password') }} : {{ $t('login.any') }}</span>
-      </div>
-
     </el-form>
   </div>
 </template>
@@ -148,9 +143,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* 修复input 背景不协调 和光标变色 */
-/* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
-
 $bg: #283443;
 $light_gray: #fff;
 $cursor: #fff;

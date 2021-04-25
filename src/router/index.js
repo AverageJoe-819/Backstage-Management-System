@@ -87,7 +87,6 @@ export const asyncRoutes = [
   {
     path: '/assessment',
     component: Layout,
-    redirect: '/assessment',
     name: 'Assessment',
     meta: {
       title: 'assessment',
