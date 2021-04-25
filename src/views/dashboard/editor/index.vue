@@ -1,42 +1,41 @@
 <template>
   <div class="dashboard-editor-container">
-    <div class=" clearfix">
-      <pan-thumb
-        :image="avatar"
-        style="float: left;"
-      >
-        <br>
-        <br>
-        Your roles:
-        <span
-          v-for="item in roles"
-          :key="item"
-          class="pan-info-roles"
-        >{{ item }}</span>
-      </pan-thumb>
-      <div class="info-container">
-        <span class="display_name">{{ name }}</span>
-        <span style="font-size:20px;padding-top:20px;display:inline-block;">普通管理员的首页</span>
-      </div>
-    </div>
     <el-row :gutter="8">
-      <el-col
-        style="margin-top:50px;"
-        span="12"
-      >
+      <el-col span="12">
+
+        <div class=" clearfix">
+          <pan-thumb :image="avatar"
+                     style="float: left;">
+            <br>
+            <br>
+            Your roles:
+            <span v-for="item in roles"
+                  :key="item"
+                  class="pan-info-roles">{{ item }}</span>
+          </pan-thumb>
+          <div class="info-container">
+            <span class="display_name">{{ name }}</span>
+            <span style="font-size:20px;padding-top:20px;display:inline-block;">普通管理员的首页</span>
+          </div>
+        </div>
+
+      </el-col>
+      <el-col span="12">
+        <information-card></information-card>
+      </el-col>
+    </el-row>
+    <el-row :gutter="8">
+      <el-col style="margin-top:50px;"
+              span="12">
         <transaction-table />
       </el-col>
 
-      <el-col
-        style="margin-top:50px;"
-        span="5"
-      >
+      <el-col style="margin-top:50px;"
+              span="5">
         <box-card />
       </el-col>
-      <el-col
-        style="margin-top:50px;"
-        span="7"
-      >
+      <el-col style="margin-top:50px;"
+              span="7">
         <todo-list />
       </el-col>
     </el-row>
@@ -49,10 +48,11 @@ import PanThumb from '@/components/PanThumb'
 import TodoList from '@/components/TodoList'
 import BoxCard from '@/components/BoxCard'
 import TransactionTable from '@/components/TransactionTable'
+import InformationCard from '@/components/InformationCard'
 
 export default {
   name: 'DashboardEditor',
-  components: { PanThumb, BoxCard, TodoList, TransactionTable },
+  components: { PanThumb, BoxCard, TodoList, TransactionTable, InformationCard },
   computed: {
     ...mapGetters([
       'name',
@@ -73,6 +73,7 @@ export default {
     color: #333;
     display: block;
   }
+
   .info-container {
     position: relative;
     margin-left: 190px;
