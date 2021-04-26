@@ -3,27 +3,28 @@
     <div slot="header"
          class="clearfix">
       <mallki class-name="mallki-text"
-              text="历次登录信息" />
+              text="登录信息" />
 
     </div>
-    <div id="tablebody">
+    <div>
       <el-table :data="list"
                 highlight-current-row
+                fit
                 class="table">
         <el-table-column align="center"
                          label="序号"
                          type="index"
-                         width="48" />
+                         width="50" />
 
         <el-table-column label="登录IP"
-                         width="80"
+                         width="120"
                          align="center">
           <template slot-scope="scope">
             {{ scope.row.IP }}
           </template>
         </el-table-column>
         <el-table-column label="在线时长"
-                         width="77"
+                         width="80"
                          align="center">
           <template slot-scope="scope">
             <span>{{ scope.row.time1 }}</span>
@@ -49,21 +50,25 @@ export default {
   data () {
     return {
       list: [{
-        time1: '1.5h',
+        time1: '01h21m',
         IP: '192.168.3.103',
-        time2: ' 4/26 17:11 '
+        time2: '2021/4/26 20:11 '
       }, {
-        time1: '3.0h  ',
+        time1: '03h13m',
         IP: '192.168.3.103',
-        time2: ' 4/26 20:05 '
+        time2: '2021/4/26 14:05 '
       }, {
-        time1: '3.0h  ',
+        time1: '02h46m',
         IP: '192.168.3.103',
-        time2: ' 4/26 20:05 '
+        time2: '2021/4/25 12:34 '
       }, {
-        time1: '3.0h  ',
+        time1: '10h11m',
         IP: '192.168.3.103',
-        time2: ' 4/26 20:05 '
+        time2: '2021/4/24 13:44 '
+      }, {
+        time1: '02h03m',
+        IP: '192.168.3.103',
+        time2: '2021/4/24 13:44 '
       }]
     }
   }
@@ -75,9 +80,7 @@ export default {
   font-weight: bold;
 }
 .login-card {
-  height: 460px;
-}
-#tablebody {
-  padding: 0px;
+  height: 440px;
 }
 </style>
+

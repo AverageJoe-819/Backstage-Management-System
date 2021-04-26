@@ -5,13 +5,16 @@ const tokens = {
   },
   editor: {
     token: 'editor-token'
+  },
+  superadmin: {
+    token: 'superadmin-token'
   }
 }
 
 const users = {
   'admin-token': {
     roles: ['admin'],
-    introduction: 'I am a super administrator',
+    introduction: 'I am a administrator',
     avatar: 'https://i.loli.net/2021/04/23/qLgueryNcS3ija8.gif',
     name: '师明骏',
     email: '672536763@qq.com',
@@ -26,6 +29,16 @@ const users = {
     name: '杜敏俐',
     email: '1078435904@qq.com',
     phonenumber: '18109076061',
+    address: '192.168.3.103',
+    time: '2021/4/26 11:16'
+  },
+  'superadmin-token': {
+    roles: ['superadmin'],
+    introduction: 'I am a super administrator',
+    avatar: 'https://i.loli.net/2021/04/26/CUXqbw4MWKGtkAD.gif',
+    name: '纪四维',
+    email: 'jisiweiok@163.com',
+    phonenumber: '18980838692',
     address: '192.168.3.103',
     time: '2021/4/26 11:16'
   }

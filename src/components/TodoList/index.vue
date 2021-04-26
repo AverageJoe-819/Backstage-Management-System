@@ -1,13 +1,18 @@
 <template>
 
-  <el-card>
+  <el-card style="height:440px">
+    <div slot="header"
+         class="clearfix">
+      <mallki class-name="mallki-text"
+              text="待办事项" />
+    </div>
     <section class="todoapp">
       <!-- header -->
       <header class="header">
         <input class="new-todo"
                autocomplete="off"
-               placeholder="添加待办事项"
-               @keyup.enter="addTodo">
+               placeholder="添加"
+               @keyup.enter="addTodo" />
       </header>
       <!-- main section -->
       <section v-show="todos.length"
@@ -63,9 +68,7 @@ const defalutList = [
   { text: '完成指导记录', done: false },
   { text: '完成中期报告', done: true },
   { text: '学习vue', done: true },
-  { text: '学习element-ui', done: true },
-  { text: '学习axios', done: false },
-  { text: '学习webpack', done: true }
+  { text: '学习element-ui', done: true }
 ]
 export default {
   components: { Todo, Mallki },

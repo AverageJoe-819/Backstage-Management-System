@@ -80,7 +80,7 @@ export const asyncRoutes = [
         path: 'management1',
         name: 'Management1',
         component: () => import('@/views/management1/index'),
-        meta: { title: 'management1', icon: 'user', roles: ['admin'] }
+        meta: { title: 'management1', icon: 'user', roles: ['admin', 'superadmin'] }
       }
     ]
   },
@@ -92,7 +92,7 @@ export const asyncRoutes = [
         path: 'management2',
         name: 'Management2',
         component: () => import('@/views/management2/index'),
-        meta: { title: 'management2', icon: 'tree', roles: ['admin'] }
+        meta: { title: 'management2', icon: 'tree', roles: ['superadmin'] }
       }
     ]
   },
