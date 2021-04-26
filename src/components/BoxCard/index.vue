@@ -19,18 +19,15 @@
         class="progress-item"
       >
         <span>权限管理</span>
-        <el-progress :percentage="70" />
+        <el-progress :percentage="25" />
       </div>
       <div class="progress-item">
         <span>用户管理</span>
-        <el-progress :percentage="18" />
+        <el-progress :percentage="50" />
       </div>
       <div class="progress-item">
         <span>问题日志</span>
-        <el-progress
-          :percentage="100"
-          status="success"
-        />
+        <el-progress :percentage="75" />
       </div>
       <div class="progress-item">
         <span>修复日志</span>

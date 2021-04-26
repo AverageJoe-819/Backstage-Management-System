@@ -2,16 +2,19 @@
   <div class="dashboard-editor-container">
     <el-row :gutter="8">
       <el-col span="12">
-
         <div class=" clearfix">
-          <pan-thumb :image="avatar"
-                     style="float: left;">
+          <pan-thumb
+            :image="avatar"
+            style="float: left;"
+          >
             <br>
             <br>
             Your roles:
-            <span v-for="item in roles"
-                  :key="item"
-                  class="pan-info-roles">{{ item }}</span>
+            <span
+              v-for="item in roles"
+              :key="item"
+              class="pan-info-roles"
+            >{{ item }}</span>
           </pan-thumb>
           <div class="info-container">
             <span class="display_name">{{ name }}</span>
@@ -21,21 +24,27 @@
 
       </el-col>
       <el-col span="12">
-        <information-card></information-card>
+        <info-card />
       </el-col>
     </el-row>
     <el-row :gutter="8">
-      <el-col style="margin-top:50px;"
-              span="12">
-        <transaction-table />
+      <el-col
+        style="margin-top:50px;"
+        span="12"
+      >
+        <loginrecord-table />
       </el-col>
 
-      <el-col style="margin-top:50px;"
-              span="5">
+      <el-col
+        style="margin-top:50px;"
+        span="5"
+      >
         <box-card />
       </el-col>
-      <el-col style="margin-top:50px;"
-              span="7">
+      <el-col
+        style="margin-top:50px;"
+        span="7"
+      >
         <todo-list />
       </el-col>
     </el-row>
@@ -47,17 +56,19 @@ import { mapGetters } from 'vuex'
 import PanThumb from '@/components/PanThumb'
 import TodoList from '@/components/TodoList'
 import BoxCard from '@/components/BoxCard'
-import TransactionTable from '@/components/TransactionTable'
-import InformationCard from '@/components/InformationCard'
+import LoginrecordTable from '@/components/LoginrecordTable'
+import InfoCard from '@/components/InfoCard'
 
 export default {
   name: 'DashboardAdmin',
-  components: { PanThumb, BoxCard, TodoList, TransactionTable, InformationCard },
+  components: { PanThumb, BoxCard, TodoList, LoginrecordTable, InfoCard },
   computed: {
     ...mapGetters([
       'name',
       'avatar',
-      'roles'
+      'roles',
+      'email',
+      'phonenumber'
     ])
   }
 }

@@ -1,29 +1,45 @@
 <template>
-  <div class="app-container"
-       align='center'>
-    <el-button type="primary"
-               icon="el-icon-warning"
-               size="medium"
-               @click="dialogFormVisible = true">举报IP</el-button>
+  <div
+    class="app-container"
+    align="center"
+  >
+    <el-button
+      type="primary"
+      icon="el-icon-warning"
+      size="medium"
+      @click="dialogFormVisible = true"
+    >举报IP</el-button>
 
-    <el-dialog title="举报IP"
-               :visible.sync="dialogFormVisible">
-      <el-form ref="form"
-               :model="form"
-               label-width="120px">
+    <el-dialog
+      title="举报IP"
+      :visible.sync="dialogFormVisible"
+    >
+      <el-form
+        ref="form"
+        :model="form"
+        label-width="120px"
+      >
         <el-form-item label="IP地址">
           <el-input v-model="form.name" />
         </el-form-item>
         <el-form-item label="问题类型">
           <el-checkbox-group v-model="form.type">
-            <el-checkbox label="短期高频率"
-                         name="type" />
-            <el-checkbox label="非正常时间"
-                         name="type" />
-            <el-checkbox label="长期"
-                         name="type" />
-            <el-checkbox label="境外IP"
-                         name="type" />
+            <el-checkbox
+              label="短期高频率"
+              name="type"
+            />
+            <el-checkbox
+              label="非正常时间"
+              name="type"
+            />
+            <el-checkbox
+              label="长期"
+              name="type"
+            />
+            <el-checkbox
+              label="境外IP"
+              name="type"
+            />
           </el-checkbox-group>
         </el-form-item>
         <el-form-item label="申诉类型">
@@ -33,16 +49,22 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="描述">
-          <el-input v-model="form.desc"
-                    type="textarea" />
+          <el-input
+            v-model="form.desc"
+            type="textarea"
+          />
         </el-form-item>
 
       </el-form>
-      <div slot="footer"
-           class="dialog-footer">
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary"
-                   @click="dialogFormVisible = false">提 交</el-button>
+        <el-button
+          type="primary"
+          @click="dialogFormVisible = false"
+        >提 交</el-button>
       </div>
     </el-dialog>
 
@@ -90,7 +112,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       dialogTableVisible: false,
       dialogFormVisible: false,

@@ -4,32 +4,42 @@
          class="clearfix">
       <mallki class-name="mallki-text"
               text="用户个人信息" />
-      <el-switch v-model="value1"
+      <el-switch v-model="value"
                  active-text="隐藏"
                  inactive-text="显示"
-                 style="float: right; padding: 3px 0">
-      </el-switch>
+                 active-value="0"
+                 inactive-value="1"
+                 @change="changeswitch(email,phonenumber)"
+                 style="float: right; padding: 3px 0" />
     </div>
     <div>
       <div class="text item">
-        邮箱号码：{{email}}
+        邮箱号码：{{ email }}
       </div>
       <div class="text item">
-        手机号码：{{phone}}
+        手机号码：{{ phonenumber }}
       </div>
     </div>
   </el-card>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Mallki from '@/components/TextHoverEffect/Mallki'
 export default {
   components: { Mallki },
+  computed: {
+    ...mapGetters([
+      'email',
+      'phonenumber'
+    ])
+  },
+  methods: {
+
+  },
   data () {
     return {
-      value1: true,
-      email: '672536763@qq.com',
-      phone: '17361041429'
+      value: true,
     }
   }
 }

@@ -1,26 +1,36 @@
 <template>
   <el-card>
     <div style="background-color=white ">
-      <mallki class-name="mallki-text"
-              text="历次登录信息" />
+      <mallki
+        class-name="mallki-text"
+        text="历次登录信息"
+      />
     </div>
-    <el-table :data="list"
-              style="width: 100%;padding-top: 15px;stripe:true;"
-              fit>
-      <el-table-column label="序号"
-                       min-width="50"
-                       align="center"
-                       type="index" />
-      <el-table-column label="IP地址"
-                       width="200"
-                       align="center">
+    <el-table
+      :data="list"
+      style="width: 100%;padding-top: 15px;stripe:true;"
+      fit
+    >
+      <el-table-column
+        label="序号"
+        min-width="50"
+        align="center"
+        type="index"
+      />
+      <el-table-column
+        label="IP地址"
+        width="200"
+        align="center"
+      >
         <template slot-scope="scope">
           {{ scope.row.address }}
         </template>
       </el-table-column>
-      <el-table-column label="登录时间"
-                       width="250"
-                       align="center">
+      <el-table-column
+        label="登录时间"
+        width="250"
+        align="center"
+      >
         <template slot-scope="scope">
           {{ scope.row.time }}
         </template>
@@ -32,7 +42,7 @@
 import Mallki from '@/components/TextHoverEffect/Mallki'
 export default {
   components: { Mallki },
-  data () {
+  data() {
     return {
       list: [{
         address: '127.0.0.0',

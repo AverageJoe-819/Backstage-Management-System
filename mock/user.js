@@ -13,13 +13,17 @@ const users = {
     roles: ['admin'],
     introduction: 'I am a super administrator',
     avatar: 'https://i.loli.net/2021/04/23/qLgueryNcS3ija8.gif',
-    name: 'Super Admin'
+    name: '师明骏',
+    email: '672536763@qq.com',
+    phonenumber: '17361041429',
   },
   'editor-token': {
     roles: ['editor'],
     introduction: 'I am an editor',
     avatar: 'https://i.loli.net/2021/04/23/YdJb6WsXP1meqT3.gif',
-    name: 'Normal Editor'
+    name: '杜敏俐',
+    email: '1078435904@qq.com',
+    phonenumber: '18109076061',
   }
 }
 
