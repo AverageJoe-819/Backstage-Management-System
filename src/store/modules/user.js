@@ -9,7 +9,9 @@ const getDefaultState = () => {
     avatar: '',
     roles: [],
     email: '',
-    phonenumber: ''
+    phonenumber: '',
+    address: '',
+    time: ''
   }
 }
 
@@ -36,12 +38,18 @@ const mutations = {
   },
   SET_PHONENUMBER: (state, phonenumber) => {
     state.phonenumber = phonenumber
+  },
+  SET_ADDRESS: (state, address) => {
+    state.address = address
+  },
+  SET_TIME: (state, time) => {
+    state.time = time
   }
 }
 
 const actions = {
   // user login
-  login({ commit }, userInfo) {
+  login ({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
@@ -56,7 +64,7 @@ const actions = {
   },
 
   // get user info
-  getInfo({ commit, state }) {
+  getInfo ({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
@@ -65,12 +73,14 @@ const actions = {
           return reject('Verification failed, please Login again.')
         }
 
-        const { roles, name, avatar, email, phonenumber } = data
+        const { roles, name, avatar, email, phonenumber, address, time } = data
         commit('SET_ROLES', roles)
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         commit('SET_EMAIL', email)
         commit('SET_PHONENUMBER', phonenumber)
+        commit('SET_ADDRESS', address)
+        commit('SET_TIME', time)
         resolve(data)
       }).catch(error => {
         reject(error)
@@ -79,7 +89,7 @@ const actions = {
   },
 
   // user logout
-  logout({ commit, state }) {
+  logout ({ commit, state }) {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
         removeToken() // must remove  token  first
@@ -94,7 +104,7 @@ const actions = {
   },
 
   // remove token
-  resetToken({ commit }) {
+  resetToken ({ commit }) {
     return new Promise(resolve => {
       removeToken() // must remove  token  first
       commit('RESET_STATE')

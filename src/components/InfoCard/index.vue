@@ -3,23 +3,28 @@
     <div slot="header"
          class="clearfix">
       <mallki class-name="mallki-text"
-              text="用户个人信息" />
-      <el-switch v-model="value"
-                 active-text="隐藏"
-                 inactive-text="显示"
-                 active-value="0"
-                 inactive-value="1"
-                 @change="changeswitch(email,phonenumber)"
-                 style="float: right; padding: 3px 0" />
+              text="用户信息" />
     </div>
-    <div>
-      <div class="text item">
+    <el-row>
+      <el-col class="text item"
+              span="12">
         邮箱号码：{{ email }}
-      </div>
-      <div class="text item">
+      </el-col>
+      <el-col class="text item"
+              span="12">
+        登录地址：{{ address }}
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col class="text item"
+              span="12">
         手机号码：{{ phonenumber }}
-      </div>
-    </div>
+      </el-col>
+      <el-col class="text item"
+              span="12">
+        登录时间：{{ time }}
+      </el-col>
+    </el-row>
   </el-card>
 </template>
 
@@ -31,16 +36,13 @@ export default {
   computed: {
     ...mapGetters([
       'email',
-      'phonenumber'
+      'phonenumber',
+      'address',
+      'time'
     ])
   },
   methods: {
 
-  },
-  data () {
-    return {
-      value: true,
-    }
   }
 }
 </script>

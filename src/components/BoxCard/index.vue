@@ -1,40 +1,30 @@
 <template>
-  <el-card
-    class="box-card-component"
-    style="margin-left:8px;"
-  >
-    <div
-      slot="header"
-      class="box-card-header"
-    >
+  <el-card class="box-card-component"
+           style="margin-left:8px;">
+    <div slot="header"
+         class="box-card-header">
       <img src="https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png">
     </div>
     <div style="position:relative;">
-      <mallki
-        class-name="mallki-text"
-        text="用户消息"
-      />
-      <div
-        style="padding-top:35px;"
-        class="progress-item"
-      >
-        <span>权限管理</span>
-        <el-progress :percentage="25" />
+      <mallki class-name="mallki-text"
+              text="小马制造" />
+      <div style="padding-top:35px;"
+           class="progress-item">
+        <span>Vue</span>
+        <el-progress :percentage="70" />
       </div>
       <div class="progress-item">
-        <span>用户管理</span>
-        <el-progress :percentage="50" />
+        <span>JavaScript</span>
+        <el-progress :percentage="18" />
       </div>
       <div class="progress-item">
-        <span>问题日志</span>
-        <el-progress :percentage="75" />
+        <span>CSS</span>
+        <el-progress :percentage="12" />
       </div>
       <div class="progress-item">
-        <span>修复日志</span>
-        <el-progress
-          :percentage="100"
-          status="success"
-        />
+        <span>ESLint</span>
+        <el-progress :percentage="100"
+                     status="success" />
       </div>
     </div>
   </el-card>
@@ -48,7 +38,7 @@ export default {
   components: { Mallki },
 
   filters: {},
-  data() {
+  data () {
     return {
 
     }

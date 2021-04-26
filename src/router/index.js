@@ -43,7 +43,19 @@ export const constantRoutes = [
       }
     ]
   },
-
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/detection2',
+    children: [
+      {
+        path: 'detection2',
+        name: 'Detection2',
+        component: () => import('@/views/detection2/index'),
+        meta: { title: 'detection2', icon: 'el-icon-s-help' }
+      }
+    ]
+  },
   {
     path: '/',
     component: Layout,
@@ -125,7 +137,7 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
-export function resetRouter() {
+export function resetRouter () {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher
 }

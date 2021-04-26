@@ -2,6 +2,7 @@ export default {
   route: {
     dashboard: '首页',
     detection: '入侵检测',
+    detection2: '漏洞检测',
     monitoring: '用户监控',
     management1: '用户管理',
     management2: '权限管理',

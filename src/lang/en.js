@@ -2,6 +2,7 @@ export default {
   route: {
     dashboard: 'Dashboard',
     detection: 'Intrusion Detection',
+    detection2: 'Leak Detection',
     monitoring: 'Users Monitoring',
     management1: 'Users Management',
     management2: 'Jurisdiction Management',
