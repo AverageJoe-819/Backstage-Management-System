@@ -4,11 +4,15 @@ const { param2Obj } = require('./utils')
 const user = require('./user')
 const intrusion = require('./intrusion')
 const leak = require('./leak')
+const blacklist = require('./blacklist')
+const role = require('./role')
 
 const mocks = [
   ...user,
   ...intrusion,
-  ...leak
+  ...leak,
+  ...blacklist,
+  ...role
 ]
 
 // for front mock

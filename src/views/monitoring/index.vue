@@ -10,45 +10,41 @@
 </template>
 
 <script>
-import ReportForm from '@/components/ReportForm'
-import PanelGroup from '@/components/PanelGroup'
-import LineChart from '@/components/LineChart'
+import ReportForm from './components/ReportForm'
+import PanelGroup from './components/PanelGroup'
+import LineChart from './components/LineChart'
 const lineChartData = {
-  newVisitis: {
-    expectedData: [100, 120, 161, 134, 105, 160, 165],
+  browse: {
     actualData: [120, 82, 91, 154, 162, 140, 145]
   },
-  messages: {
-    expectedData: [200, 192, 120, 144, 160, 130, 140],
+  visit: {
     actualData: [180, 160, 151, 106, 145, 150, 130]
   },
-  purchases: {
-    expectedData: [80, 100, 121, 104, 105, 90, 100],
+  visitor: {
     actualData: [120, 90, 100, 138, 142, 130, 130]
   },
-  shoppings: {
-    expectedData: [130, 140, 141, 142, 145, 150, 160],
+  newvisitor: {
     actualData: [120, 82, 91, 154, 162, 140, 130]
   }
 }
 
 export default {
   components: { ReportForm, PanelGroup, LineChart },
-  data() {
+  data () {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData: lineChartData.browse
     }
   },
   methods: {
-    onSubmit() {
+    onSubmit () {
       this.$message('submit!')
     },
-    onCancel() {
+    onCancel () {
       this.$message({
         message: 'cancel!',
         type: 'warning'
       })
-    }, handleSetLineChartData(type) {
+    }, handleSetLineChartData (type) {
       this.lineChartData = lineChartData[type]
     }
   }
