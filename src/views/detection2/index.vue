@@ -2,6 +2,7 @@
   <div class="app-container">
     <el-table v-loading="listLoading"
               :data="list"
+              row-key="id"
               element-loading-text="Loading"
               border
               fit
@@ -14,7 +15,7 @@
                        width="150"
                        align="center">
         <template slot-scope="scope">
-          {{ scope.row.name }}
+          {{ scope.row.title }}
         </template>
       </el-table-column>
       <el-table-column label="存在漏洞的页面"
@@ -52,6 +53,7 @@
 </template>
 
 <script>
+import { getList } from '@/api/leak'
 export default {
   filters: {
     statusFilter (status) {
@@ -65,26 +67,20 @@ export default {
   },
   data () {
     return {
-      list: [{
-        name: '跨站点脚本编制',
-        description: '可能会窃取或操纵客户会话cookie,它们可能用于模仿合法用户，从而使黑客能够以该用户身份查看或变更用户记录以执行事务',
-        page: 'http://www.XXXX.gov.cn/',
-        method: '补救方法在于对用户输入进行清理。通过验证用户输入未包含危险字符，便可能防止恶意的用户导致应用程序执行计划外的任务',
-        status: '中'
-      }, {
-        name: '检测到应用程序测试脚本',
-        description: '可能',
-        page: 'http://www.XXXX.gov.cn/',
-        method: '应该',
-        status: '高'
-      },
-      {
-        name: 'Apache  AXIS不存在的Java Web Service路径泄露',
-        description: '可能',
-        page: 'http://www.XXXX.gov.cn/',
-        method: '应该',
-        status: '低'
-      }]
+      list: null,
+      listLoading: true
+    }
+  },
+  created () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      this.listLoading = true
+      getList().then(response => {
+        this.list = response.data.items
+        this.listLoading = false
+      })
     }
   }
 }

@@ -1,19 +1,19 @@
 const Mock = require('mockjs')
 
 const data = Mock.mock({
-  'items|30': [{
-    id: '@id',
-    title: '@sentence(10, 20)',
-    'status|1': ['published', 'draft', 'deleted'],
-    author: 'name',
-    display_time: '@datetime',
-    pageviews: '@integer(300, 5000)'
+  'items|300': [{
+    title: '@sentence(3, 5)',
+    'status|1': ['高', '中', '低'],
+    page: '@sentence(3,5)',
+    time: '@datetime',
+    description: '@sentence(10,20)',
+    method: '@sentence(10,20)'
   }]
 })
 
 module.exports = [
   {
-    url: '/Backstage-Management-System/table/list',
+    url: '/Backstage-Management-System/leak/list',
     type: 'get',
     response: config => {
       const items = data.items

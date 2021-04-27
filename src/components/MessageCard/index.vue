@@ -17,7 +17,7 @@
                          width="50" />
 
         <el-table-column label="登录IP"
-                         width="120"
+                         width="150"
                          align="center">
           <template slot-scope="scope">
             {{ scope.row.IP }}
@@ -50,24 +50,24 @@ export default {
   data () {
     return {
       list: [{
-        time1: '01h21m',
         IP: '192.168.3.103',
+        time1: '01h21m',
         time2: '2021/4/26 20:11 '
       }, {
-        time1: '03h13m',
         IP: '192.168.3.103',
+        time1: '03h13m',
         time2: '2021/4/26 14:05 '
       }, {
-        time1: '02h46m',
         IP: '192.168.3.103',
+        time1: '02h46m',
         time2: '2021/4/25 12:34 '
       }, {
-        time1: '10h11m',
         IP: '192.168.3.103',
+        time1: '10h11m',
         time2: '2021/4/24 13:44 '
       }, {
-        time1: '02h03m',
         IP: '192.168.3.103',
+        time1: '02h03m',
         time2: '2021/4/24 13:44 '
       }]
     }

@@ -39,7 +39,7 @@ export const constantRoutes = [
         path: 'detection',
         name: 'Detection',
         component: () => import('@/views/detection/index'),
-        meta: { title: 'detection', icon: 'el-icon-s-help' }
+        meta: { title: 'detection', icon: 'el-icon-s-platform' }
       }
     ]
   },
