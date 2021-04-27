@@ -1,10 +1,18 @@
 const Mock = require('mockjs')
 
 const data = Mock.mock({
-  'items|5': [{
-    role: '@id',
-    username: '@sentence(10, 20)',
-    descripution: '@sentence(1)'
+  'items': [{
+    role: 'superadmin',
+    username: '纪四维',
+    description: '超级管理员，能访问所有路由'
+  }, {
+    role: 'admin',
+    username: '师明骏',
+    description: '高级管理员，不能访问权限管理'
+  }, {
+    role: 'editor',
+    username: '杜敏俐',
+    description: '普通管理员，不能访问权限管理和用户管理'
   }]
 })
 

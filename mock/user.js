@@ -1,3 +1,4 @@
+const Mock = require('mockjs')
 
 const tokens = {
   admin: {
@@ -44,6 +45,33 @@ const users = {
 
   }
 }
+const data = Mock.mock({
+  'items': [{
+    ip: '192.168.3.103',
+    time1: '1h2m',
+    time2: '2021/4/27 18:13'
+  }, {
+    ip: '192.168.3.103',
+    time1: '1h2m',
+    time2: '2021/4/27 18:13'
+  }, {
+    ip: '192.168.3.103',
+    time1: '1h2m',
+    time2: '2021/4/27 18:13'
+  }, {
+    ip: '192.168.3.103',
+    time1: '1h2m',
+    time2: '2021/4/27 18:13'
+  }, {
+    ip: '192.168.3.103',
+    time1: '1h2m',
+    time2: '2021/4/27 18:13'
+  }, {
+    ip: '192.168.3.103',
+    time1: '1h2m',
+    time2: '2021/4/27 18:13'
+  }]
+})
 
 module.exports = [
   // user login
@@ -100,6 +128,20 @@ module.exports = [
       return {
         code: 20000,
         data: 'success'
+      }
+    }
+  },
+  {
+    url: '/Backstage-Management-System/user/list',
+    type: 'get',
+    response: config => {
+      const items = data.items
+      return {
+        code: 20000,
+        data: {
+          total: items.length,
+          items: items
+        }
       }
     }
   }

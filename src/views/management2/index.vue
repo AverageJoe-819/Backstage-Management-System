@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-table :data="List"
+    <el-table :data="list"
               style="width: 100%;"
               border
               v-loading="listLoading"
@@ -48,6 +48,10 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-button type='primary'
+               size='medium'
+               style="margin-top:30px"
+               @click="handelAdd(scope)">增加用户</el-button>
   </div>
 </template>
 
