@@ -1,12 +1,16 @@
 <template>
   <div class="app-container">
     <el-table :data="List"
-              style="width: 100%;margin-top:30px;"
+              style="width: 100%;"
               border
               v-loading="listLoading"
               element-loading-text="Loading"
               fit
               highlight-current-row>
+      <el-table-column align="center"
+                       label="序号"
+                       width="50"
+                       type="index" />
       <el-table-column align="center"
                        label="权限"
                        width="200">

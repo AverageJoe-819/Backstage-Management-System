@@ -1,10 +1,10 @@
 const Mock = require('mockjs')
 
 const data = Mock.mock({
-  'items|300': [{
-    name: '@id',
-    role: '@sentence(10, 20)',
-    descripution: '@integer(300, 5000)'
+  'items|5': [{
+    role: '@id',
+    username: '@sentence(10, 20)',
+    descripution: '@sentence(1)'
   }]
 })
 
