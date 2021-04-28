@@ -30,21 +30,21 @@ const lineChartData = {
 
 export default {
   components: { ReportForm, PanelGroup, LineChart },
-  data () {
+  data() {
     return {
       lineChartData: lineChartData.browse
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       this.$message('submit!')
     },
-    onCancel () {
+    onCancel() {
       this.$message({
         message: 'cancel!',
         type: 'warning'
       })
-    }, handleSetLineChartData (type) {
+    }, handleSetLineChartData(type) {
       this.lineChartData = lineChartData[type]
     }
   }

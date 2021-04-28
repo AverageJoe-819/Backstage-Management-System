@@ -1,39 +1,53 @@
 <template>
   <el-card class="login-card">
-    <div slot="header"
-         class="clearfix">
-      <mallki class-name="mallki-text"
-              text="登录信息" />
+    <div
+      slot="header"
+      class="clearfix"
+    >
+      <mallki
+        class-name="mallki-text"
+        text="登录信息"
+      />
 
     </div>
     <div>
-      <el-table :data="list"
-                highlight-current-row
-                fit
-                class="table">
-        <el-table-column align="center"
-                         label="序号"
-                         type="index"
-                         width="50" />
+      <el-table
+        :data="list"
+        highlight-current-row
+        fit
+        class="table"
+      >
+        <el-table-column
+          align="center"
+          label="序号"
+          type="index"
+          width="50"
+        />
 
-        <el-table-column label="登录IP"
-                         width="150"
-                         align="center">
+        <el-table-column
+          label="登录IP"
+          width="150"
+          align="center"
+        >
           <template slot-scope="scope">
             {{ scope.row.IP }}
           </template>
         </el-table-column>
-        <el-table-column label="在线时长"
-                         width="80"
-                         align="center">
+        <el-table-column
+          label="在线时长"
+          width="80"
+          align="center"
+        >
           <template slot-scope="scope">
             <span>{{ scope.row.time1 }}</span>
           </template>
         </el-table-column>
 
-        <el-table-column align="center"
-                         prop="time"
-                         label="登录时间">
+        <el-table-column
+          align="center"
+          prop="time"
+          label="登录时间"
+        >
           <template slot-scope="scope">
 
             <span>{{ scope.row.time2 }}</span>
@@ -47,7 +61,7 @@
 import Mallki from '@/components/TextHoverEffect/Mallki'
 export default {
   components: { Mallki },
-  data () {
+  data() {
     return {
       list: [{
         IP: '192.168.3.103',

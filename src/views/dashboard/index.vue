@@ -3,21 +3,27 @@
     <el-row :gutter="20">
       <el-col span="12">
         <div class=" clearfix">
-          <pan-thumb :image="avatar"
-                     style="float: left;">
+          <pan-thumb
+            :image="avatar"
+            style="float: left;"
+          >
             <br>
             <br>
             Your roles:
-            <span v-for="item in roles"
-                  :key="item"
-                  class="pan-info-roles">{{ item }}</span>
+            <span
+              v-for="item in roles"
+              :key="item"
+              class="pan-info-roles"
+            >{{ item }}</span>
           </pan-thumb>
           <div class="info-container">
             <span class="display_name">{{ name }}</span>
-            <span v-for="item in roles"
-                  :key="item"
-                  style="font-size:20px;padding-top:20px;display:inline-block;"
-                  class="pan-info-roles">{{ item }}的首页</span>
+            <span
+              v-for="item in roles"
+              :key="item"
+              style="font-size:20px;padding-top:20px;display:inline-block;"
+              class="pan-info-roles"
+            >{{ item }}的首页</span>
           </div>
         </div>
 
@@ -27,18 +33,24 @@
       </el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col style="margin-top:30px;"
-              span="7">
+      <el-col
+        style="margin-top:30px;"
+        span="7"
+      >
         <todo-list />
       </el-col>
 
-      <el-col style="margin-top:30px;"
-              span="11">
+      <el-col
+        style="margin-top:30px;"
+        span="11"
+      >
 
         <message-card />
       </el-col>
-      <el-col style="margin-top:30px;"
-              span="6">
+      <el-col
+        style="margin-top:30px;"
+        span="6"
+      >
         <box-card />
       </el-col>
     </el-row>

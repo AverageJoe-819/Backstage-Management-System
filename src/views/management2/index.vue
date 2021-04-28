@@ -1,57 +1,75 @@
 <template>
   <div class="app-container">
-    <el-table :data="list"
-              style="width: 100%;"
-              border
-              v-loading="listLoading"
-              element-loading-text="Loading"
-              fit
-              highlight-current-row>
-      <el-table-column align="center"
-                       label="序号"
-                       width="50"
-                       type="index" />
-      <el-table-column align="center"
-                       label="权限"
-                       width="200">
+    <el-table
+      v-loading="listLoading"
+      :data="list"
+      style="width: 100%;"
+      border
+      element-loading-text="Loading"
+      fit
+      highlight-current-row
+    >
+      <el-table-column
+        align="center"
+        label="序号"
+        width="50"
+        type="index"
+      />
+      <el-table-column
+        align="center"
+        label="权限"
+        width="200"
+      >
         <template slot-scope="scope">
           {{ scope.row.role }}
         </template>
       </el-table-column>
-      <el-table-column align="center"
-                       label="用户名"
-                       width="200">
+      <el-table-column
+        align="center"
+        label="用户名"
+        width="200"
+      >
         <template slot-scope="scope">
           {{ scope.row.username }}
         </template>
       </el-table-column>
-      <el-table-column align="center"
-                       label="描述">
+      <el-table-column
+        align="center"
+        label="描述"
+      >
         <template slot-scope="scope">
           {{ scope.row.description }}
         </template>
       </el-table-column>
-      <el-table-column align="center"
-                       label="操作"
-                       width="200">
+      <el-table-column
+        align="center"
+        label="操作"
+        width="200"
+      >
         <template slot-scope="scope">
-          <el-button type="primary"
-                     size="small"
-                     @click="handleEdit(scope)">
+          <el-button
+            type="primary"
+            size="small"
+            @click="handleEdit(scope)"
+          >
             编辑
           </el-button>
-          <el-button type="danger"
-                     size="small"
-                     @click="handleDelete(scope)">
+          <el-button
+            type="danger"
+            size="small"
+            @click="handleDelete(scope)"
+          >
             删除
           </el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-button type='primary'
-               size='medium'
-               style="margin-top:30px"
-               @click="handelAdd(scope)">增加用户</el-button>
+    <el-button
+      type="primary"
+      size="medium"
+      style="margin-top:30px"
+      @click="handelAdd(scope)"
+    >增加用户</el-button>
   </div>
 </template>
 
@@ -59,17 +77,17 @@
 import { getList } from '@/api/role'
 
 export default {
-  data () {
+  data() {
     return {
       list: null,
       listLoading: true
     }
   },
-  created () {
+  created() {
     this.fetchData()
   },
   methods: {
-    fetchData () {
+    fetchData() {
       this.listLoading = true
       getList().then(response => {
         this.list = response.data.items
