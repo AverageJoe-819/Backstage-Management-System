@@ -47,7 +47,6 @@
                    :value="item.key" />
       </el-select> -->
       <el-button
-        v-waves
         class="filter-item"
         type="primary"
         icon="el-icon-search"
@@ -59,7 +58,6 @@
         v-model="showHandler"
         class="filter-item"
         style="margin-left:25px;"
-        @change="tableKey=tableKey+1"
       >
         处理者
       </el-checkbox>
@@ -67,14 +65,13 @@
         v-model="showsubmmiter"
         class="filter-item"
         style="margin-left:25px;"
-        @change="tableKey=tableKey+1"
       >
         提交者
       </el-checkbox>
     </div>
     <el-table
-      :key="tableKey"
       v-loading="listLoading"
+      @sort-change="sortChange"
       :data="list"
       border
       fit
@@ -102,6 +99,7 @@
       <el-table-column
         label="提交时间"
         width="160px"
+        prop="time"
         sortable="custom"
         align="center"
       >
@@ -120,7 +118,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        v-if="showSubmitter"
+        v-if="showsubmmiter"
         label="提交者"
         width="100px"
         align="center"
@@ -211,6 +209,9 @@ import Pagination from './components/Pagination'// 引入分页组件
 export default {
   components: { Pagination }, // 引入分页组件
   filters: { // 状态过滤器
+    parseTime(value, dateFormat) { // 添加时间管道
+      return value;
+    },
     status1Filter(status1) {
       const status1Map = {
 
@@ -238,7 +239,9 @@ export default {
         limit: 20, // 每页面条目数
         status1: undefined,
         status2: undefined,
-        ip: undefined
+        ip: undefined,
+        orderBy: undefined,
+        orderField: undefined
       },
       status1Options: ['高危', '嫌疑'],
       status2Options: ['已禁用', '已启用'],
@@ -250,6 +253,21 @@ export default {
     this.getList()
   },
   methods: {
+    /**
+     * 监听表格排序变化
+     * @param { column, prop, order } sortObj
+     */
+    sortChange(sortObj) {
+      this.listQuery.orderField = sortObj.prop
+      if (sortObj.order == 'ascending') { // 升序
+        this.listQuery.orderBy = 'asc'
+      } else if (sortObj.order == 'descending') { // 降序
+        this.listQuery.orderBy = 'desc'
+      } else { // 默认排序
+        this.listQuery.orderBy = undefined
+      }
+      this.getList()
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {
@@ -261,7 +279,8 @@ export default {
           this.listLoading = false
         }, 1.5 * 1000)
       })
-    }, handleFilter() {
+    },
+    handleFilter() {
       this.listQuery.page = 1
       this.getList()
     },
