@@ -71,12 +71,12 @@
     </div>
     <el-table
       v-loading="listLoading"
-      @sort-change="sortChange"
       :data="list"
       border
       fit
       highlight-current-row
       style="width: 100%;"
+      @sort-change="sortChange"
     >
       <el-table-column
         label="序号"
@@ -114,7 +114,7 @@
         align="center"
       >
         <template slot-scope="{row}">
-          <span style="color:red;">{{ row.handler }}</span>
+          <span>{{ row.handler }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -204,13 +204,13 @@
 
 <script>
 import { fetchList } from '@/api/blacklist'// 引入axios请求
-import Pagination from './components/Pagination'// 引入分页组件
+import Pagination from '@/components/Pagination'// 引入分页组件
 
 export default {
   components: { Pagination }, // 引入分页组件
   filters: { // 状态过滤器
     parseTime(value, dateFormat) { // 添加时间管道
-      return value;
+      return value
     },
     status1Filter(status1) {
       const status1Map = {

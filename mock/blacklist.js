@@ -1,7 +1,7 @@
 const Mock = require('mockjs')
 
 const List = []
-const count = 100
+const count = 500
 
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
@@ -32,7 +32,7 @@ module.exports = [
       if (orderBy && orderField) { // 时间排序
         const sortDownDate = (a, b) => {
           return Date.parse(a.time) - Date.parse(b.time);
-          }
+        }
 
         const sortUpDate = (a, b) => {
           return Date.parse(b.time) - Date.parse(a.time);

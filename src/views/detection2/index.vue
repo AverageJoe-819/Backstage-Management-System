@@ -1,76 +1,93 @@
 <template>
   <div class="app-container">
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      row-key="id"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column
-        align="center"
-        label="序号"
-        type="index"
-        width="50"
-      />
-      <el-table-column
-        label="漏洞名称"
-        width="150"
-        align="center"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.title }}
+    <div class="filter=container">
+      <el-input v-model="listQuery.name"
+                placeholder="漏洞名称"
+                style="width: 200px;"
+                class="filter-item"
+                @keyup.enter.native="handleFilter" />
+      <el-select v-model="listQuery.status"
+                 placeholder="类型"
+                 clearable
+                 style="width: 90px"
+                 class="filter-item">
+        <el-option v-for="item in statusOptions"
+                   :key="item"
+                   :label="item"
+                   :value="item" />
+      </el-select>
+      <el-button class="filter-item"
+                 type="primary"
+                 icon="el-icon-search"
+                 @click="handleFilter">
+        搜索
+      </el-button>
+    </div>
+    <el-table v-loading="listLoading"
+              :data="list"
+              style="width:100%;"
+              border
+              fit
+              highlight-current-row
+              @sort-change="sortChange">
+      <el-table-column align="center"
+                       label="序号"
+                       width="100">
+        <template slot-scope="{row}">
+          <span>{{ row.id }}</span>
         </template>
       </el-table-column>
-      <el-table-column
-        label="存在漏洞的页面"
-        width="150"
-        align="center"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.page }}
+      <el-table-column label="漏洞名称"
+                       width="150"
+                       align="center">
+        <template slot-scope="{row}">
+          {{ row.name }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="漏洞描述"
-        width="400"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <span>{{ scope.row.description }}</span>
+      <el-table-column label="存在漏洞的页面"
+                       width="150"
+                       align="center">
+        <template slot-scope="{row}">
+          {{ row.url }}
+        </template>
+      </el-table-column>
+      <el-table-column label="漏洞描述"
+                       width="400"
+                       align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.description }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column
-        label="解决方案"
-        align="center"
-      >
-        <template slot-scope="scope">
-          {{ scope.row.method }}
+      <el-table-column label="解决方案"
+                       align="center">
+        <template slot-scope="{row}">
+          {{ row.method }}
         </template>
       </el-table-column>
-      <el-table-column
-        class-name="status-col"
-        label="危险等级"
-        width="80"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
+      <el-table-column class-name="status-col"
+                       label="危险等级"
+                       width="80"
+                       align="center">
+        <template slot-scope="{row}">
+          <el-tag :type="row.status | statusFilter">{{ row.status }}</el-tag>
         </template>
       </el-table-column>
 
     </el-table>
+    <pagination v-show="total>0"
+                :total="total"
+                :page.sync="listQuery.page"
+                :limit.sync="listQuery.limit"
+                @pagination="getList" />
   </div>
 </template>
 
 <script>
-import { getList } from '@/api/leak'
+import { fetchList } from '@/api/leak'
 export default {
   filters: {
-    statusFilter(status) {
+    statusFilter (status) {
       const statusMap = {
         低: 'success',
         中: 'warning',
@@ -79,22 +96,39 @@ export default {
       return statusMap[status]
     }
   },
-  data() {
+  data () {
     return {
+      tablekey: 0,
       list: null,
-      listLoading: true
+      listLoading: true,
+      total: 0,
+      listQuery: {
+        page: 1, // 当前页码
+        limit: 20, // 每页面条目数
+        status: undefined,
+        name: undefined
+      },
+      statusOptions: ['高', '中', '低']
     }
   },
-  created() {
-    this.fetchData()
+  created () {
+    this.getList()
   },
   methods: {
-    fetchData() {
+    getList () {
       this.listLoading = true
-      getList().then(response => {
+      fetchList(this.listQuery).then(response => {
         this.list = response.data.items
-        this.listLoading = false
+        this.total = response.data.total
+
+        // Just to simulate the time of the request
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
       })
+    }, handleFilter () {
+      this.listQuery.page = 1
+      this.getList()
     }
   }
 }
