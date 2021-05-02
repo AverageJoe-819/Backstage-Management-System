@@ -7,7 +7,7 @@
     >
       <mallki
         class-name="mallki-text"
-        text="待办事项"
+        :text="$t('dashboard.todolist')"
       />
     </div>
     <section class="todoapp">

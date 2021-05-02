@@ -21,7 +21,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            浏览次数
+            {{ $t('monitoring.browse') }}
           </div>
           <count-to
             :start-val="0"
@@ -50,7 +50,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            访问次数
+            {{ $t('monitoring.visit') }}
           </div>
           <count-to
             :start-val="0"
@@ -79,7 +79,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            访问用户数
+            {{ $t('monitoring.visitor') }}
           </div>
           <count-to
             :start-val="0"
@@ -108,7 +108,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            访问新用户数
+            {{ $t('monitoring.newvisitor') }}
           </div>
           <count-to
             :start-val="0"

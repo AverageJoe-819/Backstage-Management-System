@@ -14,6 +14,7 @@
           id="screenfull"
           class="right-menu-item hover-effect"
         />
+
         <lang-select class="right-menu-item hover-effect" />
 
       </template>

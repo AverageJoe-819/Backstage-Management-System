@@ -3,14 +3,14 @@
     <div class="filter-container">
       <el-input
         v-model="listQuery.ip"
-        placeholder="IP"
+        :placeholder="$t('detection1.search')"
         style="width: 200px;"
         class="filter-item"
         @keyup.enter.native="handleFilter"
       />
       <el-select
         v-model="listQuery.status"
-        placeholder="类型"
+        :placeholder="$t('detection1.select')"
         clearable
         style="width: 90px"
         class="filter-item"
@@ -28,21 +28,21 @@
         icon="el-icon-search"
         @click="handleFilter"
       >
-        搜索
+        {{ $t('detection1.searchbotton') }}
       </el-button>
       <el-checkbox
         v-model="showMiddleware"
         class="filter-item"
         style="margin-left:25px;"
       >
-        中间件
+        {{ $t('detection1.middleware') }}
       </el-checkbox>
       <el-checkbox
         v-model="showProtocol"
         class="filter-item"
         style="margin-left:25px;"
       >
-        协议
+        {{ $t('detection1.protocol') }}
       </el-checkbox>
     </div>
     <el-table
@@ -56,7 +56,7 @@
     >
       <el-table-column
         align="center"
-        label="序号"
+        :label="$t('detection1.id')"
         width="95"
       >
         <template slot-scope="{row}">
@@ -64,7 +64,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="内容"
+        :label="$t('detection1.content')"
         align="center"
       >
         <template slot-scope="{row}">
@@ -72,7 +72,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="目的IP"
+        :label="$t('detection1.ip')"
         width="150"
         align="center"
       >
@@ -82,7 +82,7 @@
       </el-table-column>
       <el-table-column
         v-if="showMiddleware"
-        label="中间件"
+        :label="$t('detection1.middleware')"
         width="100"
         align="center"
       >
@@ -93,7 +93,7 @@
 
       <el-table-column
         v-if="showProtocol"
-        label="协议"
+        :label="$t('detection1.protocol')"
         width="100"
         align="center"
       >
@@ -103,7 +103,7 @@
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="连接状态"
+        :label="$t('detection1.status')"
         width="100"
         align="center"
       >
@@ -114,7 +114,7 @@
       <el-table-column
         align="center"
         prop="time"
-        label="时间"
+        :label="$t('detection1.time')"
         sortable="custom"
         width="200"
       >

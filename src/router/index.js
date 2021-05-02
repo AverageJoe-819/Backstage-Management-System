@@ -33,13 +33,13 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/detection',
+    redirect: '/detectio1n',
     children: [
       {
-        path: 'detection',
-        name: 'Detection',
-        component: () => import('@/views/detection/index'),
-        meta: { title: 'detection', icon: 'el-icon-s-platform' }
+        path: 'detection1',
+        name: 'Detection1',
+        component: () => import('@/views/detection1/index'),
+        meta: { title: 'detection1', icon: 'el-icon-s-platform' }
       }
     ]
   },

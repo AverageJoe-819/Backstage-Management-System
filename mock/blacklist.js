@@ -1,5 +1,5 @@
 const Mock = require('mockjs')
-
+//模拟黑名单的数据规则
 const List = []
 const count = 500
 
@@ -55,3 +55,4 @@ module.exports = [
     }
   }
 ]
+//导出的配置

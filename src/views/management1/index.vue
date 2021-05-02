@@ -3,14 +3,14 @@
     <div class="filter-container">
       <el-input
         v-model="listQuery.ip"
-        placeholder="IP"
+        :placeholder="$t('management1.ip')"
         style="width: 200px;"
         class="filter-item"
         @keyup.enter.native="handleFilter"
       />
       <el-select
         v-model="listQuery.status1"
-        placeholder="类型"
+        :placeholder="$t('management1.status1')"
         clearable
         style="width: 90px"
         class="filter-item"
@@ -24,7 +24,7 @@
       </el-select>
       <el-select
         v-model="listQuery.status2"
-        placeholder="状态"
+        :placeholder="$t('management1.status2')"
         clearable
         class="filter-item"
         style="width: 130px"
@@ -36,37 +36,27 @@
           :value="item"
         />
       </el-select>
-      <!-- <el-select v-model="listQuery.sort"
-                 placeholder="排序"
-                 style="width: 140px"
-                 class="filter-item"
-                 @change="handleFilter">
-        <el-option v-for="item in sortOptions"
-                   :key="item.key"
-                   :label="item.label"
-                   :value="item.key" />
-      </el-select> -->
       <el-button
         class="filter-item"
         type="primary"
         icon="el-icon-search"
         @click="handleFilter"
       >
-        搜索
+        {{ $t('management1.search') }}
       </el-button>
       <el-checkbox
         v-model="showHandler"
         class="filter-item"
         style="margin-left:25px;"
       >
-        处理者
+        {{ $t('management1.handler') }}
       </el-checkbox>
       <el-checkbox
         v-model="showsubmmiter"
         class="filter-item"
         style="margin-left:25px;"
       >
-        提交者
+        {{ $t('management1.submmiter') }}
       </el-checkbox>
     </div>
     <el-table
@@ -79,7 +69,7 @@
       @sort-change="sortChange"
     >
       <el-table-column
-        label="序号"
+        :label="$t('management1.id')"
         align="center"
         width="80"
       >
@@ -88,7 +78,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="IP地址"
+        :label="$t('management1.ip')"
         align="center"
         width="150px"
       >
@@ -97,7 +87,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="提交时间"
+        :label="$t('management1.time')"
         width="160px"
         prop="time"
         sortable="custom"
@@ -109,7 +99,7 @@
       </el-table-column>
       <el-table-column
         v-if="showHandler"
-        label="处理者"
+        :label="$t('management1.handler')"
         width="100px"
         align="center"
       >
@@ -119,7 +109,7 @@
       </el-table-column>
       <el-table-column
         v-if="showsubmmiter"
-        label="提交者"
+        :label="$t('management1.submmiter')"
         width="100px"
         align="center"
       >
@@ -128,7 +118,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="描述"
+        :label="$t('management1.description')"
         min-width="80px"
         align="center"
       >
@@ -137,7 +127,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="类型"
+        :label="$t('management1.status1')"
         class-name="status-col"
         align="center"
         width="100"
@@ -147,7 +137,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="状态"
+        :label="$t('management1.status2')"
         class-name="status-col"
         align="center"
         width="100"
@@ -159,7 +149,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="操作"
+        :label="$t('management1.operation')"
         align="center"
         width="230"
         class-name="small-padding fixed-width"
@@ -203,12 +193,12 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/blacklist'// 引入axios请求
-import Pagination from '@/components/Pagination'// 引入分页组件
+import { fetchList } from '@/api/blacklist'
+import Pagination from '@/components/Pagination'
 
 export default {
-  components: { Pagination }, // 引入分页组件
-  filters: { // 状态过滤器
+  components: { Pagination },
+  filters: {
     parseTime(value, dateFormat) { // 添加时间管道
       return value
     },
@@ -235,8 +225,8 @@ export default {
       listLoading: true,
       total: 0,
       listQuery: {
-        page: 1, // 当前页码
-        limit: 20, // 每页面条目数
+        page: 1,
+        limit: 20,
         status1: undefined,
         status2: undefined,
         ip: undefined,
@@ -273,8 +263,6 @@ export default {
       fetchList(this.listQuery).then(response => {
         this.list = response.data.items
         this.total = response.data.total
-
-        // Just to simulate the time of the request
         setTimeout(() => {
           this.listLoading = false
         }, 1.5 * 1000)

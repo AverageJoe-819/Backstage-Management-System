@@ -1,9 +1,8 @@
-// 翻译router.meta。标题，用于面包屑侧边栏tagsview
 export function generateTitle(title) {
   const hasKey = this.$te('route.' + title)
-
+  // hasKey => 从语言包中检索匹配
   if (hasKey) {
-    // $t :this method from vue-i18n, inject in @/lang/index.js
+    // $t => 选取文字
     const translatedTitle = this.$t('route.' + title)
 
     return translatedTitle

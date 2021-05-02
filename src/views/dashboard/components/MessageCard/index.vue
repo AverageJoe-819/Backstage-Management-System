@@ -6,7 +6,7 @@
     >
       <mallki
         class-name="mallki-text"
-        text="登录信息"
+        :text="$t('dashboard.logininfo')"
       />
 
     </div>
@@ -19,13 +19,13 @@
       >
         <el-table-column
           align="center"
-          label="序号"
+          :label="$t('dashboard.id')"
           type="index"
           width="50"
         />
 
         <el-table-column
-          label="登录IP"
+          :label="$t('dashboard.ip')"
           width="150"
           align="center"
         >
@@ -34,7 +34,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="在线时长"
+          :label="$t('dashboard.time1')"
           width="80"
           align="center"
         >
@@ -45,7 +45,7 @@
 
         <el-table-column
           align="center"
-          label="登录时间"
+          :label="$t('dashboard.time2')"
         >
           <template slot-scope="scope">
 

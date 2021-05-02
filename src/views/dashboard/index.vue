@@ -9,7 +9,7 @@
           >
             <br>
             <br>
-            Your roles:
+            {{ $t('dashboard.yourroles') }} ：
             <span
               v-for="item in roles"
               :key="item"
@@ -23,7 +23,7 @@
               :key="item"
               style="font-size:20px;padding-top:20px;display:inline-block;"
               class="pan-info-roles"
-            >{{ item }}的首页</span>
+            >{{ item }} {{ $t('dashboard.dashboard') }}</span>
           </div>
         </div>
 

@@ -6,7 +6,7 @@
     >
       <mallki
         class-name="mallki-text"
-        text="用户信息"
+        :text="$t('dashboard.userinfo')"
       />
     </div>
     <el-row>
@@ -14,13 +14,13 @@
         class="text item"
         span="12"
       >
-        邮箱号码：{{ email }}
+        {{ $t('dashboard.email') }}：{{ email }}
       </el-col>
       <el-col
         class="text item"
         span="12"
       >
-        登录地址：{{ address }}
+        {{ $t('dashboard.address') }}：{{ address }}
       </el-col>
     </el-row>
     <el-row>
@@ -28,13 +28,13 @@
         class="text item"
         span="12"
       >
-        手机号码：{{ phonenumber }}
+        {{ $t('dashboard.phonenumber') }}：{{ phonenumber }}
       </el-col>
       <el-col
         class="text item"
         span="12"
       >
-        登录时间：{{ time }}
+        {{ $t('dashboard.time') }}：{{ time }}
       </el-col>
     </el-row>
   </el-card>

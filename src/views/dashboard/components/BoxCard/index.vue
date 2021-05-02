@@ -12,7 +12,7 @@
     <div style="position:relative;">
       <mallki
         class-name="mallki-text"
-        text="小马制造"
+        :text="$t('dashboard.xiaoma')"
       />
       <div
         style="padding-top:35px;"

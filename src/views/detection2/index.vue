@@ -3,16 +3,16 @@
     <div class="filter=container">
       <el-input
         v-model="listQuery.name"
-        placeholder="漏洞名称"
+        :placeholder="$t('detection2.search')"
         style="width: 200px;"
         class="filter-item"
         @keyup.enter.native="handleFilter"
       />
       <el-select
         v-model="listQuery.status"
-        placeholder="类型"
+        :placeholder="$t('detection2.select')"
         clearable
-        style="width: 90px"
+        style="width: 110px"
         class="filter-item"
       >
         <el-option
@@ -28,7 +28,7 @@
         icon="el-icon-search"
         @click="handleFilter"
       >
-        搜索
+        {{ $t('detection2.searchbotton') }}
       </el-button>
     </div>
     <el-table
@@ -42,7 +42,7 @@
     >
       <el-table-column
         align="center"
-        label="序号"
+        :label="$t('detection2.id')"
         width="100"
       >
         <template slot-scope="{row}">
@@ -50,7 +50,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="漏洞名称"
+        :label="$t('detection2.name')"
         width="150"
         align="center"
       >
@@ -59,7 +59,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="存在漏洞的页面"
+        :label="$t('detection2.url')"
         width="150"
         align="center"
       >
@@ -68,7 +68,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="漏洞描述"
+        :label="$t('detection2.description')"
         width="400"
         align="center"
       >
@@ -78,7 +78,7 @@
       </el-table-column>
 
       <el-table-column
-        label="解决方案"
+        :label="$t('detection2.method')"
         align="center"
       >
         <template slot-scope="{row}">
@@ -87,7 +87,7 @@
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="危险等级"
+        :label="$t('detection2.status')"
         width="80"
         align="center"
       >
