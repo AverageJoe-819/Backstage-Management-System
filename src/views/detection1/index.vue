@@ -6,6 +6,8 @@
         :placeholder="$t('detection1.search')"
         style="width: 200px;"
         class="filter-item"
+        clearable
+        :rules="IPAddressRules"
         @keyup.enter.native="handleFilter"
       />
       <el-select
@@ -44,7 +46,9 @@
       >
         {{ $t('detection1.protocol') }}
       </el-checkbox>
+
     </div>
+    <br>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -136,7 +140,12 @@
 
 <script>
 import { fetchList } from '@/api/intrusion'
+import { validIPAddress } from '@/utils/validate'
 import Pagination from '@/components/Pagination'// 引入分页组件
+
+const validateIPAddress = (rule, value, callback) => {
+  if (validIPAddress(value)) { return callback(new Error('输入非法!!!')) } else { callback() }
+}
 
 export default {
   components: { Pagination }, // 引入分页组件
@@ -168,7 +177,11 @@ export default {
       },
       statusOptions: ['成功', '失败'],
       showMiddleware: false,
-      showProtocol: false
+      showProtocol: false,
+      IPAddressRules: {
+        IPAddress: [{ required: false, trigger: 'blur', valid: validateIPAddress }]
+      }
+
     }
   },
   created() {
