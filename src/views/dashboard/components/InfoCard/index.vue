@@ -34,7 +34,7 @@
         class="text item"
         span="12"
       >
-        {{ $t('dashboard.time') }}：{{ time }}
+        {{ $t('dashboard.time') }}：<i class="el-icon-time" />{{ time }}
       </el-col>
     </el-row>
   </el-card>

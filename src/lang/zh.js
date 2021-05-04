@@ -14,7 +14,7 @@ export default {
   login: {
     title: 'IDRA后台管理系统',
     logIn: '登录',
-    username: '账号',
+    username: '用户名',
     password: '密码',
     any: '任意'
   },

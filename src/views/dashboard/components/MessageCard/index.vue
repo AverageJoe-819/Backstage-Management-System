@@ -48,7 +48,7 @@
           :label="$t('dashboard.time2')"
         >
           <template slot-scope="scope">
-
+            <i class="el-icon-time" />
             <span>{{ scope.row.time2 }}</span>
           </template>
         </el-table-column>
