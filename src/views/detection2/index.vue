@@ -3,16 +3,31 @@
     <div class="filter=container">
       <el-input
         v-model="listQuery.name"
-        :placeholder="$t('detection2.search')"
-        style="width: 200px;"
+        :placeholder="$t('detection2.search1')"
+        style="width: 200px;
+                padding-bottom:20px"
         class="filter-item"
+        clearable
         @keyup.enter.native="handleFilter"
       />
+      <el-input
+        v-model="listQuery.url"
+        :placeholder="$t('detection2.search2')"
+        style="width: 300px;
+                padding:0px 10px 20px 10px;"
+        class="filter-item"
+        clearable
+        @keyup.enter.native="handleFilter"
+      >
+        <template slot="prepend">Http://</template>
+        <template slot="append">.com</template>
+      </el-input>
       <el-select
         v-model="listQuery.status"
         :placeholder="$t('detection2.select')"
         clearable
-        style="width: 110px"
+        style="width: 110px;
+                 padding-right:10px"
         class="filter-item"
       >
         <el-option

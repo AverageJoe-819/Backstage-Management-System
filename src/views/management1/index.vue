@@ -12,7 +12,10 @@
         v-model="listQuery.status1"
         :placeholder="$t('management1.status1')"
         clearable
-        style="width: 90px"
+        style="width: 100px;
+        padding-left:10px;
+        padding-right:10px;
+        padding-bottom:20px"
         class="filter-item"
       >
         <el-option
@@ -27,7 +30,9 @@
         :placeholder="$t('management1.status2')"
         clearable
         class="filter-item"
-        style="width: 130px"
+        style="width: 100px
+                ;
+                padding-right:10px"
       >
         <el-option
           v-for="item in status2Options"

@@ -53,7 +53,8 @@ export default {
 
   },
   detection2: {
-    search: 'LeakName',
+    search1: 'LeakName',
+    search2: 'LeakUrl',
     select: 'Level',
     searchbotton: 'Search',
     name: 'Name',
@@ -81,7 +82,22 @@ export default {
     description: 'Description',
     operation: 'Operation'
   },
-  management2: {},
+  management2: {
+    no: 'No',
+    adduser: 'Add User',
+    username: 'Username',
+    name: 'Name',
+    email: 'Email',
+    phonenumber: 'Phonenumber',
+    roles: 'Roles',
+    editor: 'Editor',
+    admin: 'Admin',
+    pwd1: 'password',
+    pwd2: 'repassword',
+    description: 'Description',
+    submit: 'Submit',
+    reset: 'Reset'
+  },
   role: {
     permission: 'Permission'
   },

@@ -11,13 +11,13 @@
     >
       <el-table-column
         align="center"
-        label="序号"
+        :label="$t('management2.no')"
         width="50"
         type="index"
       />
       <el-table-column
         align="center"
-        label="权限"
+        :label="$t('management2.roles')"
         width="200"
       >
         <template slot-scope="scope">
@@ -26,7 +26,7 @@
       </el-table-column>
       <el-table-column
         align="center"
-        label="用户名"
+        :label="$t('management2.username')"
         width="200"
       >
         <template slot-scope="scope">
@@ -35,7 +35,7 @@
       </el-table-column>
       <el-table-column
         align="center"
-        label="描述"
+        :label="$t('management2.description')"
       >
         <template slot-scope="scope">
           {{ scope.row.description }}
@@ -64,19 +64,16 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-button
-      type="primary"
-      size="medium"
-      style="margin-top:30px"
-      @click="handelAdd(scope)"
-    >增加用户</el-button>
+    <register-form />
   </div>
 </template>
 
 <script>
 import { getList } from '@/api/role'
+import RegisterForm from './components/RegisterForm'
 
 export default {
+  components: { RegisterForm },
   data() {
     return {
       list: null,

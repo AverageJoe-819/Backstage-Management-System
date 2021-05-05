@@ -53,7 +53,8 @@ export default {
 
   },
   detection2: {
-    search: '漏洞名称',
+    search1: '漏洞名称',
+    search2: '存在漏洞的页面',
     select: '风险等级',
     searchbotton: '搜索',
     name: '漏洞名称',
@@ -80,6 +81,23 @@ export default {
     time: '提交时间',
     description: '描述',
     operation: '操作'
+  },
+  management2: {
+    no: '序号',
+    adduser: '增加用户',
+    username: '用户名',
+    name: '姓名',
+    email: '邮箱号码',
+    phonenumber: '电话号码',
+    roles: '权限',
+    editor: '普通管理员',
+    admin: '高级管理员',
+    pwd1: '密码',
+    pwd2: '确认密码',
+
+    description: '描述',
+    submit: '提交',
+    reset: '重置'
   },
   role: {
     permission: '权限'

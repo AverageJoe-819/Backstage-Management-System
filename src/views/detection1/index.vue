@@ -4,17 +4,21 @@
       <el-input
         v-model="listQuery.ip"
         :placeholder="$t('detection1.search')"
-        style="width: 200px;"
+        style="width: 200px;
+        padding-right:10px"
         class="filter-item"
         clearable
-        :rules="IPAddressRules"
         @keyup.enter.native="handleFilter"
       />
       <el-select
         v-model="listQuery.status"
         :placeholder="$t('detection1.select')"
         clearable
-        style="width: 90px"
+        style="width: 90px
+                 ;
+                 padding-right:10px
+                 ;
+                 padding-bottom:20px"
         class="filter-item"
       >
         <el-option
@@ -48,7 +52,7 @@
       </el-checkbox>
 
     </div>
-    <br>
+
     <el-table
       v-loading="listLoading"
       :data="list"

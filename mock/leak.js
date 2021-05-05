@@ -1,3 +1,4 @@
+const { RuleTester } = require('eslint')
 const Mock = require('mockjs')
 
 const List = []
@@ -19,11 +20,12 @@ module.exports = [
     url: '/Backstage-Management-System/leak/list',
     type: 'get',
     response: config => {
-      const { status, name, page = 1, limit = 20 } = config.query
+      const { status, name, url, page = 1, limit = 20 } = config.query
 
       let mockList = List.filter(item => {
         if (status && item.status !== status) return false
         if (name && item.name.indexOf(name) < 0) return false
+        if (url && item.url.indexOf(url) < 0) return false
         return true
       })
 
