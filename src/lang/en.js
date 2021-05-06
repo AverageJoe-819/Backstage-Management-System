@@ -68,7 +68,15 @@ export default {
     browse: 'Browse',
     visit: 'Visit',
     visitor: 'Visitor',
-    newvisitor: 'NewVisitor'
+    newvisitor: 'NewVisitor',
+    reportip: 'Report IP',
+    ip: 'IPaddress',
+    type: 'Type',
+    danger: 'Danger',
+    warning: 'Warning',
+    desc: 'Description',
+    submit: 'Submit',
+    reset: 'Reset'
   },
   management1: {
     ip: 'IPaddress',

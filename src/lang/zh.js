@@ -68,7 +68,15 @@ export default {
     browse: '浏览次数',
     visit: '访问次数',
     visitor: '访问人数',
-    newvisitor: '新访问人数'
+    newvisitor: '新访问人数',
+    reportip: '举报IP',
+    ip: 'IP地址',
+    type: '类型',
+    danger: '高危',
+    warning: '嫌疑',
+    desc: '描述',
+    submit: '提交',
+    reset: '重置'
   },
   management1: {
     ip: 'IP地址',
