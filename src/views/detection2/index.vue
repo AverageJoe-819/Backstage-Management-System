@@ -1,59 +1,78 @@
 <template>
-  <div class="app-container">
+  <div
+    v-loading="listLoading"
+    class="app-container"
+  >
     <div class="filter=container">
-      <el-input
-        v-model="listQuery.name"
-        :placeholder="$t('detection2.search1')"
-        style="width: 200px;
-                padding-bottom:20px"
-        class="filter-item"
-        clearable
-        @keyup.enter.native="handleFilter"
-      />
-      <el-input
-        v-model="listQuery.url"
-        :placeholder="$t('detection2.search2')"
-        style="width: 300px;
-                padding:0px 10px 20px 10px;"
-        class="filter-item"
-        clearable
-        @keyup.enter.native="handleFilter"
+      <el-form
+        ref="ruleForm"
+        :inline="true"
+        :rules="rules"
+        :model="listQuery"
+        class="demo-form-inline"
       >
-        <template slot="prepend">Http://</template>
-        <template slot="append">.com</template>
-      </el-input>
-      <el-select
-        v-model="listQuery.status"
-        :placeholder="$t('detection2.select')"
-        clearable
-        style="width: 110px;
-                 padding-right:10px"
-        class="filter-item"
-      >
-        <el-option
-          v-for="item in statusOptions"
-          :key="item"
-          :label="item"
-          :value="item"
-        />
-      </el-select>
-      <el-button
-        class="filter-item"
-        type="primary"
-        icon="el-icon-search"
-        @click="handleFilter"
-      >
-        {{ $t('detection2.searchbotton') }}
-      </el-button>
+        <el-form-item
+          label-width="0"
+          prop="name"
+          style="margin:0px"
+        >
+          <el-input
+            v-model="listQuery.name"
+            :placeholder="$t('detection2.search1')"
+            style="width: 200px;
+                  padding-bottom:20px"
+            class="filter-item"
+            clearable
+            @keyup.enter.native="handleFilter"
+          />
+        </el-form-item>
+        <el-form-item
+          label-width="0"
+          prop="url"
+          style="margin:0px"
+        >
+          <el-input
+            v-model="listQuery.url"
+            :placeholder="$t('detection2.search2')"
+            style="width: 300px;
+                    padding:0px 10px 0px 10px;"
+            class="filter-item"
+            clearable
+            @keyup.enter.native="handleFilter"
+          />
+        </el-form-item>
+
+        <el-select
+          v-model="listQuery.status"
+          :placeholder="$t('detection2.select')"
+          clearable
+          style="width: 120px;
+                  padding-right:10px"
+          class="filter-item"
+        >
+          <el-option
+            v-for="item in statusOptions"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
+        <el-button
+          class="filter-item"
+          type="primary"
+          icon="el-icon-search"
+          @click="handleFilter"
+        >
+          {{ $t('detection2.searchbotton') }}
+        </el-button>
+      </el-form>
     </div>
     <el-table
-      v-loading="listLoading"
       :data="list"
       style="width:100%;"
       border
       fit
       highlight-current-row
-      @sort-change="sortChange"
     >
       <el-table-column
         align="center"
@@ -124,7 +143,11 @@
 
 <script>
 import { fetchList } from '@/api/leak'
+import { validURL, validText } from '@/utils/validate'
+import Pagination from '@/components/Pagination'
+
 export default {
+  components: { Pagination },
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -138,6 +161,15 @@ export default {
   data() {
     return {
       tablekey: 0,
+      canRun: true,
+      rules: {
+        url: [
+          { validator: this.validate1, trigger: 'blur' }
+        ],
+        name: [
+          { validator: this.validate2, trigger: 'blur' }
+        ]
+      },
       list: null,
       listLoading: true,
       total: 0,
@@ -154,6 +186,29 @@ export default {
     this.getList()
   },
   methods: {
+    debounce(fn, delay) {
+      const that = this
+      return function() {
+        if (that.timer) {
+          clearTimeout(that.timer)
+        }
+        that.timer = setTimeout(fn, delay)
+      }
+    },
+    validate1(rule, value, callback) {
+      if (rule.field == 'url' && Boolean(value)) {
+        validURL(value) ? callback() : callback(new Error('输入非法!'))
+      } else {
+        callback()
+      }
+    },
+    validate2(rule, value, callback) {
+      if (rule.field == 'text' && Boolean(value)) {
+        validText(value) ? callback() : callback(new Error('输入非法!'))
+      } else {
+        callback()
+      }
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {
@@ -165,9 +220,23 @@ export default {
           this.listLoading = false
         }, 1.5 * 1000)
       })
-    }, handleFilter() {
-      this.listQuery.page = 1
-      this.getList()
+    },
+    handleFilter() {
+      if (!this.listLoading) {
+        this.$refs.ruleForm.validate((bool) => {
+          if (bool) {
+            this.listQuery.page = 1
+            this.getList()
+          }
+        })
+      }
+      if (!this.canRun) { return }
+      this.canRun = false
+      setTimeout(() => {
+        this.listQuery.page = 1
+        this.debounce(this.getList, 1500)()
+        this.canRun = true
+      }, 500)
     }
   }
 }

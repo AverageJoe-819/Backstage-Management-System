@@ -21,7 +21,6 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
@@ -30,12 +29,16 @@ export const constantRoutes = [
     }]
   },
 
+  { path: '*', redirect: '/404', hidden: true }
+]
+export const asyncRoutes = [
+
   {
     path: '/',
     component: Layout,
-    redirect: '/detectio1n',
     children: [
       {
+        powerCode: 'detection1',
         path: 'detection1',
         name: 'Detection1',
         component: () => import('@/views/detection1/index'),
@@ -43,12 +46,13 @@ export const constantRoutes = [
       }
     ]
   },
+
   {
     path: '/',
     component: Layout,
-    redirect: '/detection2',
     children: [
       {
+        powerCode: 'detection2',
         path: 'detection2',
         name: 'Detection2',
         component: () => import('@/views/detection2/index'),
@@ -56,11 +60,13 @@ export const constantRoutes = [
       }
     ]
   },
+
   {
     path: '/',
     component: Layout,
     children: [
       {
+        powerCode: 'monitoring',
         path: 'monitoring',
         name: 'Monitoring',
         component: () => import('@/views/monitoring/index'),
@@ -69,14 +75,12 @@ export const constantRoutes = [
     ]
   },
 
-  { path: '*', redirect: '/404', hidden: true }
-]
-export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
     children: [
       {
+        powerCode: 'management1',
         path: 'management1',
         name: 'Management1',
         component: () => import('@/views/management1/index'),
@@ -89,6 +93,7 @@ export const asyncRoutes = [
     component: Layout,
     children: [
       {
+        powerCode: 'management2',
         path: 'management2',
         name: 'Management2',
         component: () => import('@/views/management2/index'),
@@ -97,6 +102,7 @@ export const asyncRoutes = [
     ]
   },
   {
+    powerCode: 'assessment',
     path: '/assessment',
     component: Layout,
     name: 'Assessment',
@@ -106,12 +112,14 @@ export const asyncRoutes = [
     },
     children: [
       {
+        powerCode: 'menu1',
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'),
         name: 'Menu1',
         meta: { title: 'menu1' }
       },
       {
+        powerCode: 'menu2',
         path: 'menu2',
         component: () => import('@/views/nested/menu2/index'),
         name: 'Menu2',
@@ -121,9 +129,11 @@ export const asyncRoutes = [
   },
   {
     path: 'link',
+    powerCode: 'link',
     component: Layout,
     children: [
       {
+        powerCode: 'csdn',
         path: 'https://www.csdn.net/',
         meta: { title: 'link', icon: 'link' }
       }

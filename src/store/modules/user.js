@@ -54,6 +54,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
+        localStorage.setItem('powerCode', JSON.stringify(data.powerCode))
         commit('SET_TOKEN', data.token)
         setToken(data.token)
         resolve()

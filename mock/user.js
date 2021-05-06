@@ -2,13 +2,46 @@ const Mock = require('mockjs')
 
 const tokens = {
   admin: {
-    token: 'admin-token'
+    token: 'admin-token',
+    powerCode: [
+      'detection1',
+      'detection2',
+      'monitoring',
+      'management1',
+      'assessment',
+      'menu1',
+      'menu2',
+      'link',
+      'csdn'
+    ]
   },
   editor: {
-    token: 'editor-token'
+    token: 'editor-token',
+    powerCode: [
+      'detection1',
+      'detection2',
+      'monitoring',
+      'assessment',
+      'menu1',
+      'menu2',
+      'link',
+      'csdn'
+    ]
   },
   superadmin: {
-    token: 'superadmin-token'
+    token: 'superadmin-token',
+    powerCode: [
+      'detection1',
+      'detection2',
+      'monitoring',
+      'management1',
+      'management2',
+      'assessment',
+      'menu1',
+      'menu2',
+      'link',
+      'csdn'
+    ]
   }
 }
 

@@ -1,18 +1,21 @@
 <template>
-  <div style="padding:30px;">
+  <div
+    v-loading="listLoading"
+    style="padding:30px;"
+  >
     <div>
       <h2>入侵检测</h2>
       <span>
         共进行入侵检测
-        <el-tag>1000次</el-tag>
+        <el-tag>{{ intrusionSuccessNum + intrusionFailNum }}次</el-tag>
         ，其中连接成功
 
         <el-tag type="success">
-          500次
+          {{ intrusionSuccessNum }}次
         </el-tag>
         ，连接失败
         <el-tag type="danger">
-          500次
+          {{ intrusionFailNum }}次
         </el-tag>
       </span>
     </div>
@@ -49,3 +52,46 @@
     </div>
   </div>
 </template>
+
+<script>
+import { fetchList } from '@/api/intrusion'
+
+export default {
+  data() {
+    return {
+      listLoading: true,
+      intrusionSuccessNum: 0,
+      intrusionFailNum: 0
+    }
+  },
+  async created() {
+    this.listLoading = true
+    const [intrusionSuccessNum, intrusionFailNum] = await Promise.all([
+      this.intrusionSuccess(),
+      this.intrusionFail()
+    ])
+    this.intrusionSuccessNum = intrusionSuccessNum
+    this.intrusionFailNum = intrusionFailNum
+    console.log(intrusionSuccessNum, intrusionFailNum, 'intrusionFailNum')
+    setTimeout(() => {
+      this.listLoading = false
+    }, 1.5 * 1000)
+  },
+  methods: {
+    async intrusionSuccess() {
+      let total = 0
+      await fetchList({ page: 1, limit: 9999, status: '成功' }).then(response => {
+        total = response.data.total
+      })
+      return total
+    },
+    async intrusionFail() {
+      let total = 0
+      await fetchList({ page: 1, limit: 9999, status: '失败' }).then(response => {
+        total = response.data.total
+      })
+      return total
+    }
+  }
+}
+</script>

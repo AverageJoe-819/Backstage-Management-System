@@ -1,60 +1,74 @@
 <template>
-  <div class="app-container">
+  <div
+    v-loading="listLoading"
+    class="app-container"
+  >
     <div class="filter-container">
-      <el-input
-        v-model="listQuery.ip"
-        :placeholder="$t('detection1.search')"
-        style="width: 200px;
-        padding-right:10px"
-        class="filter-item"
-        clearable
-        @keyup.enter.native="handleFilter"
-      />
-      <el-select
-        v-model="listQuery.status"
-        :placeholder="$t('detection1.select')"
-        clearable
-        style="width: 90px
-                 ;
-                 padding-right:10px
-                 ;
-                 padding-bottom:20px"
-        class="filter-item"
+      <el-form
+        ref="ruleForm"
+        :inline="true"
+        :rules="rules"
+        :model="listQuery"
+        class="demo-form-inline"
       >
-        <el-option
-          v-for="item in statusOptions"
-          :key="item"
-          :label="item"
-          :value="item"
-        />
-      </el-select>
-      <el-button
-        class="filter-item"
-        type="primary"
-        icon="el-icon-search"
-        @click="handleFilter"
-      >
-        {{ $t('detection1.searchbotton') }}
-      </el-button>
-      <el-checkbox
-        v-model="showMiddleware"
-        class="filter-item"
-        style="margin-left:25px;"
-      >
-        {{ $t('detection1.middleware') }}
-      </el-checkbox>
-      <el-checkbox
-        v-model="showProtocol"
-        class="filter-item"
-        style="margin-left:25px;"
-      >
-        {{ $t('detection1.protocol') }}
-      </el-checkbox>
-
+        <el-form-item
+          label-width="0"
+          prop="ip"
+        >
+          <el-input
+            v-model="listQuery.ip"
+            :placeholder="$t('detection1.search')"
+            style="width: 200px;
+            padding-right:10px"
+            class="filter-item"
+            clearable
+            @keyup.enter.native="handleFilter"
+          />
+        </el-form-item>
+        <el-select
+          v-model="listQuery.status"
+          :placeholder="$t('detection1.select')"
+          clearable
+          style="width: 90px
+                  ;
+                  padding-right:10px
+                  ;
+                  padding-bottom:20px"
+          class="filter-item"
+        >
+          <el-option
+            v-for="item in statusOptions"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
+        <el-button
+          class="filter-item"
+          type="primary"
+          icon="el-icon-search"
+          @click="handleFilter"
+        >
+          {{ $t('detection1.searchbotton') }}
+        </el-button>
+        <el-checkbox
+          v-model="showMiddleware"
+          class="filter-item"
+          style="margin-left:25px;"
+        >
+          {{ $t('detection1.middleware') }}
+        </el-checkbox>
+        <el-checkbox
+          v-model="showProtocol"
+          class="filter-item"
+          style="margin-left:25px;"
+        >
+          {{ $t('detection1.protocol') }}
+        </el-checkbox>
+      </el-form>
     </div>
 
     <el-table
-      v-loading="listLoading"
       :data="list"
       border
       fit
@@ -170,7 +184,13 @@ export default {
       tableKey: 0,
       list: null,
       listLoading: true,
+      rules: {
+        ip: [
+          { validator: this.validate, trigger: 'blur' }
+        ]
+      },
       total: 0,
+      canRun: true,
       listQuery: {
         page: 1, // 当前页码
         limit: 20, // 每页面条目数
@@ -192,6 +212,22 @@ export default {
     this.getList()
   },
   methods: {
+    debounce(fn, delay) {
+      const that = this
+      return function() {
+        if (that.timer) {
+          clearTimeout(that.timer)
+        }
+        that.timer = setTimeout(fn, delay)
+      }
+    },
+    validate(rule, value, callback) {
+      if (rule.field == 'ip' && Boolean(value)) {
+        validIPAddress(value) ? callback() : callback(new Error('输入非法!'))
+      } else {
+        callback()
+      }
+    },
     /**
      * 监听表格排序变化
      * @param { column, prop, order } sortObj
@@ -218,8 +254,21 @@ export default {
       })
     },
     handleFilter() {
-      this.listQuery.page = 1
-      this.getList()
+      if (!this.listLoading) {
+        this.$refs.ruleForm.validate((bool) => {
+          if (bool) {
+            this.listQuery.page = 1
+            this.getList()
+          }
+        })
+      }
+      if (!this.canRun) { return }
+      this.canRun = false
+      setTimeout(() => {
+        this.listQuery.page = 1
+        this.debounce(this.getList, 1500)()
+        this.canRun = true
+      }, 500)
     }
   }
 }

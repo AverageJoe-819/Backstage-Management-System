@@ -1,71 +1,87 @@
 <template>
-  <div class="app-container">
+  <div
+    v-loading="listLoading"
+    class="app-container"
+  >
     <div class="filter-container">
-      <el-input
-        v-model="listQuery.ip"
-        :placeholder="$t('management1.ip')"
-        style="width: 200px;"
-        class="filter-item"
-        @keyup.enter.native="handleFilter"
-      />
-      <el-select
-        v-model="listQuery.status1"
-        :placeholder="$t('management1.status1')"
-        clearable
-        style="width: 100px;
-        padding-left:10px;
-        padding-right:10px;
-        padding-bottom:20px"
-        class="filter-item"
+      <el-form
+        ref="ruleForm"
+        :inline="true"
+        :rules="rules"
+        :model="listQuery"
+        class="demo-form-inline"
       >
-        <el-option
-          v-for="item in status1Options"
-          :key="item"
-          :label="item"
-          :value="item"
-        />
-      </el-select>
-      <el-select
-        v-model="listQuery.status2"
-        :placeholder="$t('management1.status2')"
-        clearable
-        class="filter-item"
-        style="width: 100px
-                ;
-                padding-right:10px"
-      >
-        <el-option
-          v-for="item in status2Options"
-          :key="item"
-          :label="item"
-          :value="item"
-        />
-      </el-select>
-      <el-button
-        class="filter-item"
-        type="primary"
-        icon="el-icon-search"
-        @click="handleFilter"
-      >
-        {{ $t('management1.search') }}
-      </el-button>
-      <el-checkbox
-        v-model="showHandler"
-        class="filter-item"
-        style="margin-left:25px;"
-      >
-        {{ $t('management1.handler') }}
-      </el-checkbox>
-      <el-checkbox
-        v-model="showsubmmiter"
-        class="filter-item"
-        style="margin-left:25px;"
-      >
-        {{ $t('management1.submmiter') }}
-      </el-checkbox>
+        <el-form-item
+          label-width="0"
+          prop="ip"
+        >
+          <el-input
+            v-model="listQuery.ip"
+            clearable
+            :placeholder="$t('management1.ip')"
+            style="width: 200px;"
+            class="filter-item"
+            @keyup.enter.native="handleFilter"
+          />
+        </el-form-item>
+        <el-select
+          v-model="listQuery.status1"
+          :placeholder="$t('management1.status1')"
+          clearable
+          style="width: 100px;
+          padding-left:10px;
+          padding-right:10px;
+          padding-bottom:20px"
+          class="filter-item"
+        >
+          <el-option
+            v-for="item in status1Options"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
+        <el-select
+          v-model="listQuery.status2"
+          :placeholder="$t('management1.status2')"
+          clearable
+          class="filter-item"
+          style="width: 100px
+                  ;
+                  padding-right:10px"
+        >
+          <el-option
+            v-for="item in status2Options"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
+        <el-button
+          class="filter-item"
+          type="primary"
+          icon="el-icon-search"
+          @click="handleFilter"
+        >
+          {{ $t('management1.search') }}
+        </el-button>
+        <el-checkbox
+          v-model="showHandler"
+          class="filter-item"
+          style="margin-left:25px;"
+        >
+          {{ $t('management1.handler') }}
+        </el-checkbox>
+        <el-checkbox
+          v-model="showsubmmiter"
+          class="filter-item"
+          style="margin-left:25px;"
+        >
+          {{ $t('management1.submmiter') }}
+        </el-checkbox>
+      </el-form>
     </div>
     <el-table
-      v-loading="listLoading"
       :data="list"
       border
       fit
@@ -200,6 +216,7 @@
 <script>
 import { fetchList } from '@/api/blacklist'
 import Pagination from '@/components/Pagination'
+import { validIPAddress } from '@/utils/validate'
 
 export default {
   components: { Pagination },
@@ -226,6 +243,11 @@ export default {
   data() {
     return {
       tablekey: 0,
+      rules: {
+        ip: [
+          { validator: this.validate, trigger: 'blur' }
+        ]
+      },
       list: null,
       listLoading: true,
       total: 0,
@@ -263,6 +285,13 @@ export default {
       }
       this.getList()
     },
+    validate(rule, value, callback) {
+      if (rule.field == 'ip' && Boolean(value)) {
+        validIPAddress(value) ? callback() : callback(new Error('输入非法!'))
+      } else {
+        callback()
+      }
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {
@@ -274,8 +303,14 @@ export default {
       })
     },
     handleFilter() {
-      this.listQuery.page = 1
-      this.getList()
+      if (!this.listLoading) {
+        this.$refs.ruleForm.validate((bool) => {
+          if (bool) {
+            this.listQuery.page = 1
+            this.getList()
+          }
+        })
+      }
     },
     handleModifyStatus(row, status2) {
       this.$message({

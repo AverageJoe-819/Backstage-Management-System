@@ -5,12 +5,19 @@ import { asyncRoutes, constantRoutes } from '@/router'
  * @param roles
  * @param route
  */
-function hasPermission(roles, route) {
-  if (route.meta && route.meta.roles) {
-    return roles.some(role => route.meta.roles.includes(role))
+function hasPermission(roles, route) { // 重写是否具有权限
+  const powerCode = JSON.parse(localStorage.getItem('powerCode'))
+  if (route.powerCode) {
+    console.log(powerCode.includes(route.powerCode), 'power')
+    return powerCode.includes(route.powerCode)
   } else {
     return true
   }
+  // if (route.meta && route.meta.roles) {
+  //   return roles.some(role => route.meta.roles.includes(role))
+  // } else {
+  //   return true
+  // }
 }
 
 /**
