@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function fetchList(query) {
+export function fetchLeakList(query) {
   return request({
     url: '/Backstage-Management-System/leak/list',
     method: 'get',

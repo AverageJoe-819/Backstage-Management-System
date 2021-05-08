@@ -157,7 +157,7 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/intrusion'
+import { fetchIntrusionList } from '@/api/intrusion'
 import { validIPAddress } from '@/utils/validate'
 import Pagination from '@/components/Pagination'// 引入分页组件
 
@@ -245,7 +245,7 @@ export default {
     },
     getList() {
       this.listLoading = true
-      fetchList(this.listQuery).then(response => {
+      fetchIntrusionList(this.listQuery).then(response => {
         this.list = response.data.items
         this.total = response.data.total
         setTimeout(() => {

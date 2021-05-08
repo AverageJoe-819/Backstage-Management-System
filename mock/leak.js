@@ -7,10 +7,10 @@ const count = 500
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
     id: '@increment',
-    name: '@sentence(1)',
-    url: '@sentence(3)',
-    description: '@sentence(8, 10)',
-    method: '@sentence(8,10)',
+    name: '@cword(5,8)',
+    url: '@url',
+    description: '@cword(20,30)',
+    method: '@cword(20,30)',
     'status|1': ['高', '中', '低'],
   }))
 }

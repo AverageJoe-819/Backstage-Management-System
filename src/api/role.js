@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function getList(params) {
+export function fetchRolesList(params) {
   return request({
     url: '/Backstage-Management-System/role/list',
     method: 'get',

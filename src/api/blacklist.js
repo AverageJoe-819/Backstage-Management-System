@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function fetchList(query) {
+export function fetchBlackList(query) {
   return request({
     url: '/Backstage-Management-System/blacklist/list',
     method: 'get',

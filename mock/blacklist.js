@@ -8,8 +8,8 @@ for (let i = 0; i < count; i++) {
     id: '@increment',
     handler: '@cname',
     submitter: '@cname',
-    description: '@sentence(5, 10)',
-    ip: '@integer(300, 5000)', // 赋值的int型无法使用indexOf 需要转str
+    description: '@cword(5, 10)',
+    ip: '@ip', // 赋值的int型无法使用indexOf 需要转str
     'status1|1': ['高危', '嫌疑'],
     'status2|1': ['已启用', '已禁用'],
     time: '@datetime'

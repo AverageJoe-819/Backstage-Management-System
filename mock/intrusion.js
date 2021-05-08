@@ -6,8 +6,8 @@ const count = 500
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
     id: '@increment',
-    content: '@sentence(5,10)',
-    ip: '@integer(300, 5000)', // 赋值的int型无法使用indexOf 需要转str
+    content: '@cword(5,10)',
+    ip: '@ip', // 赋值的int型无法使用indexOf 需要转str
     middleware: '@name',
     protocol: '@name',
     'status|1': ['成功', '失败'],

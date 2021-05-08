@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/role'
+import { fetchRolesList } from '@/api/role'
 import RegisterForm from './components/RegisterForm'
 
 export default {
@@ -81,12 +81,12 @@ export default {
     }
   },
   created() {
-    this.fetchData()
+    this.getList()
   },
   methods: {
-    fetchData() {
+    getList() {
       this.listLoading = true
-      getList().then(response => {
+      fetchRolesList().then(response => {
         this.list = response.data.items
         this.listLoading = false
       })

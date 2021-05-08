@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/leak'
+import { fetchLeakList } from '@/api/leak'
 import { validURL, validText } from '@/utils/validate'
 import Pagination from '@/components/Pagination'
 
@@ -211,7 +211,7 @@ export default {
     },
     getList() {
       this.listLoading = true
-      fetchList(this.listQuery).then(response => {
+      fetchLeakList(this.listQuery).then(response => {
         this.list = response.data.items
         this.total = response.data.total
 
