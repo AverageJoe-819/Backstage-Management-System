@@ -1,21 +1,59 @@
 <template>
-  <el-collapse
-    v-model="activeNames"
-    v-loading="listLoading"
-    style="padding:30px;
-               border-bottom:0px"
-    @change="handleChange"
+  <div
+    class="app-container"
+    style="padding-top:30px;
+       padding-left:30px"
   >
-
-    <el-collapse-item
-      name="1"
-      style=""
-    >
-      <template slot="title">
+    <el-row>
+      <el-col span="12">
         <mallki
           class-name="mallki-text"
           text="入侵检测 Intrusion Detection"
+          style="font-size:30px"
         />
+        <pie1-chart />
+      </el-col>
+      <el-col span="12">
+        <mallki
+          class-name="mallki-text"
+          text="漏洞检测 Leak Detection"
+          style="font-size:30px"
+        />
+        <pie2-chart />
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col span="12">
+        <mallki
+          class-name="mallki-text"
+          text="用户管理 User Management"
+          style="font-size:30px"
+        />
+        <pie3-chart />
+      </el-col>
+      <el-col span="12">
+        <mallki
+          class-name="mallki-text"
+          text="权限管理 Roles Management"
+          style="font-size:30px"
+        />
+        <pie4-chart />
+      </el-col>
+    </el-row>
+  </div>
+</template>
+  <!-- <el-collapse v-model="activeNames"
+               v-loading="listLoading"
+               style="padding:30px;
+               border-bottom:0px"
+               @change="handleChange">
+
+    <el-collapse-item name="1">
+      <template slot="title">
+        <mallki class-name="mallki-text"
+                text="入侵检测 Intrusion Detection"
+                style="font-size:30px" />
       </template>
       <div>
         共进行入侵检测
@@ -29,14 +67,14 @@
           {{ intrusionFailNum }}次
         </el-tag>
       </div>
+      <pie1-chart />
     </el-collapse-item>
 
     <el-collapse-item name="2">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="漏洞检测 Leak Detection"
-        />
+        <mallki class-name="mallki-text"
+                text="漏洞检测 Leak Detection"
+                style="font-size:30px" />
       </template>
       <div>
         共检测出漏洞
@@ -60,10 +98,9 @@
     </el-collapse-item>
     <el-collapse-item name="3">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="用户管理 User Management"
-        />
+        <mallki class-name="mallki-text"
+                text="用户管理 User Management"
+                style="font-size:30px" />
       </template>
       <div>
         黑名单中共纳入IP<el-tag>
@@ -78,19 +115,22 @@
           {{ blacklistWarningNum }}个
         </el-tag>
         ，已封禁IP
-        <el-tag type="info">
+        <el-tag type="danger">
           {{ blacklistBanNum }}个
+        </el-tag>
+        ，已启用IP
+        <el-tag type="success">
+          {{blacklistUseNum}}个
         </el-tag>
       </div>
     </el-collapse-item>
     <el-collapse-item name="4">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="权限管理 Roles Management"
-        />
-      </template>
-      共拥有管理员
+        <mallki class-name="mallki-text"
+                text="权限管理 Roles Management"
+                style="font-size:30px" /> -->
+
+      <!-- 共拥有管理员
       <el-tag>
         {{ superadminNum+adminNum+editorNum }}
       </el-tag>
@@ -109,18 +149,22 @@
     </el-collapse-item>
 
   </el-collapse>
-</template>
+</template> -->
 
 <script>
 import { fetchIntrusionList } from '@/api/intrusion'
 import { fetchLeakList } from '@/api/leak'
 import { fetchBlackList } from '@/api/blacklist'
 import { fetchRolesList } from '@/api/role'
+import Pie1Chart from './components/Pie1Chart'
+import Pie2Chart from './components/Pie2Chart'
+import Pie3Chart from './components/Pie3Chart'
+import Pie4Chart from './components/Pie4Chart'
 import Mallki from '@/components/TextHoverEffect/Mallki'
 
 export default {
 
-  components: { Mallki },
+  components: { Mallki, Pie1Chart, Pie2Chart, Pie3Chart, Pie4Chart },
   data() {
     return {
       listLoading: true,
@@ -132,6 +176,7 @@ export default {
       blacklistDangerNum: 0,
       blacklistWarningNum: 0,
       blacklistBanNum: 0,
+      blacklistUseNum: 0,
       superadminNum: 0,
       adminNum: 0,
       editorNum: 0
@@ -139,13 +184,14 @@ export default {
   },
   async created() {
     this.listLoading = true
-    const [intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum] = await Promise.all([
+    const [intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistUseNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum] = await Promise.all([
       this.intrusionSuccess(),
       this.intrusionFail(),
       this.leakHigh(),
       this.leakMid(),
       this.leakLow(),
       this.blacklistBan(),
+      this.blacklistUse(),
       this.blacklistDanger(),
       this.blacklistWarning(),
       this.superadmin(),
@@ -160,10 +206,11 @@ export default {
     this.blacklistDangerNum = blacklistDangerNum
     this.blacklistWarningNum = blacklistWarningNum
     this.blacklistBanNum = blacklistBanNum
+    this.blacklistUseNum = blacklistUseNum
     this.superadminNum = superadminNum
     this.adminNum = adminNum
     this.editorNum = editorNum
-    console.log(intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum, 'intrusionFailNum')
+    console.log(intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistUseNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum, 'intrusionFailNum')
     setTimeout(() => {
       this.listLoading = false
     }, 1.5 * 1000)
@@ -210,6 +257,13 @@ export default {
     async blacklistBan() {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status2: '已禁用' }).then(response => {
+        total = response.data.total
+      })
+      return total
+    },
+    async blacklistUse() {
+      let total = 0
+      await fetchBlackList({ page: 1, limit: 9999, status2: '已启用' }).then(response => {
         total = response.data.total
       })
       return total

@@ -262,13 +262,13 @@ export default {
           }
         })
       }
-      if (!this.canRun) { return }
-      this.canRun = false
-      setTimeout(() => {
-        this.listQuery.page = 1
-        this.debounce(this.getList, 1500)()
-        this.canRun = true
-      }, 500)
+      // if (!this.canRun) { return }
+      // this.canRun = false
+      // setTimeout(() => {
+      //   this.listQuery.page = 1
+      //   this.debounce(this.getList, 1500)()
+      //   this.canRun = true
+      // }, 500)
     }
   }
 }

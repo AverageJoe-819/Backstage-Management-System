@@ -7,10 +7,7 @@
     @change="handleChange"
   >
 
-    <el-collapse-item
-      name="1"
-      style=""
-    >
+    <el-collapse-item name="1">
       <template slot="title">
         <mallki
           class-name="mallki-text"
@@ -81,8 +78,12 @@
           {{ blacklistWarningNum }}个
         </el-tag>
         ，已封禁IP
-        <el-tag type="info">
+        <el-tag type="danger">
           {{ blacklistBanNum }}个
+        </el-tag>
+        ，已启用IP
+        <el-tag type="success">
+          {{ blacklistUseNum }}个
         </el-tag>
       </div>
     </el-collapse-item>
@@ -136,6 +137,7 @@ export default {
       blacklistDangerNum: 0,
       blacklistWarningNum: 0,
       blacklistBanNum: 0,
+      blacklistUseNum: 0,
       superadminNum: 0,
       adminNum: 0,
       editorNum: 0
@@ -143,13 +145,14 @@ export default {
   },
   async created() {
     this.listLoading = true
-    const [intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum] = await Promise.all([
+    const [intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistUseNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum] = await Promise.all([
       this.intrusionSuccess(),
       this.intrusionFail(),
       this.leakHigh(),
       this.leakMid(),
       this.leakLow(),
       this.blacklistBan(),
+      this.blacklistUse(),
       this.blacklistDanger(),
       this.blacklistWarning(),
       this.superadmin(),
@@ -164,10 +167,11 @@ export default {
     this.blacklistDangerNum = blacklistDangerNum
     this.blacklistWarningNum = blacklistWarningNum
     this.blacklistBanNum = blacklistBanNum
+    this.blacklistUseNum = blacklistUseNum
     this.superadminNum = superadminNum
     this.adminNum = adminNum
     this.editorNum = editorNum
-    console.log(intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum, 'intrusionFailNum')
+    console.log(intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistUseNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum, 'intrusionFailNum')
     setTimeout(() => {
       this.listLoading = false
     }, 1.5 * 1000)
@@ -214,6 +218,13 @@ export default {
     async blacklistBan() {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status2: '已禁用' }).then(response => {
+        total = response.data.total
+      })
+      return total
+    },
+    async blacklistUse() {
+      let total = 0
+      await fetchBlackList({ page: 1, limit: 9999, status2: '已启用' }).then(response => {
         total = response.data.total
       })
       return total
