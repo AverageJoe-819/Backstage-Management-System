@@ -47,16 +47,35 @@
         width="200"
       >
         <template slot-scope="scope">
-          <el-button
-            type="primary"
-            size="small"
-            @click="handleEdit(scope)"
+          <el-popover
+            v-model="visible"
+            placement="top"
+            width="160"
           >
-            编辑
-          </el-button>
+            <p>确定更改用户权限？</p>
+            <div style="text-align: right; margin: 0">
+              <el-button
+                size="small"
+                type="text"
+                @click="visible = false"
+              >取消</el-button>
+              <el-button
+                type="primary"
+                size="mini"
+                @click="visible = false"
+              >确定</el-button>
+            </div>
+            <el-button
+              slot="reference"
+              type="primary"
+              size="small"
+            >编辑</el-button>
+          </el-popover>
+
           <el-button
             type="danger"
             size="small"
+            disabled
             @click="handleDelete(scope)"
           >
             删除

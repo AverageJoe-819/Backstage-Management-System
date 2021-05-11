@@ -5,7 +5,31 @@
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
       <line-chart :chart-data="lineChartData" />
     </el-row>
-    <report-form />
+    <el-row>
+      <el-col span="8">
+        <el-table>
+          <el-table-column
+            align="center"
+            label="危险排名"
+            width="100"
+            type="index"
+          />
+          <el-table-column
+            align="center"
+            label="IP地址"
+            width="300"
+          >
+            <template slot-scope="scope">
+              {{ scope.row.role }}
+            </template>
+          </el-table-column>
+
+        </el-table>
+      </el-col>
+      <el-col span="4">
+        <report-form />
+      </el-col>
+    </el-row>
   </div>
 </template>
 
