@@ -57,12 +57,12 @@
               <el-button
                 size="small"
                 type="text"
-                @click="visible = false"
+                @click="ChangeRoles('form')"
               >取消</el-button>
               <el-button
                 type="primary"
                 size="mini"
-                @click="visible = false"
+                @click="ChangeRoles('form')"
               >确定</el-button>
             </div>
             <el-button
@@ -96,7 +96,8 @@ export default {
   data() {
     return {
       list: null,
-      listLoading: true
+      listLoading: true,
+      visibile: false
     }
   },
   created() {
@@ -109,6 +110,9 @@ export default {
         this.list = response.data.items
         this.listLoading = false
       })
+    },
+    ChangeRoles() {
+      this.visibile = false
     }
   }
 }

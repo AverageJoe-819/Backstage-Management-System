@@ -4,8 +4,10 @@ const tokens = {
   admin: {
     token: 'admin-token',
     powerCode: [
+      'website',
       'detection1',
       'detection2',
+
       'monitoring',
       'management1',
       'assessment',
@@ -20,6 +22,7 @@ const tokens = {
     powerCode: [
       'detection1',
       'detection2',
+      'website',
       'monitoring',
       'assessment',
       'menu1',
@@ -31,8 +34,10 @@ const tokens = {
   superadmin: {
     token: 'superadmin-token',
     powerCode: [
+      'website',
       'detection1',
       'detection2',
+
       'monitoring',
       'management1',
       'management2',
@@ -85,19 +90,19 @@ const data = Mock.mock({
     time2: '2021-5-12 14:23:32'
   }, {
     ip: '192.168.3.103',
-    time1: '1h2m',
+    time1: '3h19m',
     time2: '2021-5-11 14:19:00'
   }, {
     ip: '192.168.3.103',
-    time1: '1h2m',
+    time1: '1h55m',
     time2: '2021-5-10 21:25:41'
   }, {
     ip: '192.168.3.103',
-    time1: '1h2m',
+    time1: '2h24m',
     time2: '2021-5-05 18:47:33'
   }, {
     ip: '192.168.3.103',
-    time1: '1h2m',
+    time1: '41m',
     time2: '2021-5-03 14:14:11'
   }, {
     ip: '192.168.3.103',

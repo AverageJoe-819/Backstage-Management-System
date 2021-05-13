@@ -83,7 +83,7 @@ export default {
     }
     const validatePassword = (rule, value, callback) => {
       const reg1 = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$/
-      const reg2 = /select|update|delete|exec|count|sleep|'|"|=|;|>|<|%/i
+      const reg2 = /select|update|delete|exec|count|sleep|union|'|"|=|;|>|<|%/i
       if (!reg1.test(value)) {
         callback(new Error('请输入正确的密码'))
       } else {

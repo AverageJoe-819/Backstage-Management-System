@@ -3,6 +3,7 @@ export default {
     dashboard: 'Dashboard',
     detection1: 'Intrusion Detection',
     detection2: 'Leak Detection',
+    website: 'Portal Website',
     monitoring: 'Users Monitoring',
     management1: 'Users Management',
     management2: 'Jurisdiction Management',
@@ -23,6 +24,7 @@ export default {
     github: 'Github',
     logout: 'Logout'
   },
+
   dashboard: {
     yourroles: 'Your roles',
     dashboard: ' dashboard',
@@ -38,6 +40,27 @@ export default {
     time1: 'Duration',
     time2: 'Time',
     xiaoma: 'Made By XiaoMa'
+  },
+  website: {
+    info: 'Connection Info',
+    url: 'URL',
+    ip: 'IP Address',
+    connection: 'Connection',
+    date: 'Date',
+    title: 'Title',
+    subdomain: 'Subdomain',
+    type: 'Content-Type',
+    encoding: 'Content-Encoding',
+    code: 'Status Code',
+    transfer: 'Transfer-Encoding',
+    x: 'X-Powered-By',
+    Portservices: 'Port services',
+    country: 'Country',
+    server: 'Server',
+    port: 'Port',
+    components: 'Components',
+    pagesource: 'Page Source'
+
   },
   detection1: {
     search: 'IPaddress',

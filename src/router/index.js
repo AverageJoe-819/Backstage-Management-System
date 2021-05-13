@@ -38,6 +38,19 @@ export const asyncRoutes = [
     component: Layout,
     children: [
       {
+        powerCode: 'website',
+        path: 'website',
+        name: 'Website',
+        component: () => import('@/views/website/index'),
+        meta: { title: 'website', icon: 'el-icon-s-platform' }
+      }
+    ]
+  },
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
         powerCode: 'detection1',
         path: 'detection1',
         name: 'Detection1',

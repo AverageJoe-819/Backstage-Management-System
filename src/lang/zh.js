@@ -1,6 +1,7 @@
 export default {
   route: {
     dashboard: '首页',
+    website: '门户网站',
     detection1: '入侵检测',
     detection2: '漏洞检测',
     monitoring: '用户监控',
@@ -38,6 +39,27 @@ export default {
     time1: '登录时长',
     time2: '登录时间',
     xiaoma: '小马制造'
+  },
+  website: {
+    info: '连接信息',
+    url: '页面网址',
+    ip: 'IP地址',
+    connection: '连接情况',
+    date: '连接时间',
+    title: '页面标题',
+    subdomain: '子页面数',
+    type: '媒体类型',
+    encoding: '编码类型',
+    code: '状态编码',
+    transfer: '传输类型',
+    x: '响应头包',
+    Portservices: '端口服务',
+    country: '国家',
+    server: '服务器',
+    port: '端口号',
+    components: '组件',
+    pagesource: '页面源码'
+
   },
   detection1: {
     search: 'IP地址',

@@ -225,6 +225,23 @@ export default {
     }
   },
   methods: {
+    submitForm() {
+      this.form = {
+        username: '',
+        name: '',
+        email: '',
+        phonenumber: '',
+        roles: '',
+        description: '',
+        pwd1: '',
+        pwd2: ''
+      }
+      this.dialogFormVisible = false
+      this.$message({
+        type: 'success',
+        message: '保存成功'
+      })
+    },
     showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -244,6 +261,10 @@ export default {
     },
     resetForm(form) {
       this.$refs[form].resetFields()
+      this.$message({
+        type: 'success',
+        message: '重置成功'
+      })
     }
   }
 }
