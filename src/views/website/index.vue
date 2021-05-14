@@ -105,7 +105,11 @@
         </el-card>
       </el-col>
       <el-col span="12">
-        <el-card body-style=" background-color:#F2F6FC;">
+        <el-card
+          body-style=" background-color:#F2F6FC;
+        height:660px;"
+          style="overflow:scroll;overflow-x:hidden"
+        >
           <div
             slot="header"
             class="clearfix"
