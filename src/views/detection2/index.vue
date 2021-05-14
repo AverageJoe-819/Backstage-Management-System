@@ -85,7 +85,7 @@
       </el-table-column>
       <el-table-column
         :label="$t('detection2.name')"
-        width="150"
+        width="200"
         align="center"
       >
         <template slot-scope="{row}">
@@ -94,7 +94,7 @@
       </el-table-column>
       <el-table-column
         :label="$t('detection2.url')"
-        width="150"
+        width="250"
         align="center"
       >
         <template slot-scope="{row}">

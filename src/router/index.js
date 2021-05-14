@@ -42,7 +42,7 @@ export const asyncRoutes = [
         path: 'website',
         name: 'Website',
         component: () => import('@/views/website/index'),
-        meta: { title: 'website', icon: 'el-icon-s-platform' }
+        meta: { title: 'website', icon: 'el-icon-s-flag' }
       }
     ]
   },

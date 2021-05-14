@@ -116,7 +116,7 @@
       <el-table-column
         v-if="showProtocol"
         :label="$t('detection1.protocol')"
-        width="100"
+        width="200"
         align="center"
       >
         <template slot-scope="{row}">
@@ -126,7 +126,7 @@
       <el-table-column
         class-name="status-col"
         :label="$t('detection1.status')"
-        width="100"
+        width="150"
         align="center"
       >
         <template slot-scope="{row}">

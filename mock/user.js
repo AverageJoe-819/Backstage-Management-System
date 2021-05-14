@@ -59,7 +59,7 @@ const users = {
     email: '672536763@qq.com',
     phonenumber: '17361041429',
     address: '192.168.3.103',
-    time: '2021-5-12 11:16:11'
+    time: '@now'
   },
   'editor-token': {
     roles: ['editor'],
@@ -69,7 +69,7 @@ const users = {
     email: '1078435904@qq.com',
     phonenumber: '18109076061',
     address: '192.168.3.103',
-    time: '2021-5-12 11:16:11'
+    time: '@now'
   },
   'superadmin-token': {
     roles: ['superadmin'],
@@ -79,7 +79,7 @@ const users = {
     email: 'jisiweiok@163.com',
     phonenumber: '18980838692',
     address: '192.168.3.103',
-    time: '2021-5-12 11:16:11',
+    time: '@now',
 
   }
 }

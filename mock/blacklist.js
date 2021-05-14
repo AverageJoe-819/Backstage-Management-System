@@ -6,13 +6,13 @@ const count = 500
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
     id: '@increment',
-    handler: '@cname',
-    submitter: '@cname',
-    description: '@cword(5, 10)',
+    "handler|1": ['师明骏', '纪四维'],
+    "submitter|1": ['师明骏', '杜敏俐'],
+    "description|1": ['访问次数过多', '浏览次数过多', '访问频率过高', '浏览频率过高', '非正常时间访问', '非正常时间访问', '高危IP', '嫌疑IP', '停留时间过长'],
     ip: '@ip', // 赋值的int型无法使用indexOf 需要转str
     'status1|1': ['高危', '嫌疑'],
     'status2|1': ['已启用', '已禁用'],
-    time: '@datetime'
+    time: '@now'
   }))
 }
 module.exports = [

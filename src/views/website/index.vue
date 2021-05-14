@@ -1,15 +1,25 @@
 <template>
   <div class="container">
-    <el-row :gutter="20"
-            style="padding:50px"
-            class="row-container">
+    <el-row
+      :gutter="20"
+      style="padding:50px;
+            display:flex;
+            flex-wrap:wrap"
+      type="flex"
+      align="top"
+      class="row-container"
+    >
       <el-col span="12">
         <el-card style="margin-bottom:20px;">
-          <div slot="header"
-               class="clearfix">
-            <mallki class-name="mallki-text"
-                    :text="$t('website.info')"
-                    style="font-size:30px" />
+          <div
+            slot="header"
+            class="clearfix"
+          >
+            <mallki
+              class-name="mallki-text"
+              :text="$t('website.info')"
+              style="font-size:30px"
+            />
           </div>
           <el-row>
             <el-col span="8">
@@ -29,7 +39,7 @@
               <p>www.xiaoma.com</p>
               <p>192.168.1.103</p>
               <p>keep-alive</p>
-              <p>2021-5-15 20:38:11 </p>
+              <p>2021-5-13 20:38:11 </p>
               <p>小马大学</p>
               <p>21</p>
               <p>text/html; charset=UTF-8</p>
@@ -41,11 +51,15 @@
           </el-row>
         </el-card>
         <el-card>
-          <div slot="header"
-               class="clearfix">
-            <mallki class-name="mallki-text"
-                    :text="$t('website.Portservices')"
-                    style="font-size:30px" />
+          <div
+            slot="header"
+            class="clearfix"
+          >
+            <mallki
+              class-name="mallki-text"
+              :text="$t('website.Portservices')"
+              style="font-size:30px"
+            />
           </div>
           <el-row>
             <el-col span="8">
@@ -91,19 +105,22 @@
         </el-card>
       </el-col>
       <el-col span="12">
-        <el-card style="margin-top:0px;
-        height:731px;
-        overflow:scroll;
-        overflow-x: hidden
-             ">
-          <div slot="header"
-               class="clearfix">
-            <mallki class-name="mallki-text"
-                    :text="$t('website.pagesource')"
-                    style="font-size:30px" />
+        <el-card body-style=" background-color:#F2F6FC;">
+          <div
+            slot="header"
+            class="clearfix"
+          >
+            <mallki
+              class-name="mallki-text"
+              :text="$t('website.pagesource')"
+              style="font-size:30px"
+            />
           </div>
-          <pre class="htmlcode"
-               style="margin-top:0px;">
+
+          <pre
+            class="htmlcode"
+            style="margin-top:0px;"
+          >
             <code>
 &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01
 Transitional//EN"
@@ -255,6 +272,7 @@ Request Forgery (CSRF), and more.&lt;/p>&lt;/div>
 &lt;!-- InstanceEnd -->&lt;/html>
             </code>
           </pre>
+
         </el-card>
       </el-col>
     </el-row>
