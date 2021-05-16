@@ -24,6 +24,26 @@
             clearable
             @keyup.enter.native="handleFilter"
           />
+
+          <el-input
+            v-model="listQuery.url"
+            :placeholder="$t('detection1.url')"
+            style="width: 200px;
+            padding-right:10px"
+            class="filter-item"
+            clearable
+            @keyup.enter.native="handleFilter"
+          />
+
+          <el-input
+            v-model="listQuery.data"
+            :placeholder="$t('detection1.data')"
+            style="width: 200px;
+            "
+            class="filter-item"
+            clearable
+            @keyup.enter.native="handleFilter"
+          />
         </el-form-item>
         <el-select
           v-model="listQuery.status"
@@ -51,20 +71,7 @@
         >
           {{ $t('detection1.searchbotton') }}
         </el-button>
-        <el-checkbox
-          v-model="showMiddleware"
-          class="filter-item"
-          style="margin-left:25px;"
-        >
-          {{ $t('detection1.middleware') }}
-        </el-checkbox>
-        <el-checkbox
-          v-model="showProtocol"
-          class="filter-item"
-          style="margin-left:25px;"
-        >
-          {{ $t('detection1.protocol') }}
-        </el-checkbox>
+
       </el-form>
     </div>
 
@@ -86,6 +93,34 @@
         </template>
       </el-table-column>
       <el-table-column
+        :label="$t('detection1.ip')"
+        width="120"
+        align="center"
+      >
+        <template slot-scope="{row}">
+          {{ row.ip }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        :label="$t('detection1.url')"
+        width="250"
+        align="center"
+      >
+        <template slot-scope="{row}">
+          {{ row.url }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        :label="$t('detection1.data')"
+        width="150"
+        align="center"
+      >
+        <template slot-scope="{row}">
+          {{ row.data }}
+        </template>
+      </el-table-column>
+
+      <el-table-column
         :label="$t('detection1.content')"
         align="center"
       >
@@ -94,39 +129,9 @@
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('detection1.ip')"
-        width="150"
-        align="center"
-      >
-        <template slot-scope="{row}">
-          {{ row.ip }}
-        </template>
-      </el-table-column>
-      <el-table-column
-        v-if="showMiddleware"
-        :label="$t('detection1.middleware')"
-        width="100"
-        align="center"
-      >
-        <template slot-scope="{row}">
-          <span>{{ row.middleware }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column
-        v-if="showProtocol"
-        :label="$t('detection1.protocol')"
-        width="200"
-        align="center"
-      >
-        <template slot-scope="{row}">
-          {{ row.protocol }}
-        </template>
-      </el-table-column>
-      <el-table-column
         class-name="status-col"
         :label="$t('detection1.status')"
-        width="150"
+        width="100"
         align="center"
       >
         <template slot-scope="{row}">
@@ -158,12 +163,8 @@
 
 <script>
 import { fetchIntrusionList } from '@/api/intrusion'
-import { validIPAddress } from '@/utils/validate'
+import { validIPAddress, validText, validURL } from '@/utils/validate'
 import Pagination from '@/components/Pagination'// 引入分页组件
-
-const validateIPAddress = (rule, value, callback) => {
-  if (validIPAddress(value)) { return callback(new Error('输入非法!!!')) } else { callback() }
-}
 
 export default {
   components: { Pagination }, // 引入分页组件
@@ -173,8 +174,8 @@ export default {
     },
     statusFilter(status) {
       const statusMap = {
-        成功: 'success',
-        失败: 'danger'
+        正常: 'success',
+        恶意: 'danger'
       }
       return statusMap[status]
     }
@@ -186,26 +187,28 @@ export default {
       listLoading: true,
       rules: {
         ip: [
-          { validator: this.validate, trigger: 'blur' }
+          { validator: this.validate1, trigger: 'blur' }
+        ],
+        url: [
+          { validator: this.validate2, trigger: 'blur' }
+        ],
+        data: [
+          { validator: this.validate3, trigger: 'blur' }
         ]
       },
       total: 0,
       canRun: true,
       listQuery: {
         page: 1, // 当前页码
-        limit: 20, // 每页面条目数
+        limit: 10, // 每页面条目数
         status: undefined,
         ip: undefined,
+        data: undefined,
+        url: undefined,
         orderBy: undefined,
         orderField: undefined
       },
-      statusOptions: ['成功', '失败'],
-      showMiddleware: false,
-      showProtocol: false,
-      IPAddressRules: {
-        IPAddress: [{ required: false, trigger: 'blur', valid: validateIPAddress }]
-      }
-
+      statusOptions: ['恶意', '正常']
     }
   },
   created() {
@@ -221,9 +224,23 @@ export default {
         that.timer = setTimeout(fn, delay)
       }
     },
-    validate(rule, value, callback) {
+    validate1(rule, value, callback) {
       if (rule.field == 'ip' && Boolean(value)) {
         validIPAddress(value) ? callback() : callback(new Error('输入非法!'))
+      } else {
+        callback()
+      }
+    },
+    validate2(rule, value, callback) {
+      if (rule.field == 'url' && Boolean(value)) {
+        validURL(value) ? callback() : callback(new Error('输入非法!'))
+      } else {
+        callback()
+      }
+    },
+    validate3(rule, value, callback) {
+      if (rule.field == 'text' && Boolean(value)) {
+        validText(value) ? callback() : callback(new Error('输入非法!'))
       } else {
         callback()
       }

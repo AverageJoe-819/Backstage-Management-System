@@ -77,7 +77,7 @@
       <el-table-column
         align="center"
         :label="$t('detection2.id')"
-        width="100"
+        width="50"
       >
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
@@ -85,7 +85,7 @@
       </el-table-column>
       <el-table-column
         :label="$t('detection2.name')"
-        width="200"
+        width="135"
         align="center"
       >
         <template slot-scope="{row}">
@@ -94,7 +94,7 @@
       </el-table-column>
       <el-table-column
         :label="$t('detection2.url')"
-        width="250"
+        width="227"
         align="center"
       >
         <template slot-scope="{row}">
@@ -122,7 +122,7 @@
       <el-table-column
         class-name="status-col"
         :label="$t('detection2.status')"
-        width="80"
+        width="78"
         align="center"
       >
         <template slot-scope="{row}">
@@ -175,7 +175,7 @@ export default {
       total: 0,
       listQuery: {
         page: 1, // 当前页码
-        limit: 20, // 每页面条目数
+        limit: 10, // 每页面条目数
         status: undefined,
         name: undefined
       },

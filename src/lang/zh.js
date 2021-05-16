@@ -65,13 +65,13 @@ export default {
     search: 'IP地址',
     select: '类型',
     searchbotton: '搜索',
-    middleware: '中间件',
-    protocol: '协议',
     id: '序号',
-    ip: '目的IP',
-    status: '连接状态',
+    ip: '源IP',
+    url: '页面URL',
+    data: '参数名',
+    status: '输入性质',
     time: '时间',
-    content: '内容'
+    content: '输入内容'
 
   },
   detection2: {

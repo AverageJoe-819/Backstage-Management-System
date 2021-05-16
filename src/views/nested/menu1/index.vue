@@ -240,14 +240,14 @@ export default {
     },
     async intrusionSuccess() {
       let total = 0
-      await fetchIntrusionList({ page: 1, limit: 9999, status: '成功' }).then(response => {
+      await fetchIntrusionList({ page: 1, limit: 9999, status: '正常' }).then(response => {
         total = response.data.total
       })
       return total
     },
     async intrusionFail() {
       let total = 0
-      await fetchIntrusionList({ page: 1, limit: 9999, status: '失败' }).then(response => {
+      await fetchIntrusionList({ page: 1, limit: 9999, status: '恶意' }).then(response => {
         total = response.data.total
       })
       return total

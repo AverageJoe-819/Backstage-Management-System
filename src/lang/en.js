@@ -66,13 +66,13 @@ export default {
     search: 'IPaddress',
     select: 'Type',
     searchbotton: 'Search',
-    middleware: 'MiddleWare',
-    protocol: 'Protocol',
     id: 'No',
     ip: 'IP',
+    url: 'URL',
+    data: 'Parameter',
+    content: 'Content',
     status: 'status',
-    time: 'time',
-    content: 'Content'
+    time: 'time'
 
   },
   detection2: {
