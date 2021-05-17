@@ -7,26 +7,32 @@
     </el-row>
     <el-row>
       <el-col span="10">
-        <el-table :data="tableData"
-                  style="width: 100%">
-          <el-table-column prop="index"
-                           label="序号"
-                           align="center"
-                           width="50">
-          </el-table-column>
-          <el-table-column prop="ip"
-                           label="IP地址"
-                           align="center"
-                           width="180">
-          </el-table-column>
-          <el-table-column prop="visit"
-                           align="center"
-                           label="访问次数">
-          </el-table-column>
-          <el-table-column prop="date"
-                           align="center"
-                           label="时间">
-          </el-table-column>
+        <el-table
+          :data="tableData"
+          style="width: 100%"
+        >
+          <el-table-column
+            prop="index"
+            label="序号"
+            align="center"
+            width="50"
+          />
+          <el-table-column
+            prop="ip"
+            label="IP地址"
+            align="center"
+            width="180"
+          />
+          <el-table-column
+            prop="visit"
+            align="center"
+            label="访问次数"
+          />
+          <el-table-column
+            prop="date"
+            align="center"
+            label="时间"
+          />
 
         </el-table>
       </el-col>
@@ -58,7 +64,7 @@ const lineChartData = {
 
 export default {
   components: { ReportForm, PanelGroup, LineChart },
-  data () {
+  data() {
     return {
       lineChartData: lineChartData.browse,
       tableData: [{
@@ -92,15 +98,15 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       this.$message('submit!')
     },
-    onCancel () {
+    onCancel() {
       this.$message({
         message: 'cancel!',
         type: 'warning'
       })
-    }, handleSetLineChartData (type) {
+    }, handleSetLineChartData(type) {
       this.lineChartData = lineChartData[type]
     }
   }

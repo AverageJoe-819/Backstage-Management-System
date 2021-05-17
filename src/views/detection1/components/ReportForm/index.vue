@@ -1,42 +1,60 @@
 <template>
   <span class="app-container">
     <div align="center">
-      <el-button type="primary"
-                 icon="el-icon-warning"
-                 size="medium"
-                 @click="dialogFormVisible = true">{{ $t('monitoring.reportip') }}</el-button>
+      <el-button
+        type="primary"
+        icon="el-icon-warning"
+        size="medium"
+        @click="dialogFormVisible = true"
+      >{{ $t('monitoring.reportip') }}</el-button>
     </div>
-    <el-dialog :title="$t('monitoring.reportip')"
-               :before-close="handleClose"
-               :visible.sync="dialogFormVisible">
-      <el-form ref="form"
-               :model="form"
-               :rules="rules"
-               label-width="120px">
-        <el-form-item :label="$t('monitoring.ip')"
-                      prop="ip">
+    <el-dialog
+      :title="$t('monitoring.reportip')"
+      :before-close="handleClose"
+      :visible.sync="dialogFormVisible"
+    >
+      <el-form
+        ref="form"
+        :model="form"
+        :rules="rules"
+        label-width="120px"
+      >
+        <el-form-item
+          :label="$t('monitoring.ip')"
+          prop="ip"
+        >
           <el-input v-model="form.ip" />
         </el-form-item>
 
-        <el-form-item :label="$t('monitoring.type')"
-                      prop="type">
+        <el-form-item
+          :label="$t('monitoring.type')"
+          prop="type"
+        >
           <el-radio-group v-model="form.type">
             <el-radio :label="$t('monitoring.danger')" />
             <el-radio :label="$t('monitoring.warning')" />
           </el-radio-group>
         </el-form-item>
-        <el-form-item :label="$t('monitoring.desc')"
-                      prop="desc">
-          <el-input v-model="form.desc"
-                    type="textarea" />
+        <el-form-item
+          :label="$t('monitoring.desc')"
+          prop="desc"
+        >
+          <el-input
+            v-model="form.desc"
+            type="textarea"
+          />
         </el-form-item>
 
       </el-form>
-      <div slot="footer"
-           class="dialog-footer">
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
         <el-button @click="resetForm('form')">{{ $t('monitoring.reset') }}</el-button>
-        <el-button type="primary"
-                   @click="dialogFormVisible = false">{{ $t('monitoring.submit') }}</el-button>
+        <el-button
+          type="primary"
+          @click="dialogFormVisible = false"
+        >{{ $t('monitoring.submit') }}</el-button>
       </div>
     </el-dialog>
 
@@ -45,7 +63,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     const ipreg = /((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))/
     const descreg = /^[\u4E00-\u9FA5A-Za-z0-9,]+$/
     const validateIPAddress = (rule, value, callback) => {
@@ -79,7 +97,7 @@ export default {
     }
   },
   methods: {
-    resetForm (form) {
+    resetForm(form) {
       this.$refs[form].resetFields()
     }
   }

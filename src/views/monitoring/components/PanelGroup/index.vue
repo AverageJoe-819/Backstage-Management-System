@@ -1,87 +1,121 @@
 <template>
-  <el-row :gutter="40"
-          class="panel-group">
-    <el-col :xs="12"
-            :sm="12"
-            :lg="6"
-            class="card-panel-col">
-      <div class="card-panel"
-           @click="handleSetLineChartData('browse')">
+  <el-row
+    :gutter="40"
+    class="panel-group"
+  >
+    <el-col
+      :xs="12"
+      :sm="12"
+      :lg="6"
+      class="card-panel-col"
+    >
+      <div
+        class="card-panel"
+        @click="handleSetLineChartData('browse')"
+      >
         <div class="card-panel-icon-wrapper icon-peoples1">
-          <svg-icon icon-class="peoples"
-                    class-name="card-panel-icon" />
+          <svg-icon
+            icon-class="peoples"
+            class-name="card-panel-icon"
+          />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
             {{ $t('monitoring.browse') }}
           </div>
-          <count-to :start-val="0"
-                    :end-val="225"
-                    :duration="2000"
-                    class="card-panel-num" />
+          <count-to
+            :start-val="0"
+            :end-val="225"
+            :duration="2000"
+            class="card-panel-num"
+          />
         </div>
       </div>
     </el-col>
-    <el-col :xs="12"
-            :sm="12"
-            :lg="6"
-            class="card-panel-col">
-      <div class="card-panel"
-           @click="handleSetLineChartData('visit')">
+    <el-col
+      :xs="12"
+      :sm="12"
+      :lg="6"
+      class="card-panel-col"
+    >
+      <div
+        class="card-panel"
+        @click="handleSetLineChartData('visit')"
+      >
         <div class="card-panel-icon-wrapper icon-peoples2">
-          <svg-icon icon-class="peoples"
-                    class-name="card-panel-icon" />
+          <svg-icon
+            icon-class="peoples"
+            class-name="card-panel-icon"
+          />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
             {{ $t('monitoring.visit') }}
           </div>
-          <count-to :start-val="0"
-                    :end-val="43"
-                    :duration="2000"
-                    class="card-panel-num" />
+          <count-to
+            :start-val="0"
+            :end-val="43"
+            :duration="2000"
+            class="card-panel-num"
+          />
         </div>
       </div>
     </el-col>
-    <el-col :xs="12"
-            :sm="12"
-            :lg="6"
-            class="card-panel-col">
-      <div class="card-panel"
-           @click="handleSetLineChartData('visitor')">
+    <el-col
+      :xs="12"
+      :sm="12"
+      :lg="6"
+      class="card-panel-col"
+    >
+      <div
+        class="card-panel"
+        @click="handleSetLineChartData('visitor')"
+      >
         <div class="card-panel-icon-wrapper icon-peoples3">
-          <svg-icon icon-class="peoples"
-                    class-name="card-panel-icon" />
+          <svg-icon
+            icon-class="peoples"
+            class-name="card-panel-icon"
+          />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
             {{ $t('monitoring.visitor') }}
           </div>
-          <count-to :start-val="0"
-                    :end-val="23"
-                    :duration="2000"
-                    class="card-panel-num" />
+          <count-to
+            :start-val="0"
+            :end-val="23"
+            :duration="2000"
+            class="card-panel-num"
+          />
         </div>
       </div>
     </el-col>
-    <el-col :xs="12"
-            :sm="12"
-            :lg="6"
-            class="card-panel-col">
-      <div class="card-panel"
-           @click="handleSetLineChartData('newvisitor')">
+    <el-col
+      :xs="12"
+      :sm="12"
+      :lg="6"
+      class="card-panel-col"
+    >
+      <div
+        class="card-panel"
+        @click="handleSetLineChartData('newvisitor')"
+      >
         <div class="card-panel-icon-wrapper icon-peoples4">
-          <svg-icon icon-class="peoples"
-                    class-name="card-panel-icon" />
+          <svg-icon
+            icon-class="peoples"
+            class-name="card-panel-icon"
+          />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
             {{ $t('monitoring.newvisitor') }}
           </div>
-          <count-to :start-val="0"
-                    :end-val="7"
-                    :duration="2000"
-                    class="card-panel-num" />
+          <count-to
+            :start-val="0"
+            :end-val="7"
+            :duration="2000"
+            class="card-panel-num"
+          />
         </div>
       </div>
     </el-col>
@@ -96,7 +130,7 @@ export default {
     CountTo
   },
   methods: {
-    handleSetLineChartData (type) {
+    handleSetLineChartData(type) {
       this.$emit('handleSetLineChartData', type)
     }
   }
