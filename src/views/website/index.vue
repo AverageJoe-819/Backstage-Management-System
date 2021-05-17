@@ -36,17 +36,17 @@
               <p>{{ $t('website.x') }}:</p>
             </el-col>
             <el-col span="16">
-              <p>www.xiaoma.com</p>
-              <p>192.168.1.103</p>
-              <p>keep-alive</p>
-              <p>2021-5-13 20:38:11 </p>
-              <p>小马大学</p>
-              <p>21</p>
-              <p>text/html; charset=UTF-8</p>
-              <p>gzip</p>
-              <p>200</p>
-              <p>chunked</p>
-              <p>PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+              <p><strong>http://www.xiaoma.com</strong></p>
+              <p><strong>192.168.1.103</strong></p>
+              <p><strong>keep-alive</strong></p>
+              <p><strong>2021-5-13 20:38:11 </strong></p>
+              <p><strong>小马大学</strong></p>
+              <p><strong>21</strong></p>
+              <p><strong>text/html; charset=UTF-8</strong></p>
+              <p><strong>gzip</strong></p>
+              <p><strong>200</strong></p>
+              <p><strong>chunked</strong></p>
+              <p><strong>PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</strong></p>
             </el-col>
           </el-row>
         </el-card>
@@ -72,30 +72,30 @@
               </p>
             </el-col>
             <el-col span="16">
-              <p>CN
+              <p><strong>CN</strong>
                 <span>
                   <svg-icon icon-class="CN" />
                 </span>
               </p>
-              <p>nginx/1.19.0
+              <p><strong>nginx/1.19.0</strong>
                 <span>
                   <svg-icon icon-class="Nginx" />
                 </span>
               </p>
-              <p>9493</p>
-              <p>nginx
+              <p><strong>9493</strong></p>
+              <p><strong>nginx</strong>
                 <span>
                   <svg-icon icon-class="Nginx" />
-                </span>、apache
+                </span>、<strong>apache</strong>
                 <span>
                   <svg-icon icon-class="apache" />
-                </span>、PHP
+                </span>、<strong>PHP</strong>
                 <span>
                   <svg-icon icon-class="PHP" />
-                </span>、DreamWeaver
+                </span>、<strong>DreamWeaver</strong>
                 <span>
                   <svg-icon icon-class="Dw" />
-                </span>、Ubuntu
+                </span>、<strong>Ubuntu</strong>
                 <span>
                   <svg-icon icon-class="ubuntu" />
                 </span>

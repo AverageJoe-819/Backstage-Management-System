@@ -24,7 +24,12 @@
             clearable
             @keyup.enter.native="handleFilter"
           />
-
+        </el-form-item>
+        <el-form-item
+          label-width="0"
+          prop="url"
+          style="margin:0px"
+        >
           <el-input
             v-model="listQuery.url"
             :placeholder="$t('detection1.url')"
@@ -34,17 +39,23 @@
             clearable
             @keyup.enter.native="handleFilter"
           />
-
+        </el-form-item>
+        <el-form-item
+          label-width="0"
+          prop="data"
+          style="margin:0px"
+        >
           <el-input
             v-model="listQuery.data"
             :placeholder="$t('detection1.data')"
-            style="width: 200px;
+            style="width: 200px;margin-right:10px
             "
             class="filter-item"
             clearable
             @keyup.enter.native="handleFilter"
           />
         </el-form-item>
+
         <el-select
           v-model="listQuery.status"
           :placeholder="$t('detection1.select')"

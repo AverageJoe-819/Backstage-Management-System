@@ -115,6 +115,7 @@
         align="center"
       >
         <template slot-scope="{row}">
+          <i class="el-icon-time" />
           <span>{{ row.time | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>

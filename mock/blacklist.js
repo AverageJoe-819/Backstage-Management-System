@@ -3,18 +3,62 @@ const Mock = require('mockjs')
 const List = []
 const count = 500
 
-for (let i = 0; i < count; i++) {
-  List.push(Mock.mock({
-    id: '@increment',
-    "handler|1": ['师明骏', '纪四维'],
-    "submitter|1": ['师明骏', '杜敏俐'],
-    "description|1": ['访问次数过多', '浏览次数过多', '访问频率过高', '浏览频率过高', '非正常时间访问', '非正常时间访问', '高危IP', '嫌疑IP', '停留时间过长'],
-    ip: '@ip', // 赋值的int型无法使用indexOf 需要转str
-    'status1|1': ['高危', '嫌疑'],
-    'status2|1': ['已启用', '已禁用'],
-    time: '@now'
-  }))
-}
+
+List.push(Mock.mock({
+  id: '1',
+  handler: '师明骏',
+  submitter: '师明骏',
+  description: '登录界面输入非法，存在恶意输入的情况',
+  ip: '192.168.1.103', // 赋值的int型无法使用indexOf 需要转str
+  status1: '高危',
+  status2: '已禁用',
+  time: '2021-5-17 11:01:08'
+}))
+
+List.push(Mock.mock({
+  id: '2',
+  handler: '师明骏',
+  submitter: '杜敏俐',
+  description: '访问次数过多',
+  ip: '192.168.3.9', // 赋值的int型无法使用indexOf 需要转str
+  status1: '嫌疑',
+  status2: '已启用',
+  time: '2021-5-17 11:55:24'
+}))
+
+List.push(Mock.mock({
+  id: '3',
+  handler: '纪四维',
+  submitter: '杜敏俐',
+  description: '访问次数过多',
+  ip: '192.168.101.61', // 赋值的int型无法使用indexOf 需要转str
+  status1: '嫌疑',
+  status2: '已启用',
+  time: '2021-5-17 17:31:19'
+}))
+
+List.push(Mock.mock({
+  id: '4',
+  handler: '纪四维',
+  submitter: '师明骏',
+  description: '非正常时间高频率登录',
+  ip: '192.168.1.107', // 赋值的int型无法使用indexOf 需要转str
+  status1: '嫌疑',
+  status2: '已禁用',
+  time: '2021-5-18 09:14:21'
+}))
+
+List.push(Mock.mock({
+  id: '5',
+  handler: '纪四维',
+  submitter: '纪四维',
+  description: '登录界面提交错误密码次数过多',
+  ip: '192.168.101.67', // 赋值的int型无法使用indexOf 需要转str
+  status1: '嫌疑',
+  status2: '已禁用',
+  time: '2021-5-18 10:52:11'
+}))
+
 module.exports = [
   {
     url: '/Backstage-Management-System/blacklist/list',

@@ -18,47 +18,40 @@
       </template>
       <div style="font-size:20px">
         共进行入侵检测
-        <el-tag>{{ intrusionSuccessNum + intrusionFailNum }}次</el-tag>
-        ，其中连接成功
+        <el-tag>{{ intrusionSuccessNum + intrusionFailNum }}</el-tag>
+        次，其中正常访问
         <el-tag type="success">
-          {{ intrusionSuccessNum }}次
+          {{ intrusionSuccessNum }}
         </el-tag>
-        ，连接失败
+        次，疑似恶意访问
         <el-tag type="danger">
-          {{ intrusionFailNum }}次
+          {{ intrusionFailNum }}
         </el-tag>
+        次。
       </div>
-      <div style="font-size:20px"> 检测涉及目的IP
-        <el-tag type="primary">
-          500个</el-tag>
+      <div style="font-size:20px">
+        检测涉及源IP<strong> 5 </strong>个,分别为：
+        <strong> 192.168.1.103 、 </strong>
+        <strong> 192.168.3.9 、 </strong>
+        <strong> 192.168.101.61 、 </strong>
+        <strong> 192.168.1.107 、 </strong>
+        <strong> 192.168.101.67 ；</strong>
       </div>
-      <div style="font-size:20px">包含中间件<el-tag>8个</el-tag>，分别为：
-        <el-tag>
-          tomcat<span>
-            <svg-icon icon-class="Tomcat" />
-          </span>
-        </el-tag>,<el-tag>jetty<span>
-          <svg-icon icon-class="J" />
-        </span>
-        </el-tag>,<el-tag> apache<span>
-          <svg-icon icon-class="apache" />
-        </span></el-tag>, <el-tag>JBOSS<span>
-          <svg-icon icon-class="JJ" />
-        </span></el-tag>, <el-tag>weblogic<span>
-          <svg-icon icon-class="Weblogic" />
-        </span></el-tag>,<el-tag> websphere<span>
-          <svg-icon icon-class="sphere" />
-        </span></el-tag>, <el-tag>glassfish<span>
-          <svg-icon icon-class="fish" />
-        </span></el-tag>, <el-tag>nginx<span>
-          <svg-icon icon-class="Nginx" />
-        </span></el-tag>
+      <div style="font-size:20px">
+        涉及页面URL<strong> 2 </strong>个,分别为：
+        <strong> http://www.xiaoma.com/news/ 、 </strong>
+        <strong> http://www.xiaoma.com/login/ ； </strong>
       </div>
-      <div style="font-size:20px">包含端口服务共
-        <span>
-          <el-tag>8个</el-tag>,分别为：<el-tag>FTP</el-tag>、<el-tag>WWW</el-tag>、<el-tag>EPMAP</el-tag>、<el-tag>NETBIOS-NS</el-tag>、<el-tag>SMB</el-tag>、<el-tag>CIFS</el-tag>、<el-tag>DCE-RPC</el-tag>、<el-tag>MYSQL</el-tag>、<el-tag>UNKNOWN</el-tag>
-        </span>
+      <div style="font-size:20px">
+        涉及参数名<strong> 3 </strong>个,分别为：
+        <strong>news.search 、
+        </strong>
+        <strong>login.username 、
+        </strong>
+        <strong>login.password ;
+        </strong>
       </div>
+
     </el-collapse-item>
 
     <el-collapse-item name="2">
@@ -72,47 +65,44 @@
       <div style="font-size:20px">
         共检测出漏洞
         <el-tag>
-          {{ leakHighNum+leakLowNum+leakMidNum }}个
+          {{ leakHighNum+leakLowNum+leakMidNum }}
         </el-tag>
-        ，其中高风险漏洞
+        个，其中高风险漏洞
 
         <el-tag type="danger">
-          {{ leakHighNum }}个
+          {{ leakHighNum }}
         </el-tag>
-        ，中风险漏洞
+        个，中风险漏洞
         <el-tag type="warning">
-          {{ leakMidNum }}个
+          {{ leakMidNum }}
         </el-tag>
-        ，低风险漏洞
+        个，低风险漏洞
         <el-tag type="success">
-          {{ leakLowNum }}个
+          {{ leakLowNum }}
         </el-tag>
+        个；
       </div>
-      <div style="font-size:20px">检测出漏洞类型共<el-tag>14种</el-tag>，分别为：
-        <el-tag>SQL中可能允许远程执行代码漏洞</el-tag>、
-        <el-tag>跨站点脚本编制</el-tag>、
-        <el-tag>失效的身份认证</el-tag>、
-        <el-tag>失效的会话管理</el-tag>、
-        <el-tag>失效的访问控制</el-tag>、
-        <el-tag>SQL注入</el-tag>、
-        <el-tag>OS注入</el-tag>、
-        <el-tag>敏感数据泄露</el-tag>、
-        <el-tag>XSS跨站脚本攻击</el-tag>、
-        <el-tag>XEE外部实体攻击</el-tag>、
-        <el-tag>不安全的反序列化</el-tag>、
-        <el-tag>安全配置错误</el-tag>、
-        <el-tag>使用含已知漏洞的组件</el-tag>、
-        <el-tag>不足的日志记录和监控</el-tag>
+      <div style="font-size:20px">检测出漏洞类型共<strong> 12 </strong>种，分别为：
+        <strong> SQL注入、 </strong>
+        <strong> OS命令执行、 </strong>
+        <strong> 失效的身份验证、 </strong>
+        <strong> 暴力破解、 </strong>
+        <strong> 敏感数据泄露、 </strong>
+        <strong> XML外部实体注入、 </strong>
+        <strong> 失效的访问控制、 </strong>
+        <strong> 安全配置错误、 </strong>
+        <strong> XSS跨站脚本攻击、 </strong>
+        <strong> 使用含有已知漏洞的组件、 </strong>
+        <strong> CFRS攻击、 </strong>
+        <strong> 不足的日志记录及监控； </strong>
       </div>
       <div style="font-size:20px">存在漏洞的页面共
-        <el-tag>7个</el-tag>，分别为：
-        <el-tag>http://www.xiaoma.com/</el-tag>、
-        <el-tag>http://www.xiaoma.com/student/</el-tag>、
-        <el-tag>http://www.xiaoma.com/system/</el-tag>、
-        <el-tag>http://www.xiaoma.com/register/</el-tag>、
-        <el-tag>http://www.xiaoma.com/login/</el-tag>、
-        <el-tag>http://www.xiaoma.com/news/</el-tag>、
-        <el-tag>http://www.xiaoma.com/activity/</el-tag>
+        <strong> 5 </strong>个，分别为：
+        <strong> http://www.xiaoma.com/ 、 </strong>
+        <strong> http://www.xiaoma.com/news/ 、 </strong>
+        <strong> http://www.xiaoma.com/students/ 、 </strong>
+        <strong> http://www.xiaoma.com/login/ 、 </strong>
+        <strong> http://www.xiaoma.com/system/ </strong>
       </div>
     </el-collapse-item>
     <el-collapse-item name="3">
