@@ -1,8 +1,6 @@
 <template>
-  <div
-    :class="className"
-    :style="{height:height,width:width}"
-  />
+  <div :class="className"
+       :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -30,17 +28,17 @@ export default {
     type: Boolean,
     default: true
   },
-  data() {
+  data () {
     return {
       chart: null
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.initChart()
     })
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (!this.chart) {
       return
     }
@@ -48,7 +46,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart() {
+    initChart () {
       this.chart = echarts.init(this.$el, 'macarons')
 
       this.chart.setOption({
@@ -63,14 +61,14 @@ export default {
         },
         series: [
           {
-            name: 'WEEKLY WRITE ARTICLES',
+            name: '潜在恶意用户',
             type: 'pie',
             roseType: 'radius',
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 239, name: '高危IP' },
-              { value: 261, name: '嫌疑IP' }
+              { value: 1, name: '高危IP' },
+              { value: 4, name: '嫌疑IP' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600

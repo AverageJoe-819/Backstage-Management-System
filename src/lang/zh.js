@@ -129,6 +129,14 @@ export default {
     submit: '提交',
     reset: '重置'
   },
+  nest:
+  {
+    web: '门户网站',
+    in: '入侵检测',
+    le: '漏洞检测',
+    us: '用户管理',
+    ma: '权限管理'
+  },
   role: {
     permission: '权限'
   },

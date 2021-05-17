@@ -1,43 +1,48 @@
 <template>
-  <div
-    class="app-container"
-    style="padding-top:30px;
-       padding-left:30px"
-  >
+  <div class="app-container"
+       style="padding-top:30px;
+       padding-left:30px">
     <el-row>
       <el-col span="12">
-        <mallki
-          class-name="mallki-text"
-          text="入侵检测 Intrusion Detection"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="门户网站 Protal Website"
+                style="font-size:30px" />
+        <pie0-chart />
+      </el-col>
+      <el-col span="12">
+        <mallki class-name="mallki-text"
+                text="用户监控 User Monitoring"
+                style="font-size:30px" />
+        <pie5-chart />
+      </el-col>
+    </el-row>
+    <el-row>
+
+      <el-col span="12">
+        <mallki class-name="mallki-text"
+                text="入侵检测 Intrusion Detection"
+                style="font-size:30px" />
         <pie1-chart />
       </el-col>
       <el-col span="12">
-        <mallki
-          class-name="mallki-text"
-          text="漏洞检测 Leak Detection"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="漏洞检测 Leak Detection"
+                style="font-size:30px" />
         <pie2-chart />
       </el-col>
     </el-row>
 
     <el-row>
       <el-col span="12">
-        <mallki
-          class-name="mallki-text"
-          text="用户管理 User Management"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="用户管理 User Management"
+                style="font-size:30px" />
         <pie3-chart />
       </el-col>
       <el-col span="12">
-        <mallki
-          class-name="mallki-text"
-          text="权限管理 Roles Management"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="权限管理 Role Management"
+                style="font-size:30px" />
         <pie4-chart />
       </el-col>
     </el-row>
@@ -156,16 +161,18 @@ import { fetchIntrusionList } from '@/api/intrusion'
 import { fetchLeakList } from '@/api/leak'
 import { fetchBlackList } from '@/api/blacklist'
 import { fetchRolesList } from '@/api/role'
+import Pie0Chart from './components/Pie0Chart'
 import Pie1Chart from './components/Pie1Chart'
 import Pie2Chart from './components/Pie2Chart'
 import Pie3Chart from './components/Pie3Chart'
 import Pie4Chart from './components/Pie4Chart'
+import Pie5Chart from './components/Pie5Chart'
 import Mallki from '@/components/TextHoverEffect/Mallki'
 
 export default {
 
-  components: { Mallki, Pie1Chart, Pie2Chart, Pie3Chart, Pie4Chart },
-  data() {
+  components: { Mallki, Pie0Chart, Pie1Chart, Pie2Chart, Pie3Chart, Pie4Chart, Pie5Chart },
+  data () {
     return {
       listLoading: true,
       intrusionSuccessNum: 0,
@@ -182,7 +189,7 @@ export default {
       editorNum: 0
     }
   },
-  async created() {
+  async created () {
     this.listLoading = true
     const [intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistUseNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum] = await Promise.all([
       this.intrusionSuccess(),
@@ -216,87 +223,87 @@ export default {
     }, 1.5 * 1000)
   },
   methods: {
-    handleChange(val) {
+    handleChange (val) {
       console.log(val)
     },
-    async intrusionSuccess() {
+    async intrusionSuccess () {
       let total = 0
       await fetchIntrusionList({ page: 1, limit: 9999, status: '成功' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async intrusionFail() {
+    async intrusionFail () {
       let total = 0
       await fetchIntrusionList({ page: 1, limit: 9999, status: '失败' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async leakHigh() {
+    async leakHigh () {
       let total = 0
       await fetchLeakList({ page: 1, limit: 9999, status: '高' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async leakMid() {
+    async leakMid () {
       let total = 0
       await fetchLeakList({ page: 1, limit: 9999, status: '中' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async leakLow() {
+    async leakLow () {
       let total = 0
       await fetchLeakList({ page: 1, limit: 9999, status: '低' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistBan() {
+    async blacklistBan () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status2: '已禁用' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistUse() {
+    async blacklistUse () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status2: '已启用' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistDanger() {
+    async blacklistDanger () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status1: '高危' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistWarning() {
+    async blacklistWarning () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status1: '嫌疑' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async admin() {
+    async admin () {
       let total = 0
       await fetchRolesList({ role: 'admin' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async editor() {
+    async editor () {
       let total = 0
       await fetchRolesList({ role: 'editor' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async superadmin() {
+    async superadmin () {
       let total = 0
       await fetchRolesList({ role: 'superadmin' }).then(response => {
         total = response.data.total

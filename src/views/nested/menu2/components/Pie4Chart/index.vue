@@ -1,8 +1,6 @@
 <template>
-  <div
-    :class="className"
-    :style="{height:height,width:width}"
-  />
+  <div :class="className"
+       :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -30,17 +28,17 @@ export default {
     type: Boolean,
     default: true
   },
-  data() {
+  data () {
     return {
       chart: null
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.initChart()
     })
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (!this.chart) {
       return
     }
@@ -48,7 +46,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart() {
+    initChart () {
       this.chart = echarts.init(this.$el, 'macarons')
 
       this.chart.setOption({
@@ -69,9 +67,9 @@ export default {
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 3, name: '超级管理员' },
-              { value: 3, name: '高级管理员' },
-              { value: 3, name: '普通管理员' }
+              { value: 1, name: '超级管理员' },
+              { value: 1, name: '高级管理员' },
+              { value: 1, name: '普通管理员' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2000

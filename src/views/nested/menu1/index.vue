@@ -1,20 +1,16 @@
 <template>
-  <el-collapse
-    v-model="activeNames"
-    v-loading="listLoading"
-    style="padding:30px;
+  <el-collapse v-model="activeNames"
+               v-loading="listLoading"
+               style="padding:30px;
                border-bottom:0px;
                "
-    @change="handleChange"
-  >
+               @change="handleChange">
 
     <el-collapse-item name="0">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="门户网站 Protal Website"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="门户网站 Protal Website"
+                style="font-size:30px" />
       </template>
       <div style="font-size:20px">
         共包含组件
@@ -58,7 +54,6 @@
             <svg-icon icon-class="ubuntu" />
           </span>
         </el-col>
-
         <el-col span="2"> -->
           <div>--></div>
           <div>--></div>
@@ -105,13 +100,33 @@
 
     </el-collapse-item>
 
+    <el-collapse-item name="5">
+      <template slot="title">
+        <mallki class-name="mallki-text"
+                text="用户监控 User Monitoring"
+                style="font-size:30px" />
+      </template>
+      <div style="font-size:20px">
+        近七日内，浏览人数达
+        <el-tag>225</el-tag>
+        个，访问人数达
+        <el-tag type="success">
+          43
+        </el-tag>
+        个，访问人数达
+        <el-tag type="danger">
+          23
+        </el-tag>
+        个，新访问人数达<el-tag type="danger">
+          7
+        </el-tag>个。
+      </div>
+    </el-collapse-item>
     <el-collapse-item name="1">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="入侵检测 Intrusion Detection"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="入侵检测 Intrusion Detection"
+                style="font-size:30px" />
       </template>
       <div style="font-size:20px">
         共进行入侵检测
@@ -153,11 +168,9 @@
 
     <el-collapse-item name="2">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="漏洞检测 Leak Detection"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="漏洞检测 Leak Detection"
+                style="font-size:30px" />
       </template>
       <div style="font-size:20px">
         共检测出漏洞
@@ -204,13 +217,11 @@
     </el-collapse-item>
     <el-collapse-item name="3">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="用户管理 User Management"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="用户管理 User Management"
+                style="font-size:30px" />
       </template>
-      <div>
+      <div style="font-size:20px">
         黑名单中共纳入IP<el-tag>
           {{ blacklistDangerNum+blacklistWarningNum }}个
         </el-tag>
@@ -234,28 +245,28 @@
     </el-collapse-item>
     <el-collapse-item name="4">
       <template slot="title">
-        <mallki
-          class-name="mallki-text"
-          text="权限管理 Roles Management"
-          style="font-size:30px"
-        />
+        <mallki class-name="mallki-text"
+                text="权限管理 Roles Management"
+                style="font-size:30px" />
       </template>
-      共拥有管理员
-      <el-tag>
-        {{ superadminNum+adminNum+editorNum }}
-      </el-tag>
-      ，其中超级管理员
-      <el-tag type="success">
-        {{ superadminNum }}
-      </el-tag>
-      ，高级管理员
-      <el-tag type="warning">
-        {{ adminNum }}
-      </el-tag>
-      ，普通管理员
-      <el-tag type="danger">
-        {{ editorNum }}
-      </el-tag>
+      <div style="font-size:20px">
+        共拥有管理员
+        <el-tag>
+          3
+        </el-tag>
+        名，其中超级管理员
+        <el-tag type="success">
+          1
+        </el-tag>
+        名，高级管理员
+        <el-tag type="warning">
+          1
+        </el-tag>
+        名，普通管理员
+        <el-tag type="danger">
+          1
+        </el-tag>名。
+      </div>
     </el-collapse-item>
 
   </el-collapse>
@@ -271,7 +282,7 @@ import Mallki from '@/components/TextHoverEffect/Mallki'
 export default {
 
   components: { Mallki },
-  data() {
+  data () {
     return {
       listLoading: true,
       intrusionSuccessNum: 0,
@@ -288,7 +299,7 @@ export default {
       editorNum: 0
     }
   },
-  async created() {
+  async created () {
     this.listLoading = true
     const [intrusionSuccessNum, intrusionFailNum, leakHighNum, leakMidNum, leakLowNum, blacklistBanNum, blacklistUseNum, blacklistDangerNum, blacklistWarningNum, superadminNum, adminNum, editorNum] = await Promise.all([
       this.intrusionSuccess(),
@@ -322,87 +333,87 @@ export default {
     }, 1.5 * 1000)
   },
   methods: {
-    handleChange(val) {
+    handleChange (val) {
       console.log(val)
     },
-    async intrusionSuccess() {
+    async intrusionSuccess () {
       let total = 0
       await fetchIntrusionList({ page: 1, limit: 9999, status: '正常' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async intrusionFail() {
+    async intrusionFail () {
       let total = 0
       await fetchIntrusionList({ page: 1, limit: 9999, status: '恶意' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async leakHigh() {
+    async leakHigh () {
       let total = 0
       await fetchLeakList({ page: 1, limit: 9999, status: '高' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async leakMid() {
+    async leakMid () {
       let total = 0
       await fetchLeakList({ page: 1, limit: 9999, status: '中' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async leakLow() {
+    async leakLow () {
       let total = 0
       await fetchLeakList({ page: 1, limit: 9999, status: '低' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistBan() {
+    async blacklistBan () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status2: '已禁用' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistUse() {
+    async blacklistUse () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status2: '已启用' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistDanger() {
+    async blacklistDanger () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status1: '高危' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async blacklistWarning() {
+    async blacklistWarning () {
       let total = 0
       await fetchBlackList({ page: 1, limit: 9999, status1: '嫌疑' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async admin() {
+    async admin () {
       let total = 0
       await fetchRolesList({ role: 'admin' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async editor() {
+    async editor () {
       let total = 0
       await fetchRolesList({ role: 'editor' }).then(response => {
         total = response.data.total
       })
       return total
     },
-    async superadmin() {
+    async superadmin () {
       let total = 0
       await fetchRolesList({ role: 'superadmin' }).then(response => {
         total = response.data.total

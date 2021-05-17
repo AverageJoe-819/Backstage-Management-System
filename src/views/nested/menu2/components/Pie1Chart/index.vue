@@ -1,9 +1,7 @@
 <template>
-  <div
-    v-loading="listLoading"
-    :class="className"
-    :style="{height:height,width:width}"
-  />
+  <div v-loading="listLoading"
+       :class="className"
+       :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -31,7 +29,7 @@ export default {
     type: Boolean,
     default: true
   },
-  data() {
+  data () {
     return {
       chart: null
     }
@@ -39,17 +37,17 @@ export default {
   watch: {
     chartData: {
       deep: true,
-      handler(val) {
+      handler (val) {
         this.setOptions(val)
       }
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.initChart()
     })
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (!this.chart) {
       return
     }
@@ -57,7 +55,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart() {
+    initChart () {
       this.chart = echarts.init(this.$el, 'macarons')
 
       this.chart.setOption({
@@ -68,7 +66,7 @@ export default {
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['连接成功', '连接失败']
+          data: ['恶意输入', '正常输入']
         },
         series: [
           {
@@ -78,8 +76,8 @@ export default {
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 248, name: '连接成功' },
-              { value: 252, name: '连接失败' }
+              { value: 4, name: '恶意输入' },
+              { value: 17, name: '正常输入' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600

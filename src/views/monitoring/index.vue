@@ -6,22 +6,26 @@
       <line-chart :chart-data="lineChartData" />
     </el-row>
     <el-row>
-      <el-col span="8">
-        <el-table>
-          <el-table-column
-            align="center"
-            label="危险排名"
-            width="100"
-            type="index"
-          />
-          <el-table-column
-            align="center"
-            label="IP地址"
-            width="300"
-          >
-            <template slot-scope="scope">
-              {{ scope.row.role }}
-            </template>
+      <el-col span="10">
+        <el-table :data="tableData"
+                  style="width: 100%">
+          <el-table-column prop="index"
+                           label="序号"
+                           align="center"
+                           width="50">
+          </el-table-column>
+          <el-table-column prop="ip"
+                           label="IP地址"
+                           align="center"
+                           width="180">
+          </el-table-column>
+          <el-table-column prop="visit"
+                           align="center"
+                           label="访问次数">
+          </el-table-column>
+          <el-table-column prop="date"
+                           align="center"
+                           label="时间">
           </el-table-column>
 
         </el-table>
@@ -39,36 +43,64 @@ import PanelGroup from './components/PanelGroup'
 import LineChart from './components/LineChart'
 const lineChartData = {
   browse: {
-    actualData: [120, 82, 91, 154, 162, 140, 145]
+    actualData: [27, 32, 37, 35, 29, 24, 41]
   },
   visit: {
-    actualData: [180, 160, 151, 106, 145, 150, 130]
+    actualData: [6, 7, 8, 7, 6, 5, 4]
   },
   visitor: {
-    actualData: [120, 90, 100, 138, 142, 130, 130]
+    actualData: [3, 4, 4, 4, 3, 3, 2]
   },
   newvisitor: {
-    actualData: [120, 82, 91, 154, 162, 140, 130]
+    actualData: [0, 2, 2, 1, 2, 0, 0]
   }
 }
 
 export default {
   components: { ReportForm, PanelGroup, LineChart },
-  data() {
+  data () {
     return {
-      lineChartData: lineChartData.browse
+      lineChartData: lineChartData.browse,
+      tableData: [{
+        index: '1',
+        ip: '192.168.1.103',
+        visit: '5',
+        date: '2021-5-17 13:28:11'
+      },
+      {
+        index: '2',
+        ip: '192.168.3.9',
+        visit: '4',
+        date: '2021-5-17 13:38:11'
+      },
+      {
+        index: '3',
+        ip: '192.168.1.67',
+        visit: '3',
+        date: '2021-5-17 13:38:11'
+      }, {
+        index: '4',
+        ip: '192.168.1.67',
+        visit: '2',
+        date: '2021-5-17 13:38:11'
+      }, {
+        index: '5',
+        ip: '192.168.1.67',
+        visit: '1',
+        date: '2021-5-17 13:38:11'
+      }]
     }
   },
   methods: {
-    onSubmit() {
+    onSubmit () {
       this.$message('submit!')
     },
-    onCancel() {
+    onCancel () {
       this.$message({
         message: 'cancel!',
         type: 'warning'
       })
-    }, handleSetLineChartData(type) {
+    }, handleSetLineChartData (type) {
       this.lineChartData = lineChartData[type]
     }
   }

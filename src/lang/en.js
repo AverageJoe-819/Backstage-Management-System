@@ -129,6 +129,14 @@ export default {
     submit: 'Submit',
     reset: 'Reset'
   },
+  nest:
+  {
+    web: 'Protal Website',
+    in: 'Intrusion Detection',
+    le: 'Leak Detection',
+    us: 'User Management',
+    ma: 'Role Management'
+  },
   role: {
     permission: 'Permission'
   },

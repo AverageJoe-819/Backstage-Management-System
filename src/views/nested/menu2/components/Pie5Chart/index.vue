@@ -1,5 +1,6 @@
 <template>
-  <div :class="className"
+  <div v-loading="listLoading"
+       :class="className"
        :style="{height:height,width:width}" />
 </template>
 
@@ -33,6 +34,14 @@ export default {
       chart: null
     }
   },
+  watch: {
+    chartData: {
+      deep: true,
+      handler (val) {
+        this.setOptions(val)
+      }
+    }
+  },
   mounted () {
     this.$nextTick(() => {
       this.initChart()
@@ -57,19 +66,18 @@ export default {
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['高风险', '中风险', '低风险']
+          data: ['旧用户数目', '新用户数目']
         },
         series: [
           {
-            name: '潜在漏洞风险程度',
+            name: '用户成分',
             type: 'pie',
             roseType: 'radius',
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 12, name: '高风险' },
-              { value: 7, name: '中风险' },
-              { value: 3, name: '低风险' }
+              { value: 7, name: '新用户数' },
+              { value: 23, name: '旧用户数' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600
