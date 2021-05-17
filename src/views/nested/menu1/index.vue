@@ -8,6 +8,103 @@
     @change="handleChange"
   >
 
+    <el-collapse-item name="0">
+      <template slot="title">
+        <mallki
+          class-name="mallki-text"
+          text="门户网站 Protal Website"
+          style="font-size:30px"
+        />
+      </template>
+      <div style="font-size:20px">
+        共包含组件
+        <el-tag>5</el-tag>
+        个，其中版本已更新至最新的
+        <el-tag type="success">
+          2
+        </el-tag>
+        个，未更新至最新的
+        <el-tag type="danger">
+          3
+        </el-tag>
+        个。
+      </div>
+      <el-row style="font-size:20px">
+        <el-col span="4">
+          <strong>nginx/1.19.0</strong>
+          <span>
+            <svg-icon icon-class="Nginx" />
+          </span>
+          <div>
+            <strong>apache/2.12.1</strong>
+            <span>
+              <svg-icon icon-class="apache" />
+            </span>
+          </div>
+          <div>
+            <strong>PHP/7.1.3</strong>
+            <span>
+              <svg-icon icon-class="PHP" />
+            </span>
+          </div>
+          <div>
+            <strong>DreamWeaver/3.7.8</strong>
+            <span>
+              <svg-icon icon-class="Dw" />
+            </span>
+          </div>
+          <strong>Ubuntu/3.8.2</strong>
+          <span>
+            <svg-icon icon-class="ubuntu" />
+          </span>
+        </el-col>
+
+        <el-col span="2"> -->
+          <div>--></div>
+          <div>--></div>
+          <div>--></div>
+          <div>--></div>
+        </el-col>
+        <el-col span="4">
+
+          <strong>nginx/1.21.0</strong>
+          <span>
+            <svg-icon icon-class="Nginx" />
+          </span>
+          <div>
+            <strong>apache/2.12.1</strong>
+            <span>
+              <svg-icon icon-class="apache" />
+            </span>
+          </div>
+          <div>
+            <strong>PHP/7.4.5</strong>
+            <span>
+              <svg-icon icon-class="PHP" />
+            </span>
+          </div>
+          <div>
+            <strong>DreamWeaver/3.7.8</strong>
+            <span>
+              <svg-icon icon-class="Dw" />
+            </span>
+          </div>
+          <strong>Ubuntu/3.9.2</strong>
+          <span>
+            <svg-icon icon-class="ubuntu" />
+          </span>
+        </el-col>
+        <el-col span="2">
+          <i class="el-icon-close" />
+          <div><i class="el-icon-check" /></div>
+          <div><i class="el-icon-close" /></div>
+          <div><i class="el-icon-check" /></div>
+          <div><i class="el-icon-close" /></div>
+        </el-col>
+      </el-row>
+
+    </el-collapse-item>
+
     <el-collapse-item name="1">
       <template slot="title">
         <mallki

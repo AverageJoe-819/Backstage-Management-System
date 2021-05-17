@@ -83,19 +83,19 @@
                 </span>
               </p>
               <p><strong>9493</strong></p>
-              <p><strong>nginx</strong>
+              <p><strong>nginx/1.19.0</strong>
                 <span>
                   <svg-icon icon-class="Nginx" />
-                </span>、<strong>apache</strong>
+                </span>、<strong>apache/2.12.1</strong>
                 <span>
                   <svg-icon icon-class="apache" />
-                </span>、<strong>PHP</strong>
+                </span>、<strong>PHP/7.1.3</strong>
                 <span>
                   <svg-icon icon-class="PHP" />
-                </span>、<strong>DreamWeaver</strong>
+                </span>、<strong>DreamWeaver/3.7.8</strong>
                 <span>
                   <svg-icon icon-class="Dw" />
-                </span>、<strong>Ubuntu</strong>
+                </span>、<strong>Ubuntu/3.8.2</strong>
                 <span>
                   <svg-icon icon-class="ubuntu" />
                 </span>
