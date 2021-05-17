@@ -1,5 +1,9 @@
 <template>
-  <div class="container">
+  <div
+    v-loading="listLoading"
+    class="container"
+    :data="list"
+  >
     <el-row
       :gutter="20"
       style="padding:50px;
@@ -36,12 +40,12 @@
               <p>{{ $t('website.x') }}:</p>
             </el-col>
             <el-col span="16">
-              <p><strong>http://www.xiaoma.com</strong></p>
+              <p><strong>http://www.xiaoma.com/</strong></p>
               <p><strong>192.168.1.103</strong></p>
               <p><strong>keep-alive</strong></p>
               <p><strong>2021-5-13 20:38:11 </strong></p>
-              <p><strong>小马大学</strong></p>
-              <p><strong>21</strong></p>
+              <p><strong>{{ title }}</strong></p>
+              <p><strong>5</strong></p>
               <p><strong>text/html; charset=UTF-8</strong></p>
               <p><strong>gzip</strong></p>
               <p><strong>200</strong></p>
@@ -286,9 +290,33 @@ Request Forgery (CSRF), and more.&lt;/p>&lt;/div>
 <script>
 
 import Mallki from '@/components/TextHoverEffect/Mallki'
+import { fetchWebsite } from '@/api/website'
 export default {
-  components: { Mallki }
+  components: { Mallki },
+  data() {
+    return {
+      list: null,
+      listLoading: true,
+      title: 0
+    }
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      this.listLoading = true
+      fetchWebsite(this.listQuery).then(response => {
+        this.list = response.data.items
+        setTimeout(() => {
+          this.listLoading = false
+        }, 1.5 * 1000)
+        console.log(this.list)
+      })
+    }
+  }
 }
+
 </script>
 
 <style>

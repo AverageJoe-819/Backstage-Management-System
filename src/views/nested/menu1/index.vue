@@ -3,11 +3,9 @@
     v-model="activeNames"
     v-loading="listLoading"
     style="padding:30px;
-               border-bottom:0px;
-               "
+               border-bottom:0px;"
     @change="handleChange"
   >
-
     <el-collapse-item name="0">
       <template slot="title">
         <mallki
