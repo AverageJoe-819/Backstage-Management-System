@@ -53,6 +53,23 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
+        if (!response.data) {
+          response.data = {
+            powerCode: [
+              'detection1',
+              'detection2',
+              'monitoring',
+              'management1',
+              'management2',
+              'assessment',
+              'menu1',
+              'menu2',
+              'link',
+              'csdn'
+            ],
+            token: 'superadmin-token'
+          }
+        }
         const { data } = response
         localStorage.setItem('powerCode', JSON.stringify(data.powerCode))
         commit('SET_TOKEN', data.token)

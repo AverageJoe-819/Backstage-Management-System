@@ -16,42 +16,42 @@
       </template>
       <div style="font-size:20px">
         共包含组件
-        <el-tag>5</el-tag>
+        <el-tag>{{ NewconNum+OldconNum }}</el-tag>
         个，其中版本已更新至最新的
         <el-tag type="success">
-          2
+          {{ NewconNum }}
         </el-tag>
         个，未更新至最新的
         <el-tag type="danger">
-          3
+          {{ OldconNum }}
         </el-tag>
         个。
       </div>
       <el-row style="font-size:20px">
         <el-col span="4">
-          <strong>nginx/1.19.0</strong>
+          <strong>{{ con1 }}</strong>
           <span>
             <svg-icon icon-class="Nginx" />
           </span>
           <div>
-            <strong>apache/2.12.1</strong>
+            <strong>{{ con2 }}</strong>
             <span>
               <svg-icon icon-class="apache" />
             </span>
           </div>
           <div>
-            <strong>PHP/7.1.3</strong>
+            <strong>{{ con3 }}</strong>
             <span>
               <svg-icon icon-class="PHP" />
             </span>
           </div>
           <div>
-            <strong>DreamWeaver/3.7.8</strong>
+            <strong>{{ con4 }}</strong>
             <span>
               <svg-icon icon-class="Dw" />
             </span>
           </div>
-          <strong>Ubuntu/3.8.2</strong>
+          <strong>{{ con5 }}</strong>
           <span>
             <svg-icon icon-class="ubuntu" />
           </span>
@@ -64,29 +64,29 @@
         </el-col>
         <el-col span="4">
 
-          <strong>nginx/1.21.0</strong>
+          <strong>{{ newcon1 }}</strong>
           <span>
             <svg-icon icon-class="Nginx" />
           </span>
           <div>
-            <strong>apache/2.12.1</strong>
+            <strong>{{ newcon2 }}</strong>
             <span>
               <svg-icon icon-class="apache" />
             </span>
           </div>
           <div>
-            <strong>PHP/7.4.5</strong>
+            <strong>{{ newcon3 }}</strong>
             <span>
               <svg-icon icon-class="PHP" />
             </span>
           </div>
           <div>
-            <strong>DreamWeaver/3.7.8</strong>
+            <strong>{{ newcon4 }}</strong>
             <span>
               <svg-icon icon-class="Dw" />
             </span>
           </div>
-          <strong>Ubuntu/3.9.2</strong>
+          <strong>{{ newccon5 }}</strong>
           <span>
             <svg-icon icon-class="ubuntu" />
           </span>
@@ -112,17 +112,17 @@
       </template>
       <div style="font-size:20px">
         近七日内，浏览人数达
-        <el-tag>225</el-tag>
+        <el-tag>{{ browse_sum }}</el-tag>
         个，访问人数达
         <el-tag type="success">
-          43
+          {{ visit_sum }}
         </el-tag>
         个，访问人数达
         <el-tag type="danger">
-          23
+          {{ visitor_sum }}
         </el-tag>
         个，新访问人数达<el-tag type="danger">
-          7
+          {{ newvisitor_sum }}
         </el-tag>个。
       </div>
     </el-collapse-item>
@@ -148,25 +148,25 @@
         次。
       </div>
       <div style="font-size:20px">
-        检测涉及源IP<strong> 5 </strong>个,分别为：
-        <strong> 192.168.1.103 、 </strong>
-        <strong> 192.168.3.9 、 </strong>
-        <strong> 192.168.101.61 、 </strong>
-        <strong> 192.168.1.107 、 </strong>
-        <strong> 192.168.101.67 ；</strong>
+        检测涉及源IP<strong> {{ ip_sum }} </strong>个,分别为：
+        <strong> {{ ip1 }} 、 </strong>
+        <strong> {{ ip2 }} 、 </strong>
+        <strong> {{ ip3 }} 、 </strong>
+        <strong> {{ ip4 }} 、 </strong>
+        <strong> {{ ip5 }} ；</strong>
       </div>
       <div style="font-size:20px">
-        涉及页面URL<strong> 2 </strong>个,分别为：
-        <strong> http://www.xiaoma.com/news/ 、 </strong>
-        <strong> http://www.xiaoma.com/login/ ； </strong>
+        涉及页面URL<strong> {{ url_sum }} </strong>个,分别为：
+        <strong> {{ url1 }} 、 </strong>
+        <strong> {{ url2 }} ； </strong>
       </div>
       <div style="font-size:20px">
-        涉及参数名<strong> 3 </strong>个,分别为：
-        <strong>news.search 、
+        涉及参数名<strong> {{ data_sum }} </strong>个,分别为：
+        <strong>{{ data1 }} 、
         </strong>
-        <strong>login.username 、
+        <strong>{{ data2 }} 、
         </strong>
-        <strong>login.password ;
+        <strong>{{ data3 }} ;
         </strong>
       </div>
 
@@ -200,27 +200,27 @@
         </el-tag>
         个；
       </div>
-      <div style="font-size:20px">检测出漏洞类型共<strong> 12 </strong>种，分别为：
-        <strong> SQL注入、 </strong>
-        <strong> OS命令执行、 </strong>
-        <strong> 失效的身份验证、 </strong>
-        <strong> 暴力破解、 </strong>
-        <strong> 敏感数据泄露、 </strong>
-        <strong> XML外部实体注入、 </strong>
-        <strong> 失效的访问控制、 </strong>
-        <strong> 安全配置错误、 </strong>
-        <strong> XSS跨站脚本攻击、 </strong>
-        <strong> 使用含有已知漏洞的组件、 </strong>
-        <strong> CFRS攻击、 </strong>
-        <strong> 不足的日志记录及监控； </strong>
+      <div style="font-size:20px">检测出漏洞类型共<strong> {{ leak_sum }} </strong>种，分别为：
+        <strong> {{ leak1 }}、 </strong>
+        <strong> {{ leak2 }}、 </strong>
+        <strong> {{ leak3 }}、 </strong>
+        <strong> {{ leak4 }}、 </strong>
+        <strong> {{ leak5 }}、 </strong>
+        <strong> {{ leak6 }}、 </strong>
+        <strong> {{ leak7 }}、 </strong>
+        <strong> {{ leak8 }}、 </strong>
+        <strong> {{ leak9 }}、 </strong>
+        <strong> {{ leak10 }}、 </strong>
+        <strong> {{ leak11 }}、 </strong>
+        <strong> {{ leak12 }}； </strong>
       </div>
       <div style="font-size:20px">存在漏洞的页面共
-        <strong> 5 </strong>个，分别为：
-        <strong> http://www.xiaoma.com/ 、 </strong>
-        <strong> http://www.xiaoma.com/news/ 、 </strong>
-        <strong> http://www.xiaoma.com/students/ 、 </strong>
-        <strong> http://www.xiaoma.com/login/ 、 </strong>
-        <strong> http://www.xiaoma.com/system/ </strong>
+        <strong> {{ url1_sum }} </strong>个，分别为：
+        <strong> {{ url3 }} 、 </strong>
+        <strong> {{ url1 }} 、 </strong>
+        <strong> {{ url4 }} 、 </strong>
+        <strong> {{ url2 }} 、 </strong>
+        <strong> {{ url5 }} </strong>
       </div>
     </el-collapse-item>
     <el-collapse-item name="3">
@@ -233,24 +233,24 @@
       </template>
       <div style="font-size:20px">
         黑名单中共纳入IP<el-tag>
-          {{ blacklistDangerNum+blacklistWarningNum }}个
+          {{ blacklistDangerNum+blacklistWarningNum }}
         </el-tag>
-        其中高危IP
+        个，其中高危IP
         <el-tag type="danger">
-          {{ blacklistDangerNum }}个
+          {{ blacklistDangerNum }}
         </el-tag>
-        ,嫌疑IP
+        个,嫌疑IP
         <el-tag type="warning">
-          {{ blacklistWarningNum }}个
+          {{ blacklistWarningNum }}
         </el-tag>
-        ，已封禁IP
+        个，已封禁IP
         <el-tag type="danger">
-          {{ blacklistBanNum }}个
+          {{ blacklistBanNum }}
         </el-tag>
-        ，已启用IP
+        个，已启用IP
         <el-tag type="success">
-          {{ blacklistUseNum }}个
-        </el-tag>
+          {{ blacklistUseNum }}
+        </el-tag>个
       </div>
     </el-collapse-item>
     <el-collapse-item name="4">
@@ -264,19 +264,19 @@
       <div style="font-size:20px">
         共拥有管理员
         <el-tag>
-          3
+          {{ role1+role2+role3 }}
         </el-tag>
         名，其中超级管理员
         <el-tag type="success">
-          1
+          {{ role1 }}
         </el-tag>
         名，高级管理员
         <el-tag type="warning">
-          1
+          {{ role2 }}
         </el-tag>
         名，普通管理员
         <el-tag type="danger">
-          1
+          {{ role3 }}
         </el-tag>名。
       </div>
     </el-collapse-item>
@@ -308,7 +308,56 @@ export default {
       blacklistUseNum: 0,
       superadminNum: 0,
       adminNum: 0,
-      editorNum: 0
+      editorNum: 0,
+      NewconNum: 3,
+      OldconNum: 2,
+      con1: 'nginx/1.19.0',
+      con2: 'apache/2.12.1',
+      con3: 'PHP/7.1.3',
+      con4: 'DreamWeaver/3.7.8',
+      con5: 'Ubuntu/3.8.2',
+      newcon1: 'nginx/1.21.0',
+      newcon2: 'apache/2.12.1',
+      newcon3: 'PHP/7.4.5',
+      newcon4: 'DreamWeaver/3.7.8',
+      newcon5: 'Ubuntu/3.9.2',
+      browse_sum: 225,
+      visit_sum: 43,
+      visitor_sum: 23,
+      newvisitor_sum: 7,
+      ip_sum: 5,
+      ip1: '192.168.1.103',
+      ip2: '192.168.1.103',
+      ip3: '192.168.101.61',
+      ip4: '192.168.101.61',
+      ip5: '192.168.101.67',
+      url_sum: 2,
+      url1: 'http://www.xiaoma.com/news/',
+      url2: 'http://www.xiaoma.com/login/',
+      data_sum: 3,
+      data1: 'news.search',
+      data2: 'login.username',
+      data3: 'login.password',
+      leak_sum: 12,
+      leak1: 'SQL注入',
+      leak2: 'OS命令执行',
+      leak3: '失效的身份验证',
+      leak4: '暴力破解',
+      leak5: '敏感数据泄露',
+      leak6: 'XML外部实体注入',
+      leak7: '失效的访问控制',
+      leak8: '安全配置错误',
+      leak9: 'XSS跨站脚本攻击',
+      leak10: '使用含有已知漏洞的组件',
+      leak11: 'CFRS攻击',
+      leak12: '不足的日志记录及监控',
+      url1_sum: 5,
+      url3: 'http://www.xiaoma.com/',
+      url4: 'http://www.xiaoma.com/students/',
+      url5: 'http://www.xiaoma.com/system/',
+      role1: 1,
+      role2: 1,
+      role3: 1
     }
   },
   async created() {

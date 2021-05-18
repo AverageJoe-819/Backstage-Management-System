@@ -7,7 +7,6 @@ const tokens = {
       'website',
       'detection1',
       'detection2',
-
       'monitoring',
       'management1',
       'assessment',
@@ -37,7 +36,6 @@ const tokens = {
       'website',
       'detection1',
       'detection2',
-
       'monitoring',
       'management1',
       'management2',

@@ -2,9 +2,9 @@
   <div
     v-loading="listLoading"
     class="container"
-    :data="list"
   >
     <el-row
+      v-model="website"
       :gutter="20"
       style="padding:50px;
             display:flex;
@@ -40,17 +40,17 @@
               <p>{{ $t('website.x') }}:</p>
             </el-col>
             <el-col span="16">
-              <p><strong>http://www.xiaoma.com/</strong></p>
-              <p><strong>192.168.1.103</strong></p>
-              <p><strong>keep-alive</strong></p>
-              <p><strong>2021-5-13 20:38:11 </strong></p>
+              <p><strong>{{ url }}</strong></p>
+              <p><strong>{{ ip }}</strong></p>
+              <p><strong>{{ connection }}</strong></p>
+              <p><strong>{{ date }} </strong></p>
               <p><strong>{{ title }}</strong></p>
-              <p><strong>5</strong></p>
-              <p><strong>text/html; charset=UTF-8</strong></p>
-              <p><strong>gzip</strong></p>
-              <p><strong>200</strong></p>
-              <p><strong>chunked</strong></p>
-              <p><strong>PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</strong></p>
+              <p><strong>{{ subdomain }}</strong></p>
+              <p><strong>{{ type }}</strong></p>
+              <p><strong>{{ encoding }}</strong></p>
+              <p><strong>{{ code }}</strong></p>
+              <p><strong>{{ transfer }}</strong></p>
+              <p><strong>{{ x }}</strong></p>
             </el-col>
           </el-row>
         </el-card>
@@ -76,30 +76,30 @@
               </p>
             </el-col>
             <el-col span="16">
-              <p><strong>CN</strong>
+              <p><strong>{{ country }}</strong>
                 <span>
                   <svg-icon icon-class="CN" />
                 </span>
               </p>
-              <p><strong>nginx/1.19.0</strong>
+              <p><strong>{{ server }}</strong>
                 <span>
                   <svg-icon icon-class="Nginx" />
                 </span>
               </p>
-              <p><strong>9493</strong></p>
-              <p><strong>nginx/1.19.0</strong>
+              <p><strong>{{ port }}</strong></p>
+              <p><strong>{{ con1 }}</strong>
                 <span>
                   <svg-icon icon-class="Nginx" />
-                </span>、<strong>apache/2.12.1</strong>
+                </span>、<strong>{{ con2 }}</strong>
                 <span>
                   <svg-icon icon-class="apache" />
-                </span>、<strong>PHP/7.1.3</strong>
+                </span>、<strong>{{ con3 }}</strong>
                 <span>
                   <svg-icon icon-class="PHP" />
-                </span>、<strong>DreamWeaver/3.7.8</strong>
+                </span>、<strong>{{ con4 }}</strong>
                 <span>
                   <svg-icon icon-class="Dw" />
-                </span>、<strong>Ubuntu/3.8.2</strong>
+                </span>、<strong>{{ con5 }}</strong>
                 <span>
                   <svg-icon icon-class="ubuntu" />
                 </span>
@@ -290,31 +290,33 @@ Request Forgery (CSRF), and more.&lt;/p>&lt;/div>
 <script>
 
 import Mallki from '@/components/TextHoverEffect/Mallki'
-import { fetchWebsite } from '@/api/website'
 export default {
   components: { Mallki },
   data() {
     return {
-      list: null,
-      listLoading: true,
-      title: 0
-    }
-  },
-  created() {
-    this.getList()
-  },
-  methods: {
-    getList() {
-      this.listLoading = true
-      fetchWebsite(this.listQuery).then(response => {
-        this.list = response.data.items
-        setTimeout(() => {
-          this.listLoading = false
-        }, 1.5 * 1000)
-        console.log(this.list)
-      })
+      url: 'http://www.xiaoma.com/',
+      ip: '192.168.1.103',
+      connection: 'keep-alive',
+      date: '2021-5-13 20:38:11',
+      title: '小马大学',
+      subdomain: '5',
+      type: 'text/html; charset=UTF-8',
+      encoding: 'gzip',
+      code: '200',
+      transfer: 'chunked',
+      x: 'PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1',
+      country: 'CN',
+      server: 'nginx/1.19.0',
+      port: '9493',
+      con1: 'nginx/1.19.0',
+      con2: 'apache/2.12.1',
+      con3: 'PHP/7.1.3',
+      con4: 'DreamWeaver/3.7.8',
+      con5: 'Ubuntu/3.8.2',
+      htmlcode: '11'
     }
   }
+
 }
 
 </script>
