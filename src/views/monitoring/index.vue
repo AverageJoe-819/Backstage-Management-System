@@ -1,5 +1,8 @@
 <template>
-  <div class="app-container">
+  <div
+    class="app-container"
+    style=""
+  >
     <panel-group @handleSetLineChartData="handleSetLineChartData" />
 
     <el-row

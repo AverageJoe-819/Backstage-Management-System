@@ -4,6 +4,7 @@
     v-loading="listLoading"
     style="padding:30px;
                border-bottom:0px;"
+    accordion
     @change="handleChange"
   >
     <el-collapse-item name="0">
@@ -16,15 +17,15 @@
       </template>
       <div style="font-size:20px">
         共包含组件
-        <el-tag>{{ NewconNum+OldconNum }}</el-tag>
+        <strong>{{ NewconNum+OldconNum }}</strong>
         个，其中版本已更新至最新的
-        <el-tag type="success">
+        <strong>
           {{ NewconNum }}
-        </el-tag>
+        </strong>
         个，未更新至最新的
-        <el-tag type="danger">
+        <strong>
           {{ OldconNum }}
-        </el-tag>
+        </strong>
         个。
       </div>
       <el-row style="font-size:20px">
@@ -112,18 +113,18 @@
       </template>
       <div style="font-size:20px">
         近七日内，浏览人数达
-        <el-tag>{{ browse_sum }}</el-tag>
+        <strong>{{ browse_sum }}</strong>
         个，访问人数达
-        <el-tag type="success">
+        <strong>
           {{ visit_sum }}
-        </el-tag>
+        </strong>
         个，访问人数达
-        <el-tag type="danger">
+        <strong>
           {{ visitor_sum }}
-        </el-tag>
-        个，新访问人数达<el-tag type="danger">
+        </strong>
+        个，新访问人数达<strong>
           {{ newvisitor_sum }}
-        </el-tag>个。
+        </strong>个。
       </div>
     </el-collapse-item>
     <el-collapse-item name="1">
@@ -136,15 +137,15 @@
       </template>
       <div style="font-size:20px">
         共进行入侵检测
-        <el-tag>{{ intrusionSuccessNum + intrusionFailNum }}</el-tag>
+        <strong>{{ intrusionSuccessNum + intrusionFailNum }}</strong>
         次，其中正常访问
-        <el-tag type="success">
+        <strong>
           {{ intrusionSuccessNum }}
-        </el-tag>
+        </strong>
         次，疑似恶意访问
-        <el-tag type="danger">
+        <strong>
           {{ intrusionFailNum }}
-        </el-tag>
+        </strong>
         次。
       </div>
       <div style="font-size:20px">
@@ -182,22 +183,22 @@
       </template>
       <div style="font-size:20px">
         共检测出漏洞
-        <el-tag>
+        <strong>
           {{ leakHighNum+leakLowNum+leakMidNum }}
-        </el-tag>
+        </strong>
         个，其中高风险漏洞
 
-        <el-tag type="danger">
+        <strong>
           {{ leakHighNum }}
-        </el-tag>
+        </strong>
         个，中风险漏洞
-        <el-tag type="warning">
+        <strong>
           {{ leakMidNum }}
-        </el-tag>
+        </strong>
         个，低风险漏洞
-        <el-tag type="success">
+        <strong>
           {{ leakLowNum }}
-        </el-tag>
+        </strong>
         个；
       </div>
       <div style="font-size:20px">检测出漏洞类型共<strong> {{ leak_sum }} </strong>种，分别为：
@@ -232,25 +233,25 @@
         />
       </template>
       <div style="font-size:20px">
-        黑名单中共纳入IP<el-tag>
+        黑名单中共纳入IP<strong>
           {{ blacklistDangerNum+blacklistWarningNum }}
-        </el-tag>
+        </strong>
         个，其中高危IP
-        <el-tag type="danger">
+        <strong>
           {{ blacklistDangerNum }}
-        </el-tag>
+        </strong>
         个,嫌疑IP
-        <el-tag type="warning">
+        <strong>
           {{ blacklistWarningNum }}
-        </el-tag>
+        </strong>
         个，已封禁IP
-        <el-tag type="danger">
+        <strong>
           {{ blacklistBanNum }}
-        </el-tag>
+        </strong>
         个，已启用IP
-        <el-tag type="success">
+        <strong>
           {{ blacklistUseNum }}
-        </el-tag>个
+        </strong>个
       </div>
     </el-collapse-item>
     <el-collapse-item name="4">
@@ -263,21 +264,21 @@
       </template>
       <div style="font-size:20px">
         共拥有管理员
-        <el-tag>
+        <strong>
           {{ role1+role2+role3 }}
-        </el-tag>
+        </strong>
         名，其中超级管理员
-        <el-tag type="success">
+        <strong>
           {{ role1 }}
-        </el-tag>
+        </strong>
         名，高级管理员
-        <el-tag type="warning">
+        <strong>
           {{ role2 }}
-        </el-tag>
+        </strong>
         名，普通管理员
-        <el-tag type="danger">
+        <strong>
           {{ role3 }}
-        </el-tag>名。
+        </strong>名。
       </div>
     </el-collapse-item>
 
@@ -321,9 +322,9 @@ export default {
       newcon3: 'PHP/7.4.5',
       newcon4: 'DreamWeaver/3.7.8',
       newcon5: 'Ubuntu/3.9.2',
-      browse_sum: 225,
-      visit_sum: 43,
-      visitor_sum: 23,
+      browse_sum: 480,
+      visit_sum: 189,
+      visitor_sum: 120,
       newvisitor_sum: 7,
       ip_sum: 5,
       ip1: '192.168.1.103',

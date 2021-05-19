@@ -70,7 +70,7 @@ export default {
           data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           boundaryGap: false,
           axisTick: {
-            show: true
+            show: false
           }
         },
         grid: {
@@ -88,12 +88,10 @@ export default {
           padding: [5, 10]
         },
         yAxis: {
-          type: 'value',
-          axisLabel: {
-            formatter: '{value}'
-          },
-
-          show: true
+          show: true,
+          axisTick: {
+            show: false
+          }
         },
         legend: {
           data: ['Total', 'top1', 'top2', 'top3']

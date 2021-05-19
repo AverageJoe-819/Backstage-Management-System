@@ -63,7 +63,7 @@ module.exports = [
     url: '/Backstage-Management-System/blacklist/list',
     type: 'get',
     response: config => {
-      const { status1, status2, ip, orderBy, orderField, page = 1, limit = 20 } = config.query
+      const { status1, status2, ip, orderBy, orderField, page = 1, limit = 10 } = config.query
 
       let mockList = List.filter(item => {
         if (status1 && item.status1 !== status1) return false

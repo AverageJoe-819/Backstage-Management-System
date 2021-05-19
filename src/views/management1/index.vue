@@ -254,7 +254,7 @@ export default {
       total: 0,
       listQuery: {
         page: 1,
-        limit: 20,
+        limit: 10,
         status1: undefined,
         status2: undefined,
         ip: undefined,
