@@ -43,7 +43,7 @@
       </el-table-column>
       <el-table-column
         align="center"
-        label="操作"
+        :label="$t('management2.operation')"
         width="200"
       >
         <template slot-scope="scope">
@@ -70,7 +70,7 @@
               type="primary"
               size="small"
               style="margin-right:10px"
-            >编辑</el-button>
+            >{{ $t('management2.redact') }}</el-button>
           </el-popover>
 
           <el-button
@@ -79,7 +79,7 @@
             disabled
             @click="handleDelete(scope)"
           >
-            删除
+            {{ $t('management2.delete') }}
           </el-button>
         </template>
       </el-table-column>

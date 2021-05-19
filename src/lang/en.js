@@ -127,7 +127,10 @@ export default {
     pwd2: 'repassword',
     description: 'Description',
     submit: 'Submit',
-    reset: 'Reset'
+    reset: 'Reset',
+    operation: 'Operation',
+    redact: 'Redact',
+    delete: 'Delete'
   },
   nest:
   {

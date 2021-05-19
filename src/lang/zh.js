@@ -124,10 +124,12 @@ export default {
     admin: '高级管理员',
     pwd1: '密码',
     pwd2: '确认密码',
-
+    operation: '操作',
     description: '描述',
     submit: '提交',
-    reset: '重置'
+    reset: '重置',
+    redact: '编辑',
+    delete: '删除'
   },
   nest:
   {
