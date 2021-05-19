@@ -54,11 +54,7 @@
           >
             <p>确定更改用户权限？</p>
             <div style="text-align: right; margin: 0">
-              <el-button
-                size="small"
-                type="text"
-                @click="ChangeRoles('form')"
-              >取消</el-button>
+
               <el-button
                 type="primary"
                 size="mini"
