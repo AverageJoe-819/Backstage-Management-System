@@ -25,7 +25,7 @@
           </div>
           <count-to
             :start-val="0"
-            :end-val="225"
+            :end-val="480"
             :duration="2000"
             class="card-panel-num"
           />
@@ -54,7 +54,7 @@
           </div>
           <count-to
             :start-val="0"
-            :end-val="43"
+            :end-val="189"
             :duration="2000"
             class="card-panel-num"
           />
@@ -83,7 +83,7 @@
           </div>
           <count-to
             :start-val="0"
-            :end-val="23"
+            :end-val="120"
             :duration="2000"
             class="card-panel-num"
           />

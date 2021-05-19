@@ -72,7 +72,7 @@ export default {
         },
         series: [
           {
-            name: 'WEEKLY WRITE ARTICLES',
+            name: '用户输入情况',
             type: 'pie',
             roseType: 'radius',
             radius: [15, 95],

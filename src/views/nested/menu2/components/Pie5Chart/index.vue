@@ -78,8 +78,8 @@ export default {
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 7, name: '新用户数' },
-              { value: 23, name: '旧用户数' }
+              { value: 7, name: '新用户数目' },
+              { value: 23, name: '旧用户数目' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600

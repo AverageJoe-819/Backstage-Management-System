@@ -82,11 +82,10 @@ const filters = {
   completed: todos => todos.filter(todo => todo.done)
 }
 const defalutList = [
-  { text: '完成毕业设计初稿', done: true },
-  { text: '完成指导记录', done: false },
-  { text: '完成中期报告', done: true },
-  { text: '学习vue', done: true },
-  { text: '学习element-ui', done: true }
+  { text: '检查组件版本信息', done: true },
+  { text: '更新组件版本', done: false },
+  { text: '记录值班日志', done: true },
+  { text: '解封192.168.1.103', done: true }
 ]
 export default {
   components: { Todo, Mallki },

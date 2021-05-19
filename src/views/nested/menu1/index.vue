@@ -86,7 +86,7 @@
               <svg-icon icon-class="Dw" />
             </span>
           </div>
-          <strong>{{ newccon5 }}</strong>
+          <strong>{{ newcon5 }}</strong>
           <span>
             <svg-icon icon-class="ubuntu" />
           </span>

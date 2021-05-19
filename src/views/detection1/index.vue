@@ -44,6 +44,7 @@
           label-width="0"
           prop="data"
           style="margin:0px"
+          clearable
         >
           <el-input
             v-model="listQuery.data"
