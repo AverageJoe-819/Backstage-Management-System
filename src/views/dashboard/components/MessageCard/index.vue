@@ -39,7 +39,7 @@
           align="center"
         >
           <template slot-scope="scope">
-            <span>{{ scope.row.time1 }}</span>
+            <span>{{ scope.row.time1 }} min</span>
           </template>
         </el-table-column>
 
@@ -74,7 +74,7 @@ export default {
     fetchData() {
       this.listLoading = true
       getList().then(response => {
-        this.list = response.data.items
+        this.list = response.data.logininfo
         this.listLoading = false
       })
     }

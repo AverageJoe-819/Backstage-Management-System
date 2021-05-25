@@ -24,14 +24,14 @@ import LineChart from './components/LineChart'
 const lineChartData = {
   browse: {
     TotalData: [51, 62, 73, 81, 75, 77, 61],
-    top1Data: [0, 6, 0, 17, 21, 18, 15],
-    top2Data: [7, 6, 5, 4, 10, 14, 4],
-    top3Data: [0, 0, 3, 6, 2, 0, 0]
+    top1Data: [0, 6, 0, 41, 51, 18, 15],
+    top2Data: [7, 6, 5, 4, 10, 44, 4],
+    top3Data: [0, 0, 3, 37, 2, 0, 0]
   },
   visit: {
     TotalData: [23, 26, 28, 31, 27, 30, 24],
     top1Data: [0, 2, 0, 4, 5, 2, 3],
-    top2Data: [10, 10, 10, 10, 10, 10, 10],
+    top2Data: [10, 9, 11, 5, 12, 14, 13],
     top3Data: [0, 0, 1, 2, 1, 0, 0]
   },
   visitor: {

@@ -21,6 +21,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
+    redirect: '/dashboard',
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
@@ -51,6 +52,19 @@ export const asyncRoutes = [
     component: Layout,
     children: [
       {
+        powerCode: 'monitoring',
+        path: 'monitoring',
+        name: 'Monitoring',
+        component: () => import('@/views/monitoring/index'),
+        meta: { title: 'monitoring', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
         powerCode: 'detection1',
         path: 'detection1',
         name: 'Detection1',
@@ -70,20 +84,6 @@ export const asyncRoutes = [
         name: 'Detection2',
         component: () => import('@/views/detection2/index'),
         meta: { title: 'detection2', icon: 'el-icon-s-help' }
-      }
-    ]
-  },
-
-  {
-    path: '/',
-    component: Layout,
-    children: [
-      {
-        powerCode: 'monitoring',
-        path: 'monitoring',
-        name: 'Monitoring',
-        component: () => import('@/views/monitoring/index'),
-        meta: { title: 'monitoring', icon: 'form' }
       }
     ]
   },

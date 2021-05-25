@@ -133,7 +133,7 @@ export default {
             data: top1Data,
             markPoint: {
               data: [
-                { coord: ['Fri', '21'], name: 'top1', value: '192.168.3.9' }
+                { coord: ['Fri', '51'], name: 'top1', value: '192.168.3.9' }
               ]
             },
             animationDuration: 2800,
@@ -155,7 +155,7 @@ export default {
             markPoint: {
               data: [
                 {
-                  coord: ['Sat', '14'],
+                  coord: ['Sat', '44'],
                   name: 'top2',
                   value: '192.168.101.61'
 
@@ -181,7 +181,7 @@ export default {
             markPoint: {
               data: [
                 {
-                  coord: ['Thu', '6'],
+                  coord: ['Thu', '37'],
                   name: 'top3',
                   value: '192.168.1.103'
 

@@ -177,7 +177,7 @@
       <template slot="title">
         <mallki
           class-name="mallki-text"
-          text="漏洞检测 Leak Detection"
+          text="漏洞扫描 Leak Scanning"
           style="font-size:30px"
         />
       </template>

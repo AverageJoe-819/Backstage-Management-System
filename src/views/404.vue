@@ -2,19 +2,40 @@
   <div class="wscn-http404-container">
     <div class="wscn-http404">
       <div class="pic-404">
-        <img class="pic-404__parent" src="@/assets/404_images/404.png" alt="404">
-        <img class="pic-404__child left" src="@/assets/404_images/404_cloud.png" alt="404">
-        <img class="pic-404__child mid" src="@/assets/404_images/404_cloud.png" alt="404">
-        <img class="pic-404__child right" src="@/assets/404_images/404_cloud.png" alt="404">
+        <img
+          class="pic-404__parent"
+          src="@/assets/404_images/404.png"
+          alt="404"
+        >
+        <img
+          class="pic-404__child left"
+          src="@/assets/404_images/404_cloud.png"
+          alt="404"
+        >
+        <img
+          class="pic-404__child mid"
+          src="@/assets/404_images/404_cloud.png"
+          alt="404"
+        >
+        <img
+          class="pic-404__child right"
+          src="@/assets/404_images/404_cloud.png"
+          alt="404"
+        >
       </div>
       <div class="bullshit">
-        <div class="bullshit__oops">OOPS!</div>
-        <div class="bullshit__info">All rights reserved
-          <a style="color:#20a0ff" href="https://wallstreetcn.com" target="_blank">wallstreetcn</a>
+        <div class="bullshit__oops">天哪!</div>
+        <div class="bullshit__info">你莫乱整嘛！
         </div>
         <div class="bullshit__headline">{{ message }}</div>
-        <div class="bullshit__info">Please check that the URL you entered is correct, or click the button below to return to the homepage.</div>
-        <a href="" class="bullshit__return-home">Back to home</a>
+        <div class="bullshit__info">
+          快检查检查你的URL是不是填写错误，或者说......还是说你是认为自己可以纵向越权或绕过访问控制的小机灵鬼？
+        </div>
+        <div class="bullshit__headline">现在摆在你面前的只有一个选择</div>
+        <a
+          href=""
+          class="bullshit__return-home"
+        >回首页呆着</a>
       </div>
     </div>
   </div>
@@ -26,15 +47,15 @@ export default {
   name: 'Page404',
   computed: {
     message() {
-      return 'The webmaster said that you can not enter this page...'
+      return '至高无上的程序开发者--小马同学认为你很有可能是在搞什么鬼......'
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.wscn-http404-container{
-  transform: translate(-50%,-50%);
+.wscn-http404-container {
+  transform: translate(-50%, -50%);
   position: absolute;
   top: 40%;
   left: 50%;

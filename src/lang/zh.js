@@ -1,16 +1,16 @@
 export default {
   route: {
     dashboard: '首页',
-    website: '门户网站',
+    website: '网站维护',
     detection1: '入侵检测',
-    detection2: '漏洞检测',
+    detection2: '漏洞扫描',
     monitoring: '用户监控',
     management1: '用户管理',
     management2: '权限管理',
     assessment: '风险评估',
     link: '更多支持',
     menu1: '专业版',
-    menu2: '简明版'
+    menu2: '管理版'
   },
   login: {
     title: 'IDRA后台管理系统',

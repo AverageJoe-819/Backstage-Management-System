@@ -7,7 +7,7 @@
       slot="header"
       class="box-card-header"
     >
-      <img src="https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png">
+      <img src="https://i.loli.net/2021/05/25/D5AiCrVP9ZhfLde.png">
     </div>
     <div style="position:relative;">
       <mallki
@@ -19,22 +19,19 @@
         class="progress-item"
       >
         <span>Vue</span>
-        <el-progress :percentage="70" />
+        <el-progress :percentage="60.5" />
       </div>
       <div class="progress-item">
         <span>JavaScript</span>
-        <el-progress :percentage="18" />
+        <el-progress :percentage="31.3" />
       </div>
       <div class="progress-item">
-        <span>CSS</span>
-        <el-progress :percentage="12" />
+        <span>SCSS</span>
+        <el-progress :percentage="8" />
       </div>
       <div class="progress-item">
-        <span>ESLint</span>
-        <el-progress
-          :percentage="100"
-          status="success"
-        />
+        <span>HTML</span>
+        <el-progress :percentage="0.2" />
       </div>
     </div>
   </el-card>

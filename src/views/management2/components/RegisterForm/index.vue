@@ -10,6 +10,7 @@
         {{ $t('management2.adduser') }}</el-button>
     </div>
     <el-dialog
+      v-dialogDrag
       :title="$t('management2.adduser')"
       :visible.sync="dialogFormVisible"
       :before-close="handleClose"
@@ -239,7 +240,7 @@ export default {
       this.dialogFormVisible = false
       this.$message({
         type: 'success',
-        message: '保存成功'
+        message: '注册成功'
       })
     },
     showPwd() {
@@ -253,11 +254,7 @@ export default {
       })
     },
     handleClose(done) {
-      this.$confirm('确认关闭？')
-        .then(_ => {
-          done()
-        })
-        .catch(_ => { })
+      this.dialogFormVisible = false
     },
     resetForm(form) {
       this.$refs[form].resetFields()

@@ -9,6 +9,7 @@
       >{{ $t('monitoring.reportip') }}</el-button>
     </div>
     <el-dialog
+      v-dialogDrag
       :title="$t('monitoring.reportip')"
       :before-close="handleClose"
       :visible.sync="dialogFormVisible"
@@ -53,7 +54,7 @@
         <el-button @click="resetForm('form')">{{ $t('monitoring.reset') }}</el-button>
         <el-button
           type="primary"
-          @click="dialogFormVisible = false"
+          @click="submitForm('form')"
         >{{ $t('monitoring.submit') }}</el-button>
       </div>
     </el-dialog>
@@ -99,6 +100,19 @@ export default {
   methods: {
     resetForm(form) {
       this.$refs[form].resetFields()
+      this.$message({
+        message: '重置成功',
+        type: 'success'
+      })
+    },
+    submitForm(form) {
+      this.$refs[form].resetFields()
+      this.$message({
+        message: '提交成功',
+        type: 'success'
+      })
+
+      this.dialogFormVisible = false
     }
   }
 }

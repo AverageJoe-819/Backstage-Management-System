@@ -11,7 +11,8 @@ const getDefaultState = () => {
     email: '',
     phonenumber: '',
     address: '',
-    time: ''
+    time: '',
+    logininfo: ''
   }
 }
 
@@ -44,6 +45,9 @@ const mutations = {
   },
   SET_TIME: (state, time) => {
     state.time = time
+  },
+  SET_LOGININFO: (state, logininfo) => {
+    state.logininfo = logininfo
   }
 }
 
@@ -91,7 +95,7 @@ const actions = {
           return reject('Verification failed, please Login again.')
         }
 
-        const { roles, name, avatar, email, phonenumber, address, time } = data
+        const { roles, name, avatar, email, phonenumber, address, time, logininfo } = data
         commit('SET_ROLES', roles)
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
@@ -99,6 +103,7 @@ const actions = {
         commit('SET_PHONENUMBER', phonenumber)
         commit('SET_ADDRESS', address)
         commit('SET_TIME', time)
+        commit('SET_LOGININFO', logininfo)
         resolve(data)
       }).catch(error => {
         reject(error)
