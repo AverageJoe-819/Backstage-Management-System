@@ -3,7 +3,7 @@ export default {
     dashboard: 'Dashboard',
     detection1: 'Intrusion Detection',
     detection2: 'Leak Detection',
-    website: 'Portal Website',
+    website: 'Website Maintenance',
     monitoring: 'Users Monitoring',
     management1: 'Users Management',
     management2: 'Jurisdiction Management',
@@ -134,7 +134,7 @@ export default {
   },
   nest:
   {
-    web: 'Protal Website',
+    web: 'Website Maintenance',
     in: 'Intrusion Detection',
     le: 'Leak Detection',
     us: 'User Management',

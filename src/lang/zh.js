@@ -133,7 +133,7 @@ export default {
   },
   nest:
   {
-    web: '门户网站',
+    web: '网站维护',
     in: '入侵检测',
     le: '漏洞检测',
     us: '用户管理',

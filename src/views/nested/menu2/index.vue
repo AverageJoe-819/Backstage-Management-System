@@ -8,7 +8,7 @@
       <el-col span="12">
         <mallki
           class-name="mallki-text"
-          text="门户网站 Protal Website"
+          text="网站维护 Website Maintenance"
           style="font-size:30px"
         />
         <pie0-chart />
