@@ -32,11 +32,11 @@
         </el-form-item>
         <el-form-item
           :label="$t('management2.name')"
-          prop="name"
+          prop="cname"
         >
 
           <el-input
-            v-model="form.name"
+            v-model="form.cname"
             style="width:80%"
           />
         </el-form-item>
@@ -52,20 +52,20 @@
         </el-form-item>
         <el-form-item
           :label="$t('management2.phonenumber')"
-          prop="phonenumber"
+          prop="phone"
         >
 
           <el-input
-            v-model="form.phonenumber"
+            v-model="form.phone"
             style="width:80%"
           />
         </el-form-item>
         <el-form-item
           :label="$t('management2.pwd1')"
-          prop="pwd1"
+          prop="password"
         >
           <el-input
-            v-model="form.pwd1"
+            v-model="form.password"
             size="small"
             :type="passwordType"
             style="width:80%"
@@ -90,12 +90,16 @@
         </el-form-item>
         <el-form-item
           :label="$t('management2.roles')"
-          prop="roles"
+          prop="roleName"
         >
 
-          <el-radio-group v-model="form.roles">
-            <el-radio :label="$t('management2.editor')" />
-            <el-radio :label="$t('management2.admin')" />
+          <el-radio-group v-model="form.roleName">
+            <el-radio :label="0">
+              {{ $t('management2.editor') }}
+            </el-radio>
+            <el-radio :label="1">
+              {{ $t('management2.admin') }}
+            </el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item
@@ -123,6 +127,8 @@
 </template>
 
 <script>
+import { adduserList } from '@/api/role'
+
 export default {
   data() {
     const pwdreg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$/
@@ -171,7 +177,7 @@ export default {
     const validatePwd2 = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请再次输入密码'))
-      } else if (value !== this.form.pwd1) {
+      } else if (value !== this.form.password) {
         callback(new Error('两次输入密码不一致!'))
       } else {
         callback()
@@ -189,12 +195,12 @@ export default {
       dialogFormVisible: false,
       form: {
         username: '',
-        name: '',
+        cname: '',
         email: '',
-        phonenumber: '',
-        roles: '',
+        phone: '',
+        roleName: '',
         description: '',
-        pwd1: '',
+        password: '',
         pwd2: ''
       },
       formLabelWidth: '120px',
@@ -203,45 +209,47 @@ export default {
         username: [{
           required: true, validator: validateUsername, trigger: 'blur'
         }],
-        name: [{
+        cname: [{
           required: true, validator: validateName, trigger: 'blur'
         }],
         email: [{
           required: false, validator: validateEmail, trigger: 'blur'
         }],
-        phonenumber: [{
+        phone: [{
           required: false, validator: validatePhonenumber, trigger: 'blur'
         }],
-        pwd1: [
+        password: [
           { required: true, validator: validatePwd1, trigger: 'blur' }],
         pwd2: [
           { required: true, validator: validatePwd2, trigger: 'blur' }
 
-        ], roles: [
+        ],
+        roleName: [
           { required: true, message: '请选择权限类型', trigger: 'blur' }],
-        description: [{
-          required: false, validator: validateDescription, trigger: 'blur'
-        }]
+        description: [
+          {
+            required: false, validator: validateDescription, trigger: 'blur'
+          }]
       }
     }
   },
   methods: {
-    submitForm() {
-      this.form = {
-        username: '',
-        name: '',
-        email: '',
-        phonenumber: '',
-        roles: '',
-        description: '',
-        pwd1: '',
-        pwd2: ''
+    async submitForm() {
+      const response = await adduserList(
+        this.form
+      )
+      if (response.data.code === 20000) {
+        this.dialogFormVisible = false
+        this.$message({
+          type: 'success',
+          message: '注册成功'
+        })
+      } else {
+        this.$message({
+          type: 'danger',
+          message: '注册失败'
+        })
       }
-      this.dialogFormVisible = false
-      this.$message({
-        type: 'success',
-        message: '注册成功'
-      })
     },
     showPwd() {
       if (this.passwordType === 'password') {

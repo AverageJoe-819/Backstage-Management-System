@@ -5,14 +5,14 @@ const user = require('./user')
 const intrusion = require('./intrusion')
 const leak = require('./leak')
 const blacklist = require('./blacklist')
-const role = require('./role')
+
 
 const mocks = [
   ...user,
   ...intrusion,
   ...leak,
   ...blacklist,
-  ...role
+
 ]
 
 function mockXHR () {
