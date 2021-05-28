@@ -47,27 +47,8 @@
         width="200"
       >
         <template slot-scope="scope">
-          <el-popover
-            v-model="visible"
-            placement="top"
-            width="160"
-          >
-            <p>确定更改用户权限？</p>
-            <div style="text-align: right; margin: 0">
 
-              <el-button
-                type="primary"
-                size="mini"
-                @click="ChangeRoles('form')"
-              >确定</el-button>
-            </div>
-            <el-button
-              slot="reference"
-              type="primary"
-              size="small"
-              style="margin-right:10px"
-            >{{ $t('management2.redact') }}</el-button>
-          </el-popover>
+          <redact-form />
 
           <el-button
             type="danger"
@@ -87,9 +68,10 @@
 <script>
 import { fetchRolesList } from '@/api/role'
 import RegisterForm from './components/RegisterForm'
+import RedactForm from './components/RedactForm'
 
 export default {
-  components: { RegisterForm },
+  components: { RegisterForm, RedactForm },
   data() {
     return {
       list: null,

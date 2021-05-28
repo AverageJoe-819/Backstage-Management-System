@@ -255,6 +255,8 @@ export default {
     },
     handleClose(done) {
       this.dialogFormVisible = false
+      this.$message('退出注册'
+      )
     },
     resetForm(form) {
       this.$refs[form].resetFields()
